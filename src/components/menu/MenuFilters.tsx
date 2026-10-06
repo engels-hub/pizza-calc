@@ -43,7 +43,7 @@ export function MenuFilters({ filtersOpen, onToggleFilters }: { filtersOpen: boo
         />
       </div>
 
-      <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 md:mx-0 md:flex-wrap md:px-0">
+      <div className="flex flex-wrap gap-2">
         <Chip active={filtersOpen || active.length > 0} onClick={onToggleFilters} aria-expanded={filtersOpen} aria-controls="ingredient-panel">
           <FunnelSimpleIcon size={16} />
           {lv.menu.ingredients}

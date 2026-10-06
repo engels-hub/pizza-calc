@@ -65,6 +65,8 @@ export const lv = {
 
   menu: {
     title: "Izvēlies picas",
+    collapse: "Paslēpt sarakstu",
+    expand: "Rādīt sarakstu",
     pizzeria: "Picērija",
     all: "Abas",
     searchLabel: "Meklēt picu vai sastāvdaļu",
