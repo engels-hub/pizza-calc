@@ -26,7 +26,7 @@ export function BottomBar() {
   }, [count, bump, reduce]);
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 mx-auto max-w-xl px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden">
+    <div className="rise fixed inset-x-0 bottom-0 z-30 mx-auto max-w-xl px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden">
       <motion.button
         animate={bump}
         type="button"
