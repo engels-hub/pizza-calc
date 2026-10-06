@@ -148,6 +148,8 @@ export const lv = {
     total: "Kopā",
     perPerson: (pizzas: string, price: string) => `${pizzas}, ${price} uz cilvēku`,
     saved: (price: string) => `Ietaupi ${price}`,
+    copyLink: "Kopēt saiti uz šo pasūtījumu",
+    linkCopied: "Saite nokopēta",
   },
 
   pizzerias: {

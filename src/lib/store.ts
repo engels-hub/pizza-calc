@@ -56,7 +56,7 @@ function cycle(filters: Record<string, FilterState>, key: string): Record<string
 /** Fields saved to the prefs cookie and restored by the server. */
 export type Persisted = Pick<State, "people" | "rules" | "size" | "cart" | "activePromos" | "custom">;
 
-export type InitialState = Persisted & Pick<State, "today">;
+export type InitialState = Persisted & Pick<State, "today" | "pizzeria">;
 
 export type AppStore = StoreApi<State>;
 
@@ -68,7 +68,6 @@ export type AppStore = StoreApi<State>;
 export function createAppStore(initial: InitialState): AppStore {
   return createStore<State>()((set) => ({
     ...initial,
-    pizzeria: "all",
     query: "",
     ingredientFilters: {},
     tagFilters: {},

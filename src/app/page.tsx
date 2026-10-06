@@ -12,32 +12,49 @@ import { Planner } from "@/components/planner/Planner";
 import { Summary } from "@/components/summary/Summary";
 import { sizeOptions } from "@/lib/filter";
 import { getMenus } from "@/lib/menu";
-import { PREFS_COOKIE, decodePrefs, linesFromSaved, rigaToday } from "@/lib/prefs";
+import {
+  PREFS_COOKIE,
+  decodePrefs,
+  hasUrlState,
+  linesFromSaved,
+  pizzeriaFromSearch,
+  prefsFromSearch,
+  rigaToday,
+  type SearchParams,
+} from "@/lib/prefs";
 import type { MenuData } from "@/lib/types";
 
 /**
  * Partial prerendering: the header, footer and menu data are cached and
- * served as a static shell; the calculator depends on the visitor's prefs
- * cookie, so it renders per request inside a Suspense boundary and streams
- * into the same response.
+ * served as a static shell; the calculator depends on the address and the
+ * prefs cookie, so it renders per request inside a Suspense boundary and
+ * streams into the same response.
  */
-export default async function Page() {
+export default async function Page({ searchParams }: PageProps<"/">) {
   const menu = await getMenus();
 
   return (
     <>
       <SiteHeader fetchedAt={menu.fetchedAt} stale={menu.stale} />
       <Suspense fallback={<CalculatorSkeleton />}>
-        <PersonalCalculator menu={menu} />
+        <PersonalCalculator menu={menu} searchParams={searchParams} />
       </Suspense>
       <SiteFooter />
     </>
   );
 }
 
-async function PersonalCalculator({ menu }: { menu: MenuData }) {
-  const prefs = decodePrefs((await cookies()).get(PREFS_COOKIE)?.value);
-  const initial = { ...prefs, cart: linesFromSaved(prefs.cart, menu.pizzas), today: rigaToday() };
+async function PersonalCalculator({ menu, searchParams }: { menu: MenuData; searchParams: Promise<SearchParams> }) {
+  // The address wins: it holds this tab's order (or a shared link). A bare
+  // address starts from the cookie, i.e. the visitor's last order.
+  const sp = await searchParams;
+  const prefs = hasUrlState(sp) ? prefsFromSearch(sp) : decodePrefs((await cookies()).get(PREFS_COOKIE)?.value);
+  const initial = {
+    ...prefs,
+    cart: linesFromSaved(prefs.cart, menu.pizzas),
+    pizzeria: pizzeriaFromSearch(sp),
+    today: rigaToday(),
+  };
 
   return (
     <StoreProvider initial={initial}>

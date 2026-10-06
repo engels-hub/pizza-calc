@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { PREFS_COOKIE, PREFS_MAX_AGE, encodePrefs, savedFromLines } from "@/lib/prefs";
+import { PREFS_COOKIE, PREFS_MAX_AGE, encodePrefs, savedFromLines, searchFromPrefs } from "@/lib/prefs";
 import { StoreContext, createAppStore, type InitialState, type Persisted, type State } from "@/lib/store";
 
 const LEGACY_KEY = "picu-kalkulators";
@@ -24,8 +24,20 @@ function writeCookie(s: State) {
 }
 
 /**
+ * Keep this tab's order in its own address. replaceState (which the App Router
+ * understands) avoids a history entry per click and does not re-render.
+ */
+function writeUrl(s: State) {
+  const search = searchFromPrefs({ ...persisted(s), cart: savedFromLines(s.cart) }, s.pizzeria);
+  if (search !== location.search)
+    history.replaceState(null, "", `${location.pathname}${search}${location.hash}`);
+}
+
+/**
  * Creates this page's store from what the server read out of the prefs cookie,
- * and keeps the cookie in sync so the next request renders the same state.
+ * and keeps two things in sync: this tab's address (its own order, so tabs stay
+ * independent and links can be shared) and the cookie (the last order, used
+ * when a fresh tab opens the bare address).
  */
 export function StoreProvider({ initial, children }: { initial: InitialState; children: React.ReactNode }) {
   const [store] = useState(() => createAppStore(initial));
@@ -33,10 +45,16 @@ export function StoreProvider({ initial, children }: { initial: InitialState; ch
   useEffect(() => {
     let timer = 0;
     const unsubscribe = store.subscribe((next, prev) => {
-      const changed = (Object.keys(persisted(next)) as (keyof Persisted)[]).some((k) => next[k] !== prev[k]);
+      const changed =
+        next.pizzeria !== prev.pizzeria ||
+        (Object.keys(persisted(next)) as (keyof Persisted)[]).some((k) => next[k] !== prev[k]);
       if (!changed) return;
       window.clearTimeout(timer);
-      timer = window.setTimeout(() => writeCookie(store.getState()), 250);
+      timer = window.setTimeout(() => {
+        const state = store.getState();
+        writeUrl(state);
+        writeCookie(state);
+      }, 250);
     });
 
     // One-time move from the old localStorage save. The cookie is written
@@ -48,6 +66,7 @@ export function StoreProvider({ initial, children }: { initial: InitialState; ch
         if (old && Array.isArray(old.cart) && store.getState().cart.length === 0) {
           store.setState(old);
           writeCookie(store.getState());
+          writeUrl(store.getState());
         }
         localStorage.removeItem(LEGACY_KEY);
       }
