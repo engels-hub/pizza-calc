@@ -4,7 +4,7 @@ import { Canvas, useFrame, useThree, type ThreeEvent } from "@react-three/fiber"
 import { useEffect, useRef, useState } from "react";
 import type { Group } from "three";
 import { lv } from "@/content/lv";
-import type { Pizza } from "@/lib/types";
+import type { Pizza, Shape } from "@/lib/types";
 import { FauxPizza } from "./FauxPizza";
 
 // Internal render height in real pixels: pixelated on purpose and cheap to draw.
@@ -21,6 +21,7 @@ export interface StackUnit {
   lineKey: string;
   pizza: Pizza;
   diameter: number;
+  shape: Shape;
 }
 
 /** Mutable spin state shared by the DOM pointer handlers and the render loop. */
@@ -175,7 +176,9 @@ function Stack({
   onHover: (lineKey: string | null) => void;
 }) {
   const root = useRef<Group>(null);
-  const shown = units.length ? units : [{ key: "empty", lineKey: "", pizza: PLAIN, diameter: 30 }];
+  const shown = units.length
+    ? units
+    : [{ key: "empty", lineKey: "", pizza: PLAIN, diameter: 30, shape: "round" as const }];
   const height = (shown.length - 1) * GAP;
   const widest = Math.max(...shown.map((u) => u.diameter)) / 30;
   // Zoom out as the stack grows so the whole tower stays in frame.
@@ -255,9 +258,13 @@ function Unit({
   };
 
   return (
-    <group ref={outer} onPointerOver={onHover ? over : undefined} onPointerOut={onHover ? () => onHover(null) : undefined}>
+    <group
+      ref={outer}
+      onPointerOver={onHover ? over : undefined}
+      onPointerOut={onHover ? () => onHover(null) : undefined}
+    >
       <group ref={inner}>
-        <FauxPizza pizza={unit.pizza} reduce={reduce} />
+        <FauxPizza pizza={unit.pizza} shape={unit.shape} reduce={reduce} />
       </group>
     </group>
   );

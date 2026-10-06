@@ -36,7 +36,7 @@ export function Cart({ pizzas }: { pizzas: Pizza[] }) {
   for (const l of cart) {
     const pizza = byId.get(l.pizzaId);
     for (let i = 0; pizza && i < l.qty && units.length < MAX_STACK; i++) {
-      units.push({ key: `${l.key}#${i}`, lineKey: l.key, pizza, diameter: l.diameterCm });
+      units.push({ key: `${l.key}#${i}`, lineKey: l.key, pizza, diameter: l.diameterCm, shape: l.shape });
     }
   }
 

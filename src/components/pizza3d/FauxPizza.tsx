@@ -15,7 +15,8 @@ import {
   type Mesh,
 } from "three";
 import { ingredientDef } from "@/lib/ingredients";
-import type { Pizza } from "@/lib/types";
+import type { Pizza, Shape } from "@/lib/types";
+import { heartSlab, insideHeart } from "./heart";
 import { FALLBACK, RECIPES, SAUCE_COLORS, rng } from "./ingredientMeshes";
 import { ps1Material, raw } from "./ps1Material";
 
@@ -58,21 +59,41 @@ function cheeseColor(keys: string[]): string | null {
 }
 
 /** Builds the topping layout for a pizza: deterministic, seeded by its id. */
-function buildParts(pizza: Pizza): Part[] {
+function buildParts(pizza: Pizza, shape: Shape): Part[] {
   const rand = rng(pizza.id);
+  // A spot for one topping: uniform in the disc, or rejection-sampled inside the heart.
+  const spot = (): [number, number] => {
+    if (shape === "heart") {
+      for (let tries = 0; tries < 40; tries++) {
+        const x = (rand() * 2 - 1) * 0.85;
+        const z = (rand() * 2 - 1) * 0.85;
+        if (insideHeart(x, z, 0.72)) return [x, z];
+      }
+      return [0, 0];
+    }
+    const r = Math.sqrt(rand()) * 0.7;
+    const a = rand() * Math.PI * 2;
+    return [Math.cos(a) * r, Math.sin(a) * r];
+  };
   const parts: Part[] = [];
   let delay = 0.38;
   let layer = 0;
   let total = 0;
 
-  const scatter = (key: string, geometry: BufferGeometry, count: number, colors: string[], flat: boolean, lift: number) => {
+  const scatter = (
+    key: string,
+    geometry: BufferGeometry,
+    count: number,
+    colors: string[],
+    flat: boolean,
+    lift: number,
+  ) => {
     const items: Item[] = [];
     for (let j = 0; j < count && total < MAX_ITEMS; j++, total++) {
-      const r = Math.sqrt(rand()) * 0.7;
-      const a = rand() * Math.PI * 2;
+      const [x, z] = spot();
       items.push({
-        x: Math.cos(a) * r,
-        z: Math.sin(a) * r,
+        x,
+        z,
         y: 0.11 + layer * 0.006 + lift,
         rot: flat ? new Euler(Math.PI / 2, 0, rand() * Math.PI * 2) : new Euler(0, rand() * Math.PI * 2, 0),
         delay: delay + j * 0.022,
@@ -102,19 +123,29 @@ function buildParts(pizza: Pizza): Part[] {
 }
 
 /** No photo, or the photo mode is off: build the pizza from its ingredient list. */
-export function FauxPizza({ pizza, reduce }: { pizza: Pizza; reduce: boolean }) {
+export function FauxPizza({ pizza, shape = "round", reduce }: { pizza: Pizza; shape?: Shape; reduce: boolean }) {
   const keys = pizza.ingredients;
-  const parts = useMemo(() => buildParts(pizza), [pizza]);
+  const heart = shape === "heart";
+  const parts = useMemo(() => buildParts(pizza, shape), [pizza, shape]);
   const material = useMemo(() => ps1Material({ color: "#ffffff" }), []);
   const base = useMemo(() => {
     const cheese = cheeseColor(keys);
+    if (heart) {
+      // Heart: the dough slab doubles as the crust; sauce and cheese are smaller hearts on top.
+      return {
+        dough: { geo: heartSlab(1, 0.14), mat: ps1Material({ color: "#c98a4b" }) },
+        crust: null,
+        sauce: { geo: heartSlab(0.88, 0.02), mat: ps1Material({ color: sauceColor(keys) }) },
+        cheese: cheese ? { geo: heartSlab(0.8, 0.02), mat: ps1Material({ color: cheese }) } : null,
+      };
+    }
     return {
       dough: { geo: new CylinderGeometry(1, 0.97, 0.12, 16), mat: ps1Material({ color: "#d9a066" }) },
       crust: { geo: new TorusGeometry(0.93, 0.075, 4, 18), mat: ps1Material({ color: "#c4823f" }) },
       sauce: { geo: new CylinderGeometry(0.87, 0.87, 0.02, 14), mat: ps1Material({ color: sauceColor(keys) }) },
       cheese: cheese ? { geo: new CylinderGeometry(0.8, 0.8, 0.02, 11), mat: ps1Material({ color: cheese }) } : null,
     };
-  }, [keys]);
+  }, [keys, heart]);
 
   useLayoutEffect(
     () => () => {
@@ -146,7 +177,6 @@ export function FauxPizza({ pizza, reduce }: { pizza: Pizza; reduce: boolean }) 
     settled.current = false;
     start.current = null;
   }, [parts]);
-
 
   useFrame((state) => {
     if (settled.current) return;
@@ -188,7 +218,9 @@ export function FauxPizza({ pizza, reduce }: { pizza: Pizza; reduce: boolean }) 
   return (
     <group>
       <mesh geometry={base.dough.geo} material={base.dough.mat} />
-      <mesh geometry={base.crust.geo} material={base.crust.mat} rotation-x={Math.PI / 2} position-y={0.06} />
+      {base.crust && (
+        <mesh geometry={base.crust.geo} material={base.crust.mat} rotation-x={Math.PI / 2} position-y={0.06} />
+      )}
       <mesh ref={sauceRef} geometry={base.sauce.geo} material={base.sauce.mat} visible={false} />
       {base.cheese && <mesh ref={cheeseRef} geometry={base.cheese.geo} material={base.cheese.mat} visible={false} />}
       {parts.map((part, i) => (
