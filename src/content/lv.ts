@@ -48,6 +48,13 @@ export const lv = {
     pricePerAreaHint: "Lētākais pēc laukuma",
   },
 
+  /** "I'm feeling lucky": fills the cart with random Picu darbnīca pizzas. */
+  lucky: {
+    button: "Man paveiksies",
+    hint: (n: number, diameter: number) =>
+      `${n} ${one(n) ? "nejauša Picu darbnīcas pica" : "nejaušas Picu darbnīcas picas"} pa ${diameter} cm`,
+  },
+
   rules: {
     title: "Aprēķina noteikums",
     summary: (formula: string, diameter: number) => `${formula} picas pa ${diameter} cm`,

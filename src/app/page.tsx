@@ -58,7 +58,7 @@ async function PersonalCalculator({ menu, searchParams }: { menu: MenuData; sear
   return (
     <StoreProvider initial={initial}>
       <main className="reveal mx-auto flex max-w-[1400px] flex-col gap-12 px-4 pb-24 md:px-8 lg:gap-16 lg:pb-16">
-        <Planner sizes={sizeOptions(menu.pizzas)} />
+        <Planner sizes={sizeOptions(menu.pizzas)} luckyPool={menu.pizzas.filter((p) => p.pizzeriaId === "darbnīca")} />
 
         <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
           <div className="min-w-0 lg:sticky lg:top-4">

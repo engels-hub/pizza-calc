@@ -22,6 +22,7 @@ export function CalculatorSkeleton() {
           <div className={`${block} h-28`} />
           <div className={`${block} col-span-2 h-28 lg:col-span-1`} />
         </div>
+        <div className={`${block} h-12 w-48`} />
         <div className="flex flex-col gap-3">
           <div className={`${block} h-14`} />
           <div className={`${block} h-14`} />

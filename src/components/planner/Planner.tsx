@@ -1,13 +1,15 @@
 import { lv } from "@/content/lv";
 import { DealsPanel } from "../deals/DealsPanel";
 import type { SizeOption } from "@/lib/filter";
+import type { Pizza } from "@/lib/types";
+import { LuckyButton } from "./LuckyButton";
 import { PeopleControl } from "./PeopleControl";
 import { Recommendation } from "./Recommendation";
 import { RulesPanel } from "./RulesPanel";
 import { SizePicker } from "./SizePicker";
 
 /** Server shell for the calculator; the interactive parts are client leaves. */
-export function Planner({ sizes }: { sizes: SizeOption[] }) {
+export function Planner({ sizes, luckyPool }: { sizes: SizeOption[]; luckyPool: Pizza[] }) {
   return (
     <section aria-label={lv.planner.sectionLabel} className="flex flex-col gap-6">
       <div>
@@ -23,6 +25,8 @@ export function Planner({ sizes }: { sizes: SizeOption[] }) {
           <SizePicker sizes={sizes} />
         </div>
       </div>
+
+      <LuckyButton pool={luckyPool} />
 
       <div className="flex flex-col gap-3">
         <RulesPanel />
