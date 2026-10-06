@@ -43,3 +43,13 @@ Promo codes and their dates live in `src/data/promos.ts` and are updated by hand
 ## Stack
 
 Next.js 16 (Cache Components, Partial Prerendering, React Compiler), React 19, Tailwind CSS 4, Motion, React Three Fiber, zustand, vaul, cheerio, sharp, vitest.
+
+## Deploy (TrueNAS + Cloudflare Tunnel)
+
+Every push to `main` (and a daily rebuild) runs the tests and publishes `ghcr.io/engels-hub/pizza-calc:latest` via GitHub Actions. The image is the Next.js standalone server on port 3000.
+
+1. **Cloudflare:** Zero Trust > Networks > Tunnels > create a tunnel (Cloudflared). Copy its token. Add a public hostname pointing to service `HTTP` at `pizza:3000`.
+2. **TrueNAS SCALE:** Apps > Discover Apps > Custom App > Install via YAML. Paste `deploy/compose.yaml` and replace `paste-your-tunnel-token-here` with the token.
+3. **Update:** after a new image is built, redeploy the app in TrueNAS (the compose file pulls `latest` on start).
+
+The app container publishes no ports, so it is reachable only through the tunnel. To try the image locally: `docker build -t pizza-calc . && docker run -p 3000:3000 pizza-calc`.

@@ -19,7 +19,8 @@ function persisted(s: State): Persisted {
 
 function writeCookie(s: State) {
   const value = encodePrefs({ ...persisted(s), cart: savedFromLines(s.cart) });
-  document.cookie = `${PREFS_COOKIE}=${value}; Path=/; Max-Age=${PREFS_MAX_AGE}; SameSite=Lax`;
+  const secure = location.protocol === "https:" ? "; Secure" : "";
+  document.cookie = `${PREFS_COOKIE}=${value}; Path=/; Max-Age=${PREFS_MAX_AGE}; SameSite=Lax${secure}`;
 }
 
 /**

@@ -1,0 +1,11 @@
+.git
+.next
+node_modules
+.claude
+tests
+*.md
+!README.md
+Dockerfile
+.dockerignore
+deploy
+.github
