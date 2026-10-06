@@ -65,12 +65,12 @@ function PromoRow({
         className={`flex items-center gap-3 rounded-2xl border px-3 py-2 transition-colors ${
           on ? "border-accent bg-accent-soft" : "border-line"
         } ${live ? "" : "opacity-45"}`}
-        title={text?.note}
       >
         <button
           type="button"
           role="switch"
           aria-checked={on}
+          aria-describedby={text?.note ? `${promo.id}-note` : undefined}
           disabled={!live}
           onClick={onToggle}
           className="flex min-h-10 min-w-0 flex-1 items-center gap-3 text-left disabled:cursor-not-allowed"
@@ -88,15 +88,20 @@ function PromoRow({
               {lv.pizzerias[promo.pizzeriaId]}
               {when && `, ${when}`}
             </span>
+            {text?.note && (
+              <span id={`${promo.id}-note`} className="mt-0.5 block text-xs text-muted">
+                {text.note}
+              </span>
+            )}
           </span>
         </button>
-        {promo.code && <CopyCode code={promo.code} />}
+        {promo.code && <CopyCode code={promo.code} disabled={!live} />}
       </div>
     </li>
   );
 }
 
-function CopyCode({ code }: { code: string }) {
+function CopyCode({ code, disabled }: { code: string; disabled: boolean }) {
   const [copied, setCopied] = useState(false);
   const copy = async () => {
     try {
@@ -111,7 +116,8 @@ function CopyCode({ code }: { code: string }) {
     <button
       type="button"
       onClick={copy}
-      className="inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-full bg-sunken px-2.5 text-xs font-medium transition-transform active:scale-[0.96]"
+      disabled={disabled}
+      className="inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-full bg-sunken px-2.5 text-xs font-medium transition-transform active:scale-[0.96] disabled:cursor-not-allowed"
       aria-label={lv.summary.copyCode(code)}
     >
       {code}

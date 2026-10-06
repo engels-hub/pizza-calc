@@ -14,9 +14,13 @@ export function Recommendation() {
   return (
     <div className="flex flex-col gap-2">
       <p className="text-sm font-medium text-muted">{lv.planner.youNeed}</p>
+      {/* Announce the settled result once; the animated digits below are visual only. */}
+      <p className="sr-only" aria-live="polite">
+        {lv.plural.pizzas(count)} × {lv.variants.cm(size)}
+      </p>
       <div
         className="bevel bevel-in relative flex flex-1 flex-col justify-between gap-2 overflow-hidden px-4 py-3"
-        aria-live="polite"
+        aria-hidden
       >
         <Dither
           className="absolute inset-0"

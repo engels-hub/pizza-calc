@@ -6,6 +6,7 @@ import { exactPieces, piecesNeeded } from "@/lib/calc";
 import type { SizeOption } from "@/lib/filter";
 import { oneDecimal, twoDecimals } from "@/lib/format";
 import { useStore } from "@/lib/store";
+import { onRadioKeyDown } from "../ui/radioKeys";
 
 export function SizePicker({ sizes }: { sizes: SizeOption[] }) {
   const { area, size: selected } = useRecommendation();
@@ -15,7 +16,19 @@ export function SizePicker({ sizes }: { sizes: SizeOption[] }) {
   return (
     <div className="flex h-full flex-col gap-2">
       <p className="text-sm font-medium text-muted">{lv.planner.size}</p>
-      <div className="grid flex-1 grid-cols-2 gap-2 sm:grid-cols-4" role="radiogroup" aria-label={lv.planner.size}>
+      <div
+        className="grid flex-1 grid-cols-2 gap-2 sm:grid-cols-4"
+        role="radiogroup"
+        aria-label={lv.planner.size}
+        onKeyDown={(e) =>
+          onRadioKeyDown(
+            e,
+            sizes.map((s) => s.diameter),
+            selected,
+            setSize,
+          )
+        }
+      >
         {sizes.map((s) => {
           const exact = exactPieces(area, s.diameter);
           const dot = 14 + (s.diameter / max) * 30;
@@ -26,6 +39,7 @@ export function SizePicker({ sizes }: { sizes: SizeOption[] }) {
               type="button"
               role="radio"
               aria-checked={active}
+              tabIndex={active ? 0 : -1}
               onClick={() => setSize(s.diameter)}
               className={`bevel flex min-w-0 items-center gap-3 p-3 text-left ${active ? "!bg-accent-soft" : ""}`}
             >

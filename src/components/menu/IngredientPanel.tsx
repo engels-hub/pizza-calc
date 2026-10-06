@@ -30,7 +30,7 @@ export function IngredientPanel({ pizzas }: { pizzas: Pizza[] }) {
                 >
                   {filters[o.key] === "exclude" && `${lv.menu.without} `}
                   {o.label}
-                  <span className="tabular text-[0.7rem] opacity-60">{o.count}</span>
+                  <span className={`tabular text-[0.7rem] ${filters[o.key] ? "" : "text-muted"}`}>{o.count}</span>
                 </Chip>
               ))}
             </div>

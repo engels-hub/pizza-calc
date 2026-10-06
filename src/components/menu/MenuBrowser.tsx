@@ -54,10 +54,10 @@ export function MenuBrowser({ pizzas }: { pizzas: Pizza[] }) {
       </Collapse>
 
       <div className="flex items-center justify-between gap-3 text-sm text-muted">
-        <span aria-live="polite">
-          {lv.menu.count(visible.length)}
+        <span className="flex items-center gap-3">
+          <span aria-live="polite">{lv.menu.count(visible.length)}</span>
           {filterCount > 0 && (
-            <button type="button" onClick={clearFilters} className="ml-3 font-medium text-accent">
+            <button type="button" onClick={clearFilters} className="min-h-10 font-medium text-accent">
               {lv.menu.clearFilters}
             </button>
           )}

@@ -27,6 +27,9 @@ export function CartLineItem({ line, pizza }: { line: CartLine; pizza?: Pizza })
       transition={spring}
       onMouseEnter={() => setHovered(line.key)}
       onFocus={() => setHovered(line.key)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) setHovered(null);
+      }}
       className={`grid grid-cols-[3rem_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 rounded-2xl p-2 transition-colors ${
         active ? "bg-surface shadow-soft" : ""
       }`}

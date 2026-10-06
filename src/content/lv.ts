@@ -75,7 +75,7 @@ export const lv = {
     /** Prefix for an excluded tag, e.g. "ne asās". */
     not: "ne",
     removeFilter: (label: string) => `Noņemt ${label}`,
-    count: (n: number) => `${n} picas`,
+    count: (n: number) => `${n} ${one(n) ? "pica" : "picas"}`,
     clearFilters: "Notīrīt filtrus",
     sort: "Kārtot",
     sorts: { menu: "Kā ēdienkartē", price: "Lētākās", value: "Izdevīgākās par cm²" },
@@ -100,7 +100,7 @@ export const lv = {
     clear: "Notīrīt",
     empty: "Pievieno picas sarakstā",
     shownOf: (shown: number, total: number) => `Rādītas ${shown} no ${total}`,
-    stackLabel: (n: number) => `${n} picas kaudzē`,
+    stackLabel: (n: number) => `${n} ${one(n) ? "pica" : "picas"} kaudzē`,
     stackEmpty: "Tukšs pasūtījums",
     quantity: (name: string) => `${name} skaits`,
     line: (pizzeria: string, size: string, price: string) => `${pizzeria}, ${size}, ${price}`,
