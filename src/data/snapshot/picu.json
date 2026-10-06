@@ -1,0 +1,1271 @@
+{
+  "fetchedAt": "2026-10-06T08:54:57.958Z",
+  "pizzas": [
+    {
+      "id": "picu-cetru-sieru",
+      "pizzeriaId": "picu",
+      "name": "Četru sieru",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2026/04/001_cetru-sieru-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas mērce",
+        "mozzarella",
+        "Holandes",
+        "zilais pelējuma siers",
+        "cietais siers"
+      ],
+      "ingredients": [
+        "dough",
+        "base-sauce",
+        "mozzarella",
+        "extra-cheese",
+        "blue-cheese",
+        "parmesan"
+      ],
+      "tags": [
+        "vegetarian",
+        "new"
+      ],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 8
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 11.4
+        }
+      ]
+    },
+    {
+      "id": "picu-lasa",
+      "pizzeriaId": "picu",
+      "name": "Laša",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2026/04/006_lasa-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "lasis",
+        "sīpoli",
+        "citronu mērce",
+        "dilles"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "salmon",
+        "onion",
+        "lemon-sauce",
+        "dill"
+      ],
+      "tags": [
+        "new"
+      ],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 8
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 11.4
+        }
+      ]
+    },
+    {
+      "id": "picu-vasaras",
+      "pizzeriaId": "picu",
+      "name": "Vasaras",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2026/04/011_vasaras-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "bekons",
+        "šampinjoni",
+        "BBQ mērce",
+        "lociņi"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "bacon",
+        "mushroom",
+        "bbq-sauce",
+        "spring-onion"
+      ],
+      "tags": [
+        "new"
+      ],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 6.9
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 9.9
+        }
+      ]
+    },
+    {
+      "id": "picu-margarita",
+      "pizzeriaId": "picu",
+      "name": "Margarita",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9426-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "extra siers",
+        "tomāti",
+        "oregano"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "extra-cheese",
+        "tomato",
+        "herbs"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 5
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 6.9
+        }
+      ]
+    },
+    {
+      "id": "picu-salami",
+      "pizzeriaId": "picu",
+      "name": "Salami",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9436-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "salami"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "salami"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 5.2
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 7.4
+        }
+      ]
+    },
+    {
+      "id": "picu-funghi",
+      "pizzeriaId": "picu",
+      "name": "Funghi",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9444-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "šampinjoni"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "mushroom"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 5.2
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 7.4
+        }
+      ]
+    },
+    {
+      "id": "picu-ham-cheese",
+      "pizzeriaId": "picu",
+      "name": "Ham&Cheese",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9445-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "šķiņķis"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "ham"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 5.2
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 7.4
+        }
+      ]
+    },
+    {
+      "id": "picu-peperoni-asa",
+      "pizzeriaId": "picu",
+      "name": "Peperoni (asa)",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9456-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "salami",
+        "paprika",
+        "jalapeno"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "salami",
+        "bell-pepper",
+        "jalapeno"
+      ],
+      "tags": [
+        "spicy"
+      ],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 5.8
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 8.3
+        }
+      ]
+    },
+    {
+      "id": "picu-mikela-ipasa",
+      "pizzeriaId": "picu",
+      "name": "Miķeļa īpašā",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9482-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "salami/šķiņķis",
+        "BBQ mērce"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "salami",
+        "ham",
+        "bbq-sauce"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 5.8
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 8.3
+        }
+      ]
+    },
+    {
+      "id": "picu-super-mario",
+      "pizzeriaId": "picu",
+      "name": "Super Mario",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2013/11/IMG_9471-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "salami",
+        "šampinjoni"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "salami",
+        "mushroom"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 5.8
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 8.3
+        }
+      ]
+    },
+    {
+      "id": "picu-hawaii",
+      "pizzeriaId": "picu",
+      "name": "Hawaii",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9485-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "šķiņķis",
+        "konservēti ananasi",
+        "oregano"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "ham",
+        "pineapple",
+        "herbs"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 6.3
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 9.1
+        }
+      ]
+    },
+    {
+      "id": "picu-deluxe",
+      "pizzeriaId": "picu",
+      "name": "Deluxe",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9489-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "bekons",
+        "marinēti gurķi",
+        "sīpols"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "bacon",
+        "pickles",
+        "onion"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 6.3
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 9.1
+        }
+      ]
+    },
+    {
+      "id": "picu-chicken-curry",
+      "pizzeriaId": "picu",
+      "name": "Chicken curry",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2016/11/IMG_9495-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "vistas fileja",
+        "paprika",
+        "tomāti",
+        "konservēti ananasi",
+        "karija mērce"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "chicken",
+        "bell-pepper",
+        "tomato",
+        "pineapple",
+        "curry-sauce"
+      ],
+      "tags": [
+        "top"
+      ],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 6.3
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 9.1
+        }
+      ]
+    },
+    {
+      "id": "picu-supreme",
+      "pizzeriaId": "picu",
+      "name": "Supreme",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9501-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "vistas fileja",
+        "paprika",
+        "sīpoli",
+        "šampinjoni",
+        "olīvas"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "chicken",
+        "bell-pepper",
+        "onion",
+        "mushroom",
+        "olives"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 6.3
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 9.1
+        }
+      ]
+    },
+    {
+      "id": "picu-gruzinu",
+      "pizzeriaId": "picu",
+      "name": "Gruzīnu",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9475-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "salami",
+        "bekons",
+        "ķiploku mērce"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "salami",
+        "bacon",
+        "garlic-sauce"
+      ],
+      "tags": [
+        "top"
+      ],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 6.3
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 9.1
+        }
+      ]
+    },
+    {
+      "id": "picu-ozo",
+      "pizzeriaId": "picu",
+      "name": "Ozo",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2013/11/IMG_9461-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "salami",
+        "marinēti gurķi",
+        "ķiploku mērce"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "salami",
+        "pickles",
+        "garlic-sauce"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 6.3
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 9.1
+        }
+      ]
+    },
+    {
+      "id": "picu-annas-garda",
+      "pizzeriaId": "picu",
+      "name": "Annas gardā",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2018/11/IMG_1951-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "salami",
+        "marinēti gurķi",
+        "konservēti ananasi"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "salami",
+        "pickles",
+        "pineapple"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 6.3
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 9.1
+        }
+      ]
+    },
+    {
+      "id": "picu-mexicana-asa",
+      "pizzeriaId": "picu",
+      "name": "Mexicana (asa)",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9515-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "maltā gaļa",
+        "sīpoli",
+        "pupiņas",
+        "jalapeno"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "minced",
+        "onion",
+        "beans",
+        "jalapeno"
+      ],
+      "tags": [
+        "spicy"
+      ],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 6.9
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 9.9
+        }
+      ]
+    },
+    {
+      "id": "picu-cheeseburger",
+      "pizzeriaId": "picu",
+      "name": "Cheeseburger",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2013/04/15-Cheeseburger-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "pica mērce",
+        "maltā gaļa",
+        "sīpoli",
+        "tomāti",
+        "cheeseburger mērce"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "minced",
+        "onion",
+        "tomato",
+        "cheeseburger-sauce"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 6.9
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 9.9
+        }
+      ]
+    },
+    {
+      "id": "picu-krasaina",
+      "pizzeriaId": "picu",
+      "name": "Krāsainā",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2013/11/IMG_9510-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "bekons",
+        "tomāti",
+        "paprika",
+        "konservēti ananasi",
+        "marinēti gurķi",
+        "ķiploku mērce"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "bacon",
+        "tomato",
+        "bell-pepper",
+        "pineapple",
+        "pickles",
+        "garlic-sauce"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 6.9
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 9.9
+        }
+      ]
+    },
+    {
+      "id": "picu-pavasara",
+      "pizzeriaId": "picu",
+      "name": "Pavasara",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2017/04/IMG_9632-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "bekons",
+        "sīpoli",
+        "tomāti",
+        "lociņi",
+        "ķiploku mērce"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "bacon",
+        "onion",
+        "tomato",
+        "spring-onion",
+        "garlic-sauce"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 6.9
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 9.9
+        }
+      ]
+    },
+    {
+      "id": "picu-vegetara",
+      "pizzeriaId": "picu",
+      "name": "Veģetārā",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/01/IMG_9523-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "šampinjoni",
+        "paprika",
+        "tomāti",
+        "sīpoli"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "mushroom",
+        "bell-pepper",
+        "tomato",
+        "onion"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 7.3
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 10.4
+        }
+      ]
+    },
+    {
+      "id": "picu-new-york",
+      "pizzeriaId": "picu",
+      "name": "New York",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9519-1-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "šķiņķis",
+        "vistas fileja",
+        "šampinjoni",
+        "sīpoli",
+        "marinēti gurķi",
+        "ķiploku mērce"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "ham",
+        "chicken",
+        "mushroom",
+        "onion",
+        "pickles",
+        "garlic-sauce"
+      ],
+      "tags": [
+        "top"
+      ],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 7.3
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 10.4
+        }
+      ]
+    },
+    {
+      "id": "picu-calzone-parlocita",
+      "pizzeriaId": "picu",
+      "name": "Calzone (pārlocītā)",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9526-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "šķiņķis",
+        "šampinjoni",
+        "sīpoli"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "ham",
+        "mushroom",
+        "onion"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "calzone",
+          "price": 7.3
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "calzone",
+          "price": 10.4
+        }
+      ]
+    },
+    {
+      "id": "picu-tuna",
+      "pizzeriaId": "picu",
+      "name": "Tuna",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9540-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "tuncis",
+        "sīpoli",
+        "citronu mērce",
+        "dilles"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "tuna",
+        "onion",
+        "lemon-sauce",
+        "dill"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 7.3
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 10.4
+        }
+      ]
+    },
+    {
+      "id": "picu-speka",
+      "pizzeriaId": "picu",
+      "name": "Spēka",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2018/11/IMG_1957-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "šķiņķis",
+        "maltā gaļa",
+        "šampinjoni",
+        "sīpoli",
+        "BBQ merce",
+        "lociņi"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "ham",
+        "minced",
+        "mushroom",
+        "onion",
+        "bbq-sauce",
+        "spring-onion"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 7.8
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 11
+        }
+      ]
+    },
+    {
+      "id": "picu-bbq",
+      "pizzeriaId": "picu",
+      "name": "Bbq",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9533-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "bekons",
+        "maltā gaļa",
+        "šampinjoni",
+        "sīpoli",
+        "BBQ mērce"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "bacon",
+        "minced",
+        "mushroom",
+        "onion",
+        "bbq-sauce"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 7.8
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 11
+        }
+      ]
+    },
+    {
+      "id": "picu-sea-food",
+      "pizzeriaId": "picu",
+      "name": "Sea food",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9549-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "jūras veltes",
+        "tomāti",
+        "dilles",
+        "citronu mērce"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "seafood",
+        "tomato",
+        "dill",
+        "lemon-sauce"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 8
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 11.4
+        }
+      ]
+    },
+    {
+      "id": "picu-happy-shrimp",
+      "pizzeriaId": "picu",
+      "name": "Happy shrimp",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9544-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "garneles",
+        "tuncis",
+        "olīvas",
+        "sīpoli"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "shrimp",
+        "tuna",
+        "olives",
+        "onion"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 8
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 11.4
+        }
+      ]
+    },
+    {
+      "id": "picu-fiksitis",
+      "pizzeriaId": "picu",
+      "name": "Fiksītis",
+      "url": "https://www.picudarbnica.lv/picas/",
+      "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2013/11/IMG_9537-1000x667.jpg",
+      "rawIngredients": [
+        "Picas mīkla",
+        "picas siers",
+        "picas mērce",
+        "salami",
+        "šķiņķis",
+        "bekons",
+        "marinēti gurķi",
+        "sīpoli",
+        "karija mērce",
+        "BBQ mērce"
+      ],
+      "ingredients": [
+        "dough",
+        "base-cheese",
+        "base-sauce",
+        "salami",
+        "ham",
+        "bacon",
+        "pickles",
+        "onion",
+        "curry-sauce",
+        "bbq-sauce"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "20",
+          "label": "20cm",
+          "diameterCm": 20,
+          "shape": "round",
+          "price": 8
+        },
+        {
+          "id": "30",
+          "label": "30cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 11.4
+        }
+      ]
+    }
+  ]
+}

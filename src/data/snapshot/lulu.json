@@ -1,0 +1,2599 @@
+{
+  "fetchedAt": "2026-10-06T08:54:57.958Z",
+  "pizzas": [
+    {
+      "id": "lulu-desu-pica",
+      "pizzeriaId": "lulu",
+      "name": "Desu pica",
+      "url": "https://www.lulu.lv/picas/desu-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/858093812/desu-pica_3363918455.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Salami desa"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "salami"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 8.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 10.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 13.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 19.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-dubultdesu-pica",
+      "pizzeriaId": "lulu",
+      "name": "Dubultdesu pica",
+      "url": "https://www.lulu.lv/picas/dubultdesu-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/858093812/dubultdesu-pica_3160242767.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Salami desa"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "salami"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 10.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-labaka-doma-pasaule",
+      "pizzeriaId": "lulu",
+      "name": "Labākā doma pasaulē",
+      "url": "https://www.lulu.lv/picas/labaka-doma-pasaule",
+      "imageUrl": "https://www.lulu.lv/cache/images/1303598542/labaka-doma-pasaule_673746028.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Bekons",
+        "Marinēti gurķi",
+        "Pepperoni",
+        "Majonēzes - harisas mērces mix"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "bacon",
+        "pickles",
+        "pepperoni",
+        "harissa"
+      ],
+      "tags": [
+        "spicy"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-piradzin-pica",
+      "pizzeriaId": "lulu",
+      "name": "Pīrādziņ' pica",
+      "url": "https://www.lulu.lv/picas/piradzin-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/905157516/piradzin-pica_446133123.jpg",
+      "rawIngredients": [
+        "Majonēze",
+        "Siers",
+        "Melnie pipari",
+        "Sīpoli",
+        "Ķimenes",
+        "Kūpināts šķiņķis"
+      ],
+      "ingredients": [
+        "mayo",
+        "base-cheese",
+        "black-pepper",
+        "onion",
+        "herbs",
+        "ham"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 10.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-galas-tornado",
+      "pizzeriaId": "lulu",
+      "name": "Gaļas tornado",
+      "url": "https://www.lulu.lv/picas/galas-tornado",
+      "imageUrl": "https://www.lulu.lv/cache/images/3979819185/galas-tornado_112421716.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Cietais siers",
+        "Bekons",
+        "Liellopa šķiņķis",
+        "Melnie pipari",
+        "Pepperoni",
+        "Plucināta liellopa gaļa"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "parmesan",
+        "bacon",
+        "ham",
+        "black-pepper",
+        "pepperoni",
+        "beef"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 14.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 19.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 22.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 29.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-liellopa-pica-ar-harisas-merci",
+      "pizzeriaId": "lulu",
+      "name": "Liellopa pica ar harisas mērci",
+      "url": "https://www.lulu.lv/picas/liellopa-pica-ar-harisas-merci",
+      "imageUrl": "https://www.lulu.lv/cache/images/2990766609/liellopa-pica-ar-harisas-merci_672623794.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Liellopa šķiņķis",
+        "Ķiršu tomāti",
+        "Paprika",
+        "Bazilika maisījums",
+        "Majonēzes - harisas mērces mix",
+        "Apgrauzdēta Zaatar garšviela",
+        "Eļļa uz picas maliņas"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "ham",
+        "cherry-tomato",
+        "bell-pepper",
+        "herbs",
+        "harissa"
+      ],
+      "tags": [
+        "spicy"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-dubult-pepperoni-pica",
+      "pizzeriaId": "lulu",
+      "name": "Dubult-Pepperoni pica",
+      "url": "https://www.lulu.lv/picas/dubult-pepperoni-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2119629078/dubult-pepperoni-pica_4040091487.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Pepperoni"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "pepperoni"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 14.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 19.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 22.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 29.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-plucinata-ll-bbq-pica",
+      "pizzeriaId": "lulu",
+      "name": "Plucinātā LL BBQ pica",
+      "url": "https://www.lulu.lv/picas/plucinata-ll-bbq-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/890091083/plucinata-ll-bbq-pica_1567691395.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Majonēze",
+        "Siers",
+        "Marinēti gurķi",
+        "Marinēta paprika",
+        "Ķiploku granulas",
+        "Iceberg salāti",
+        "Plucināta liellopa gaļa",
+        "BBQ viskija mērce"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "mayo",
+        "base-cheese",
+        "pickles",
+        "pickled-pepper",
+        "garlic",
+        "lettuce",
+        "beef",
+        "bbq-sauce"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-pepperoni-pica",
+      "pizzeriaId": "lulu",
+      "name": "Pepperoni pica",
+      "url": "https://www.lulu.lv/picas/pepperoni-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/709636144/pepperoni-pica_3073504752.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Pepperoni"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "pepperoni"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-vistas-kukuruzas-pica",
+      "pizzeriaId": "lulu",
+      "name": "Vistas - Kukurūzas pica",
+      "url": "https://www.lulu.lv/picas/vistas-kukuruzas-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2990766609/vistas-kukuruzas-pica_3268341487.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Kukurūza",
+        "Sīpoli",
+        "Bazilika maisījums",
+        "Majonēzes - harisas mērces mix",
+        "Apgrauzdēta Zaatar garšviela",
+        "Vistas fileja harisas mērcē",
+        "Eļļa uz picas maliņas"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "corn",
+        "onion",
+        "herbs",
+        "harissa",
+        "chicken"
+      ],
+      "tags": [
+        "spicy"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-super-lulu-pica",
+      "pizzeriaId": "lulu",
+      "name": "Super Lulū pica",
+      "url": "https://www.lulu.lv/picas/super-lulu-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/1856548973/super-lulu-pica_2467015784.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Salami desa",
+        "Šķiņķis",
+        "Tomāti",
+        "Paprika",
+        "Zaļās olīvas",
+        "Melnie pipari",
+        "Sīpoli",
+        "Oregano"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "salami",
+        "ham",
+        "tomato",
+        "bell-pepper",
+        "olives",
+        "black-pepper",
+        "onion",
+        "herbs"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-vist-indijas-pica",
+      "pizzeriaId": "lulu",
+      "name": "Vist-Indijas pica",
+      "url": "https://www.lulu.lv/picas/vist-indijas-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2618254198/vist-indijas-pica_683605037.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Vistas fileja",
+        "Paprika",
+        "Sezama sēkliņas",
+        "Sīpoli",
+        "Pētersīļi",
+        "Laima sula",
+        "Raita mērce",
+        "Garam Masala garšviela"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "chicken",
+        "bell-pepper",
+        "herbs",
+        "onion",
+        "cucumber-sauce"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-bekona-pica",
+      "pizzeriaId": "lulu",
+      "name": "Bekona pica",
+      "url": "https://www.lulu.lv/picas/bekona-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/bekona-pica_9144118.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Bekons",
+        "Tomāti",
+        "Melnie pipari",
+        "Sīpoli",
+        "Zaļie lociņi"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "bacon",
+        "tomato",
+        "black-pepper",
+        "onion",
+        "spring-onion"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 10.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-filadelfijas-pica",
+      "pizzeriaId": "lulu",
+      "name": "Filadelfijas pica",
+      "url": "https://www.lulu.lv/picas/filadelfijas-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/627923562/filadelfijas-pica_1673538631.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Oregano",
+        "Filadelfijas siers"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "herbs",
+        "cream-cheese"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-satigais-delulu",
+      "pizzeriaId": "lulu",
+      "name": "Sātīgais delulū",
+      "url": "https://www.lulu.lv/picas/satigais-delulu",
+      "imageUrl": "https://www.lulu.lv/cache/images/2597201376/satigais-delulu_318790321.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Bekons",
+        "Liellopa maltā gaļa",
+        "Marinēti gurķi",
+        "Marinēta paprika",
+        "Pepperoni",
+        "Melnā piparu mērce",
+        "Korejas mērce"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "bacon",
+        "minced",
+        "pickles",
+        "pickled-pepper",
+        "pepperoni",
+        "black-pepper",
+        "korean-sauce"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 14.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 19.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 22.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 29.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-lasa-pica",
+      "pizzeriaId": "lulu",
+      "name": "Laša pica",
+      "url": "https://www.lulu.lv/picas/lasa-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/905157516/lasa-pica_2036672023.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Mocarella siers",
+        "Mazsālīts lasis",
+        "Sīpoli",
+        "Dilles",
+        "Laima sula"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "mozzarella",
+        "salmon",
+        "onion",
+        "dill",
+        "herbs"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 14.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 19.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 22.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 29.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-pr-su-t-pica",
+      "pizzeriaId": "lulu",
+      "name": "Prō-šu-tō pica",
+      "url": "https://www.lulu.lv/picas/pr-su-t-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/3205160524/pr-su-t-pica_3358720659.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Mocarella siers",
+        "Cietais siers",
+        "Prošuto",
+        "Ķiršu tomāti",
+        "Rukola"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "mozzarella",
+        "parmesan",
+        "prosciutto",
+        "cherry-tomato",
+        "arugula"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-kebaba-pica",
+      "pizzeriaId": "lulu",
+      "name": "Kebaba pica",
+      "url": "https://www.lulu.lv/picas/kebaba-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/905157516/kebaba-pica_3399588975.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Tomāti",
+        "Marinēta paprika",
+        "Sīpoli",
+        "Rančo mērce",
+        "Iceberg salāti",
+        "Vistas kebaba gaļa",
+        "Kebaba mērce",
+        "Ēvelēti sarkanie kāposti"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "tomato",
+        "pickled-pepper",
+        "onion",
+        "mayo",
+        "lettuce",
+        "chicken",
+        "kebab-sauce"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-burgera-pica",
+      "pizzeriaId": "lulu",
+      "name": "Burgera pica",
+      "url": "https://www.lulu.lv/picas/burgera-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/burgera-pica_3971323219.jpg",
+      "rawIngredients": [
+        "Gurķu mērce",
+        "Siers",
+        "Liellopa maltā gaļa",
+        "Ķiršu tomāti",
+        "Sīpoli",
+        "Spinātu lapas"
+      ],
+      "ingredients": [
+        "cucumber-sauce",
+        "base-cheese",
+        "minced",
+        "cherry-tomato",
+        "onion",
+        "spinach"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-veg-burgera-pica",
+      "pizzeriaId": "lulu",
+      "name": "Veg-Burgera pica",
+      "url": "https://www.lulu.lv/picas/veg-burgera-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2029467421/veg-burgera-pica_904710709.jpg",
+      "rawIngredients": [
+        "Gurķu mērce",
+        "Vegāniskais produkts",
+        "Ķiršu tomāti",
+        "Sojas pupiņu maisījums",
+        "Sīpoli",
+        "Spinātu lapas"
+      ],
+      "ingredients": [
+        "cucumber-sauce",
+        "vegan-cheese",
+        "cherry-tomato",
+        "soy",
+        "onion",
+        "spinach"
+      ],
+      "tags": [
+        "vegetarian",
+        "vegan"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-trio-pica",
+      "pizzeriaId": "lulu",
+      "name": "Trio pica",
+      "url": "https://www.lulu.lv/picas/trio-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/trio-pica_3781935696.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Salami desa",
+        "Bekons",
+        "Sēnes",
+        "Oregano"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "salami",
+        "bacon",
+        "mushroom",
+        "herbs"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 10.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-senu-pica",
+      "pizzeriaId": "lulu",
+      "name": "Sēņu pica",
+      "url": "https://www.lulu.lv/picas/senu-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/senu-pica_1738254385.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Salami desa",
+        "Paprika",
+        "Sēnes",
+        "Oregano"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "salami",
+        "bell-pepper",
+        "mushroom",
+        "herbs"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 8.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-bbq-liellopa-pica",
+      "pizzeriaId": "lulu",
+      "name": "BBQ Liellopa pica",
+      "url": "https://www.lulu.lv/picas/bbq-liellopa-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/bbq-liellopa-pica_3854876074.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Zilais siers",
+        "Liellopa šķiņķis",
+        "Sēnes",
+        "Marinēti gurķi",
+        "Marinēta paprika",
+        "BBQ mērce",
+        "Melnie pipari",
+        "Sīpoli",
+        "Zaļie lociņi"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "blue-cheese",
+        "ham",
+        "mushroom",
+        "pickles",
+        "pickled-pepper",
+        "bbq-sauce",
+        "black-pepper",
+        "onion",
+        "spring-onion"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-senu-vegetara-pica",
+      "pizzeriaId": "lulu",
+      "name": "Sēņu – Veģetārā pica",
+      "url": "https://www.lulu.lv/picas/senu-vegetara-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2251636503/senu-vegetara-pica_2885872971.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Mocarella siers",
+        "Sēnes",
+        "Melnie pipari",
+        "Oregano"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "mozzarella",
+        "mushroom",
+        "black-pepper",
+        "herbs"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 10.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-skinka-pica",
+      "pizzeriaId": "lulu",
+      "name": "Šķiņķa pica",
+      "url": "https://www.lulu.lv/picas/skinka-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/1825687447/skinka-pica_3866669760.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Šķiņķis"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "ham"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 8.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 10.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 13.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 19.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-vistas-pica-ar-ananasiem",
+      "pizzeriaId": "lulu",
+      "name": "Vistas pica ar ananasiem",
+      "url": "https://www.lulu.lv/picas/vistas-pica-ar-ananasiem",
+      "imageUrl": "https://www.lulu.lv/cache/images/2865960321/vistas-pica-ar-ananasiem_1677557446.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Vistas fileja",
+        "Ananasi"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "chicken",
+        "pineapple"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 10.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-garnel-tigeris",
+      "pizzeriaId": "lulu",
+      "name": "Garneļ-Tīģeris",
+      "url": "https://www.lulu.lv/picas/garnel-tigeris",
+      "imageUrl": "https://www.lulu.lv/cache/images/1853547886/garnel-tigeris_4261914667.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Mocarella siers",
+        "Ķiršu tomāti",
+        "Pētersīļi",
+        "Oregano",
+        "Saldā čili mērce",
+        "Tīģergarneles"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "mozzarella",
+        "cherry-tomato",
+        "herbs",
+        "sweet-chili",
+        "shrimp"
+      ],
+      "tags": [
+        "spicy"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 14.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 19.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 22.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 29.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-grieku-pica",
+      "pizzeriaId": "lulu",
+      "name": "Grieķu pica",
+      "url": "https://www.lulu.lv/picas/grieku-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2865960321/grieku-pica_3669393193.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Vistas fileja",
+        "Ķiršu tomāti",
+        "Marinēta paprika",
+        "Melnās olīvas",
+        "Sīpoli",
+        "Oregano",
+        "Salātu siers",
+        "Spinātu lapas"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "chicken",
+        "cherry-tomato",
+        "pickled-pepper",
+        "olives",
+        "onion",
+        "herbs",
+        "feta",
+        "spinach"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-jalapeno-pica",
+      "pizzeriaId": "lulu",
+      "name": "Jalapeno pica",
+      "url": "https://www.lulu.lv/picas/jalapeno-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/jalapeno-pica_3110664866.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Salami desa",
+        "Tomāti",
+        "Jalapeno pipari",
+        "Melnie pipari",
+        "Sīpoli",
+        "Zaļie lociņi"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "salami",
+        "tomato",
+        "jalapeno",
+        "black-pepper",
+        "onion",
+        "spring-onion"
+      ],
+      "tags": [
+        "spicy"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 10.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-ista-cili-pica",
+      "pizzeriaId": "lulu",
+      "name": "Īstā čili pica",
+      "url": "https://www.lulu.lv/picas/ista-cili-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/ista-cili-pica_754847278.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Liellopa maltā gaļa",
+        "Tomāti",
+        "Jalapeno pipari",
+        "Kukurūza",
+        "Pupiņas",
+        "Melnie pipari",
+        "Sīpoli",
+        "Čili con carne"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "minced",
+        "tomato",
+        "jalapeno",
+        "corn",
+        "beans",
+        "black-pepper",
+        "onion",
+        "chili"
+      ],
+      "tags": [
+        "spicy"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-rembo-pica",
+      "pizzeriaId": "lulu",
+      "name": "Rembo pica",
+      "url": "https://www.lulu.lv/picas/rembo-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/rembo-pica_1385683306.jpg",
+      "rawIngredients": [
+        "Steika mērce",
+        "Siers",
+        "Bekons",
+        "Liellopa maltā gaļa",
+        "Tomāti",
+        "Melnie pipari",
+        "Sīpoli",
+        "Zaļie lociņi"
+      ],
+      "ingredients": [
+        "steak-sauce",
+        "base-cheese",
+        "bacon",
+        "minced",
+        "tomato",
+        "black-pepper",
+        "onion",
+        "spring-onion"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-vistas-pica",
+      "pizzeriaId": "lulu",
+      "name": "Vistas pica",
+      "url": "https://www.lulu.lv/picas/vistas-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/1303598542/vistas-pica_2909244538.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Salami desa",
+        "Vistas fileja",
+        "Tomāti",
+        "Ķiploku granulas",
+        "Melnie pipari"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "salami",
+        "chicken",
+        "tomato",
+        "garlic",
+        "black-pepper"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-veg-cili-pica",
+      "pizzeriaId": "lulu",
+      "name": "Veg-Čili pica",
+      "url": "https://www.lulu.lv/picas/veg-cili-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/869942331/veg-cili-pica_933977892.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Vegāniskais produkts",
+        "Tomāti",
+        "Jalapeno pipari",
+        "Kukurūza",
+        "Pupiņas",
+        "Sojas pupiņu maisījums",
+        "Melnie pipari",
+        "Sīpoli",
+        "Čili con carne"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "vegan-cheese",
+        "tomato",
+        "jalapeno",
+        "corn",
+        "beans",
+        "soy",
+        "black-pepper",
+        "onion",
+        "chili"
+      ],
+      "tags": [
+        "vegetarian",
+        "vegan",
+        "spicy"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-veg-rembo-pica",
+      "pizzeriaId": "lulu",
+      "name": "Veg-Rembo pica",
+      "url": "https://www.lulu.lv/picas/veg-rembo-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/veg-rembo-pica_2487560407.jpg",
+      "rawIngredients": [
+        "Steika mērce",
+        "Vegāniskais produkts",
+        "Tomāti",
+        "Sojas pupiņu maisījums",
+        "Melnie pipari",
+        "Sīpoli",
+        "Zaļie lociņi"
+      ],
+      "ingredients": [
+        "steak-sauce",
+        "vegan-cheese",
+        "tomato",
+        "soy",
+        "black-pepper",
+        "onion",
+        "spring-onion"
+      ],
+      "tags": [
+        "vegetarian",
+        "vegan"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-siera-pica",
+      "pizzeriaId": "lulu",
+      "name": "Siera pica",
+      "url": "https://www.lulu.lv/picas/siera-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/siera-pica_1840769247.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 8.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 10.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 13.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 19.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-veg-romano-pica",
+      "pizzeriaId": "lulu",
+      "name": "Veg-Romano pica",
+      "url": "https://www.lulu.lv/picas/veg-romano-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/1853547886/veg-romano-pica_3959625217.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Vegāniskais produkts",
+        "Ķiršu tomāti",
+        "Rukola"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "vegan-cheese",
+        "cherry-tomato",
+        "arugula"
+      ],
+      "tags": [
+        "vegetarian",
+        "vegan"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 10.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-vasaras-pica",
+      "pizzeriaId": "lulu",
+      "name": "Vasaras pica",
+      "url": "https://www.lulu.lv/picas/vasaras-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/1505283208/vasaras-pica_3550328646.jpg",
+      "rawIngredients": [
+        "Steika mērce",
+        "Siers",
+        "Šķiņķis",
+        "Bekons",
+        "Marinēti gurķi",
+        "Dilles"
+      ],
+      "ingredients": [
+        "steak-sauce",
+        "base-cheese",
+        "ham",
+        "bacon",
+        "pickles",
+        "dill"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-hono-lulu-pica",
+      "pizzeriaId": "lulu",
+      "name": "Hono-Lulū pica",
+      "url": "https://www.lulu.lv/picas/hono-lulu-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/14119362/hono-lulu-pica_312056051.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Šķiņķis",
+        "Paprika",
+        "Ananasi"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "ham",
+        "bell-pepper",
+        "pineapple"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 8.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-calzone-pilniga",
+      "pizzeriaId": "lulu",
+      "name": "Calzone - Pilnīgā",
+      "url": "https://www.lulu.lv/picas/calzone-pilniga",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/calzone-pilniga_2590335503.jpg",
+      "rawIngredients": [
+        "Steika mērce",
+        "Siers",
+        "Bekons",
+        "Tomāti",
+        "Marinēti gurķi",
+        "Melnie pipari",
+        "Sīpoli",
+        "Oregano"
+      ],
+      "ingredients": [
+        "steak-sauce",
+        "base-cheese",
+        "bacon",
+        "tomato",
+        "pickles",
+        "black-pepper",
+        "onion",
+        "herbs"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "one",
+          "label": "Viens izmērs",
+          "diameterCm": 30,
+          "shape": "calzone",
+          "price": 11.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-calzone-vistas",
+      "pizzeriaId": "lulu",
+      "name": "Calzone - Vistas",
+      "url": "https://www.lulu.lv/picas/calzone-vistas",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/calzone-vistas_3222708450.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Vistas fileja",
+        "Tomāti",
+        "Paprika",
+        "Sēnes",
+        "Melnie pipari",
+        "Oregano"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "chicken",
+        "tomato",
+        "bell-pepper",
+        "mushroom",
+        "black-pepper",
+        "herbs"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "one",
+          "label": "Viens izmērs",
+          "diameterCm": 30,
+          "shape": "calzone",
+          "price": 11.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-calzone-vegetara",
+      "pizzeriaId": "lulu",
+      "name": "Calzone - Veģetārā",
+      "url": "https://www.lulu.lv/picas/calzone-vegetara",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/calzone-vegetara_4106747089.jpg",
+      "rawIngredients": [
+        "Siers",
+        "Mocarella siers",
+        "Tomāti",
+        "Pesto mērce",
+        "Melnie pipari",
+        "Sīpoli",
+        "Oregano"
+      ],
+      "ingredients": [
+        "base-cheese",
+        "mozzarella",
+        "tomato",
+        "pesto",
+        "black-pepper",
+        "onion",
+        "herbs"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "variants": [
+        {
+          "id": "one",
+          "label": "Viens izmērs",
+          "diameterCm": 30,
+          "shape": "calzone",
+          "price": 11.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-darzenu-pica",
+      "pizzeriaId": "lulu",
+      "name": "Dārzeņu pica",
+      "url": "https://www.lulu.lv/picas/darzenu-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/darzenu-pica_3131822142.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Tomāti",
+        "Paprika",
+        "Sēnes",
+        "Zaļās olīvas",
+        "Melnie pipari",
+        "Sīpoli",
+        "Oregano"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "tomato",
+        "bell-pepper",
+        "mushroom",
+        "olives",
+        "black-pepper",
+        "onion",
+        "herbs"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 8.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-romano-pica",
+      "pizzeriaId": "lulu",
+      "name": "Romano pica",
+      "url": "https://www.lulu.lv/picas/romano-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/romano-pica_4103457542.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Mocarella siers",
+        "Ķiršu tomāti",
+        "Rukola"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "mozzarella",
+        "cherry-tomato",
+        "arugula"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 8.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-quattro-s-pesto-pica",
+      "pizzeriaId": "lulu",
+      "name": "Quattro S Pesto pica",
+      "url": "https://www.lulu.lv/picas/quattro-s-pesto-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/quattro-s-pesto-pica_3710273116.jpg",
+      "rawIngredients": [
+        "Steika mērce",
+        "Siers",
+        "Mocarella siers",
+        "Cietais siers",
+        "Zilais siers",
+        "Sezama sēkliņas",
+        "Pesto mērce",
+        "Pētersīļi"
+      ],
+      "ingredients": [
+        "steak-sauce",
+        "base-cheese",
+        "mozzarella",
+        "parmesan",
+        "blue-cheese",
+        "herbs",
+        "pesto"
+      ],
+      "tags": [
+        "vegetarian"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 10.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-veganu-pica",
+      "pizzeriaId": "lulu",
+      "name": "Vegānu pica",
+      "url": "https://www.lulu.lv/picas/veganu-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/2040484983/veganu-pica_2790689253.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Vegāniskais produkts",
+        "Tomāti",
+        "Paprika",
+        "Sēnes",
+        "Zaļās olīvas",
+        "Melnie pipari",
+        "Sīpoli",
+        "Oregano"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "vegan-cheese",
+        "tomato",
+        "bell-pepper",
+        "mushroom",
+        "olives",
+        "black-pepper",
+        "onion",
+        "herbs"
+      ],
+      "tags": [
+        "vegetarian",
+        "vegan"
+      ],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 10.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-bekista",
+      "pizzeriaId": "lulu",
+      "name": "Bekista",
+      "url": "https://www.lulu.lv/picas/bekista",
+      "imageUrl": "https://www.lulu.lv/cache/images/2865960321/bekista_887003669.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Bekons",
+        "Vistas fileja",
+        "Tomāti",
+        "Marinēti gurķi",
+        "Melnie pipari",
+        "Sīpoli",
+        "Dilles",
+        "Oregano"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "bacon",
+        "chicken",
+        "tomato",
+        "pickles",
+        "black-pepper",
+        "onion",
+        "dill",
+        "herbs"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 11.99
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 15.99
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 18.49
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 25.99
+        }
+      ]
+    },
+    {
+      "id": "lulu-asorti-pica",
+      "pizzeriaId": "lulu",
+      "name": "Asorti pica",
+      "url": "https://www.lulu.lv/picas/asorti-pica",
+      "imageUrl": "https://www.lulu.lv/cache/images/3748576787/asorti-pica_457480267.jpg",
+      "rawIngredients": [
+        "LuLū picas mērce",
+        "Siers",
+        "Salami desa",
+        "Šķiņķis",
+        "Tomāti",
+        "Paprika",
+        "Melnie pipari",
+        "Sīpoli",
+        "Oregano"
+      ],
+      "ingredients": [
+        "base-sauce",
+        "base-cheese",
+        "salami",
+        "ham",
+        "tomato",
+        "bell-pepper",
+        "black-pepper",
+        "onion",
+        "herbs"
+      ],
+      "tags": [],
+      "variants": [
+        {
+          "id": "23",
+          "label": "23 cm",
+          "diameterCm": 23,
+          "shape": "round",
+          "price": 10.49
+        },
+        {
+          "id": "30",
+          "label": "30 cm",
+          "diameterCm": 30,
+          "shape": "round",
+          "price": 14.49
+        },
+        {
+          "id": "heart",
+          "label": "Sirds 30 cm",
+          "diameterCm": 30,
+          "shape": "heart",
+          "price": 16.99
+        },
+        {
+          "id": "45",
+          "label": "45 cm",
+          "diameterCm": 45,
+          "shape": "round",
+          "price": 23.99
+        }
+      ]
+    }
+  ]
+}
