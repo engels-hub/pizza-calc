@@ -8,7 +8,7 @@ import { easeOutExpo, spring } from "@/lib/motion";
 import { useStore } from "@/lib/store";
 
 /**
- * Below lg: one round button that jumps to the summary. It hides while the
+ * Below lg: a small pizza button that jumps to the summary. It hides while the
  * summary is already on screen, and nudges when a pizza lands in the cart.
  */
 export function BottomBar() {
@@ -50,9 +50,11 @@ export function BottomBar() {
             aria-label={lv.bottomBar.toSummary}
             title={lv.bottomBar.toSummary}
             onClick={() => document.getElementById("summary")?.scrollIntoView({ behavior: reduce ? "auto" : "smooth" })}
-            className="bevel bevel-accent grid size-14 place-items-center !rounded-full"
+            className="pizza-dot grid size-14 place-items-center rounded-full shadow-soft"
           >
-            <CaretDownIcon size={22} weight="bold" />
+            <span className="grid size-7 place-items-center rounded-full bg-ink/80 text-bg">
+              <CaretDownIcon size={16} weight="bold" />
+            </span>
           </motion.button>
         </motion.div>
       )}
