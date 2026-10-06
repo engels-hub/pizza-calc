@@ -83,9 +83,6 @@ export const lv = {
     sorts: { menu: "Kā ēdienkartē", price: "Lētākās", value: "Izdevīgākās par cm²" },
     emptyTitle: "Nav picu ar šīm sastāvdaļām",
     emptyBody: "Pamēģini noņemt kādu filtru vai izvēlēties abas picērijas",
-    /** Shown when the selected pizzeria does not sell the chosen size at all. */
-    noSize: (pizzeria: string, diameter: number) => `${pizzeria} ${diameter} cm picas netaisa`,
-    noSizeBody: "Izvēlies citu izmēru vai abas picērijas",
     add: (name: string, size: string) => `Pievienot ${name} ${size}`,
     open: (pizzeria: string) => `Atvērt ${pizzeria}`,
     perArea: (price: string) => `${price} €/dm²`,
@@ -108,6 +105,11 @@ export const lv = {
     stackLabel: (n: number) => `${n} ${one(n) ? "pica" : "picas"} kaudzē`,
     stackEmpty: "Tukšs pasūtījums",
     quantity: (name: string) => `${name} skaits`,
+    sizeOf: (name: string) => `${name} izmērs`,
+    /** The cm² loading bar: ordered against what the group needs. */
+    area: "Pasūtītā platība",
+    areaValue: (have: string, need: string) => `${have} no ${need} cm²`,
+    areaOver: (pct: number) => `+${pct}% virs vajadzīgā`,
     line: (pizzeria: string, size: string, price: string) => `${pizzeria}, ${size}, ${price}`,
   },
 
@@ -188,6 +190,8 @@ export const lv = {
     heart: "Sirds 30 cm",
     oneSize: "Viens izmērs",
     cm: (d: number) => `${d} cm`,
+    /** Compact pill text; the full label is read out by screen readers. */
+    heartShort: "♥",
   },
 
   ingredientGroups: {

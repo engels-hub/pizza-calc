@@ -8,6 +8,7 @@ import { useStore } from "@/lib/store";
 import type { Pizza } from "@/lib/types";
 import type { StackUnit } from "../pizza3d/StackStage";
 import { Dither } from "../ui/Dither";
+import { AreaBar } from "./AreaBar";
 import { CartLineItem } from "./CartLineItem";
 import { Coverage } from "./Coverage";
 import { ShareLink } from "./ShareLink";
@@ -82,6 +83,10 @@ export function Cart({ pizzas }: { pizzas: Pizza[] }) {
         )}
       </div>
 
+      <div className="shrink-0 px-5 pb-3 pt-4">
+        <AreaBar />
+      </div>
+
       {count > 0 && (
         // On desktop the cart is sticky, so the lines and total scroll inside it.
         <div className="flex min-h-0 flex-col gap-3 px-3 pb-3 lg:overflow-y-auto">
@@ -90,8 +95,13 @@ export function Cart({ pizzas }: { pizzas: Pizza[] }) {
           </div>
           <ul className="flex flex-col gap-1" onMouseLeave={() => setHovered(null)}>
             <AnimatePresence initial={false}>
-              {cart.map((l) => (
-                <CartLineItem key={l.key} line={l} pizza={byId.get(l.pizzaId)} />
+              {cart.map((l, i) => (
+                // Keyed by pizza + occurrence, not size, so switching size keeps the row (and focus).
+                <CartLineItem
+                  key={`${l.pizzaId}#${cart.slice(0, i).filter((x) => x.pizzaId === l.pizzaId).length}`}
+                  line={l}
+                  pizza={byId.get(l.pizzaId)}
+                />
               ))}
             </AnimatePresence>
           </ul>

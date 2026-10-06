@@ -4,7 +4,7 @@ import { CaretDownIcon } from "@phosphor-icons/react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { lv } from "@/content/lv";
-import { filterPizzas, soldInSize, sortPizzas, type MenuSort } from "@/lib/filter";
+import { filterPizzas, sortPizzas, type MenuSort } from "@/lib/filter";
 import { spring } from "@/lib/motion";
 import { useStore, type PizzeriaFilter } from "@/lib/store";
 import { PIZZERIA_IDS, type Pizza } from "@/lib/types";
@@ -28,9 +28,9 @@ export function MenuBrowser({ pizzas }: { pizzas: Pizza[] }) {
   const [listOpen, setListOpen] = useState(true);
   const [sort, setSort] = useState<MenuSort>("menu");
 
-  const visible = sortPizzas(filterPizzas(pizzas, { pizzeria, size, query, ingredientFilters, tagFilters }), sort, size);
+  const visible = sortPizzas(filterPizzas(pizzas, { pizzeria, query, ingredientFilters, tagFilters }), sort, size);
   const filterCount = Object.keys(ingredientFilters).length + Object.keys(tagFilters).length + (query ? 1 : 0);
-  const inScope = pizzas.filter((p) => (pizzeria === "all" || p.pizzeriaId === pizzeria) && soldInSize(p, size));
+  const inScope = pizzeria === "all" ? pizzas : pizzas.filter((p) => p.pizzeriaId === pizzeria);
 
   return (
     <section aria-labelledby="menu-title" className="flex min-w-0 flex-col gap-4">
@@ -102,31 +102,15 @@ export function MenuBrowser({ pizzas }: { pizzas: Pizza[] }) {
 
           {visible.length === 0 ? (
             <div className="flex flex-col items-start gap-3 rounded-2xl border border-dashed border-line p-6">
-              {inScope.length === 0 && pizzeria !== "all" ? (
-                <>
-                  <p className="font-medium">{lv.menu.noSize(lv.pizzerias[pizzeria], size)}</p>
-                  <p className="text-sm text-muted">{lv.menu.noSizeBody}</p>
-                  <button
-                    type="button"
-                    onClick={() => setPizzeria("all")}
-                    className="min-h-10 rounded-full bg-ink px-4 text-sm font-medium text-bg transition-transform active:scale-[0.98]"
-                  >
-                    {lv.menu.all}
-                  </button>
-                </>
-              ) : (
-                <>
-                  <p className="font-medium">{lv.menu.emptyTitle}</p>
-                  <p className="text-sm text-muted">{lv.menu.emptyBody}</p>
-                  <button
-                    type="button"
-                    onClick={clearFilters}
-                    className="min-h-10 rounded-full bg-ink px-4 text-sm font-medium text-bg transition-transform active:scale-[0.98]"
-                  >
-                    {lv.menu.clearFilters}
-                  </button>
-                </>
-              )}
+              <p className="font-medium">{lv.menu.emptyTitle}</p>
+              <p className="text-sm text-muted">{lv.menu.emptyBody}</p>
+              <button
+                type="button"
+                onClick={clearFilters}
+                className="min-h-10 rounded-full bg-ink px-4 text-sm font-medium text-bg transition-transform active:scale-[0.98]"
+              >
+                {lv.menu.clearFilters}
+              </button>
             </div>
           ) : (
             <ul className="flex flex-col gap-1">

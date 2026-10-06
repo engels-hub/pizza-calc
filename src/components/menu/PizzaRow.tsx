@@ -13,13 +13,16 @@ import { useStore } from "@/lib/store";
 import type { Pizza, Variant } from "@/lib/types";
 import { flyToTicket } from "../cart/FlyLayer";
 import { Collapse } from "../ui/Collapse";
+import { SizePills } from "../ui/SizePills";
 
 export function PizzaRow({ pizza, size, showPizzeria }: { pizza: Pizza; size: number; showPizzeria: boolean }) {
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
   const addPizza = useStore((s) => s.addPizza);
   const inCart = useStore((s) => s.cart.reduce((n, l) => (l.pizzaId === pizza.id ? n + l.qty : n), 0));
-  const preferred = preferredVariant(pizza, size);
+  // Follows the calculator's size until this row's own size is picked.
+  const [picked, setPicked] = useState<string | null>(null);
+  const selected = pizza.variants.find((v) => v.id === picked) ?? preferredVariant(pizza, size);
   const pizzeria = lv.pizzerias[pizza.pizzeriaId];
 
   const add = (variant: Variant, e: React.MouseEvent<HTMLElement>) => {
@@ -68,13 +71,15 @@ export function PizzaRow({ pizza, size, showPizzeria }: { pizza: Pizza; size: nu
 
         <div className="flex shrink-0 items-center gap-2">
           <span className="text-right">
-            <span className="tabular block text-[0.95rem] font-medium">{euro(preferred.price)}</span>
-            <span className="block text-xs text-muted">{variantLabel(preferred)}</span>
+            <span className="tabular block text-[0.95rem] font-medium">{euro(selected.price)}</span>
+            <span className="tabular block text-xs text-muted">
+              {lv.menu.perArea(twoDecimals(pricePer100cm2(selected.price, selected.diameterCm)))}
+            </span>
           </span>
           <button
             type="button"
-            onClick={(e) => add(preferred, e)}
-            aria-label={lv.menu.add(pizza.name, variantLabel(preferred))}
+            onClick={(e) => add(selected, e)}
+            aria-label={lv.menu.add(pizza.name, variantLabel(selected))}
             className="grid size-11 place-items-center rounded-full bg-accent text-accent-ink transition-transform duration-150 active:scale-[0.92]"
           >
             <PlusIcon size={18} weight="bold" />
@@ -82,26 +87,23 @@ export function PizzaRow({ pizza, size, showPizzeria }: { pizza: Pizza; size: nu
         </div>
       </div>
 
+      {pizza.variants.length > 1 ? (
+        <div className="-mt-1 pb-2 pl-[4.75rem] pr-2 md:pl-[5.5rem]">
+          <SizePills
+            variants={pizza.variants}
+            value={selected.id}
+            onChange={(v) => setPicked(v.id)}
+            label={lv.cart.sizeOf(pizza.name)}
+          />
+        </div>
+      ) : (
+        <p className="-mt-1 pb-2 pl-[4.75rem] text-xs text-muted md:pl-[5.5rem]">{variantLabel(selected)}</p>
+      )}
+
       <Collapse open={open}>
         <div className="px-3 pb-3 md:pl-[5.5rem]">
           <p className="mb-3 text-sm leading-relaxed text-muted">{pizza.rawIngredients.join(", ")}</p>
           <div className="flex flex-wrap gap-2">
-            {pizza.variants.map((variant) => (
-              <button
-                key={variant.id}
-                type="button"
-                onClick={(e) => add(variant, e)}
-                aria-label={lv.menu.add(pizza.name, variantLabel(variant))}
-                className="flex min-h-11 items-center gap-2 rounded-full border border-line bg-bg px-3.5 text-sm transition-[transform,border-color] hover:border-accent active:scale-[0.97]"
-              >
-                <PlusIcon size={14} className="text-accent" weight="bold" />
-                {variantLabel(variant)}
-                <span className="tabular font-medium">{euro(variant.price)}</span>
-                <span className="tabular hidden text-xs text-muted sm:inline">
-                  {lv.menu.perArea(twoDecimals(pricePer100cm2(variant.price, variant.diameterCm)))}
-                </span>
-              </button>
-            ))}
             <a
               href={pizza.url}
               target="_blank"

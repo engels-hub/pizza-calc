@@ -10,12 +10,14 @@ import { ingredientDef, ingredientLabel } from "@/lib/ingredients";
 import { spring } from "@/lib/motion";
 import { useStore } from "@/lib/store";
 import type { Pizza } from "@/lib/types";
+import { SizePills } from "../ui/SizePills";
 import { Stepper } from "../ui/Stepper";
 
 export function CartLineItem({ line, pizza }: { line: CartLine; pizza?: Pizza }) {
   const active = useStore((s) => s.hovered === line.key);
   const setHovered = useStore((s) => s.setHovered);
   const setQty = useStore((s) => s.setQty);
+  const setVariant = useStore((s) => s.setVariant);
   const reduce = useReducedMotion();
   const toppings = (pizza?.ingredients ?? []).filter((k) => ingredientDef(k).group !== "base");
 
@@ -43,6 +45,16 @@ export function CartLineItem({ line, pizza }: { line: CartLine; pizza?: Pizza })
         <span className="block truncate text-xs text-muted">
           {lv.cart.line(lv.pizzerias[line.pizzeriaId], variantLabel(line), euro(line.unitPrice))}
         </span>
+        {pizza && (
+          <span className="mt-1.5 block">
+            <SizePills
+              variants={pizza.variants}
+              value={line.key.slice(pizza.id.length + 1)}
+              onChange={(v) => setVariant(line.key, pizza, v)}
+              label={lv.cart.sizeOf(line.name)}
+            />
+          </span>
+        )}
       </span>
       <span className="flex flex-col items-end gap-1">
         <Stepper

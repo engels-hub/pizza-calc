@@ -33,6 +33,8 @@ export interface State {
   setSize: (d: number) => void;
   addPizza: (pizza: Pizza, variant: Variant) => void;
   setQty: (key: string, qty: number) => void;
+  /** Switch a cart line to another size of the same pizza, merging if that size is already there. */
+  setVariant: (key: string, pizza: Pizza, variant: Variant) => void;
   clearCart: () => void;
   setPizzeria: (p: PizzeriaFilter) => void;
   setQuery: (q: string) => void;
@@ -98,6 +100,22 @@ export function createAppStore(initial: InitialState): AppStore {
       set((s) => ({
         cart: qty <= 0 ? s.cart.filter((l) => l.key !== key) : s.cart.map((l) => (l.key === key ? { ...l, qty } : l)),
       })),
+    setVariant: (key, pizza, variant) =>
+      set((s) => {
+        const nextKey = `${pizza.id}:${variant.id}`;
+        const line = s.cart.find((l) => l.key === key);
+        if (!line || nextKey === key) return {};
+        const twin = s.cart.find((l) => l.key === nextKey);
+        if (twin) {
+          return {
+            cart: s.cart
+              .filter((l) => l.key !== key)
+              .map((l) => (l.key === nextKey ? { ...l, qty: l.qty + line.qty } : l)),
+          };
+        }
+        const moved = { ...line, key: nextKey, diameterCm: variant.diameterCm, shape: variant.shape, unitPrice: variant.price };
+        return { cart: s.cart.map((l) => (l.key === key ? moved : l)) };
+      }),
     clearCart: () => set({ cart: [] }),
     setPizzeria: (pizzeria) => set({ pizzeria }),
     setQuery: (query) => set({ query }),
