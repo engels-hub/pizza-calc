@@ -20,3 +20,6 @@ export function variantLabel(v: Pick<Variant, "shape" | "diameterCm">): string {
   if (v.shape === "calzone") return lv.variants.oneSize;
   return lv.variants.cm(v.diameterCm);
 }
+
+const whole = new Intl.NumberFormat("lv-LV", { maximumFractionDigits: 0 });
+export const wholeNumber = (n: number) => whole.format(n);

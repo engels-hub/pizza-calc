@@ -10,6 +10,7 @@ import type { StackUnit } from "../pizza3d/StackStage";
 import { Dither } from "../ui/Dither";
 import { CartLineItem } from "./CartLineItem";
 import { Coverage } from "./Coverage";
+import { SliceShare } from "./SliceShare";
 
 // Three.js lives in its own client-only chunk, away from the Motion tree.
 const StackStage = dynamic(() => import("../pizza3d/StackStage"), {
@@ -78,8 +79,9 @@ export function Cart({ pizzas }: { pizzas: Pizza[] }) {
 
       {count > 0 && (
         <div className="flex flex-col gap-3 px-3 pb-3">
-          <div className="px-2">
+          <div className="flex flex-col gap-3 px-2">
             <Coverage />
+            <SliceShare withHint className="px-1.5" />
           </div>
           <ul className="flex flex-col gap-1" onMouseLeave={() => setHovered(null)}>
             <AnimatePresence initial={false}>

@@ -113,6 +113,19 @@ export const lv = {
     missing: (n: number, diameter: number) => `${n} ${one(n) ? "pica" : "picas"} pa ${diameter} cm`,
   },
 
+  /** How the order splits between people. */
+  share: {
+    even: (n: number) => `Katram ${n} ${one(n) ? "gabals" : "gabali"}`,
+    /** "3 saņem 6 gabalus, 2 saņem 7" */
+    uneven: (baseCount: number, base: number, extraCount: number) =>
+      base === 0
+        ? `${extraCount} saņem 1 gabalu, ${baseCount} paliek bez`
+        : `${baseCount} saņem ${base} ${one(base) ? "gabalu" : "gabalus"}, ${extraCount} saņem ${base + 1}`,
+    /** Appended after the slice text; the even case already starts with "Katram". */
+    area: (cm2: string, even: boolean) => (even ? `${cm2} cm²` : `${cm2} cm² katram`),
+    hint: "Gabalu skaits pēc izmēra: 20 cm 4, 23 cm 6, 30 cm 8, 45 cm 12, calzone 4.",
+  },
+
   bottomBar: {
     order: "Pasūtījums",
     empty: "Tukšs",

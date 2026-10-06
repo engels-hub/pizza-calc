@@ -1,5 +1,6 @@
 import { ReceiptIcon } from "@phosphor-icons/react/ssr";
 import { lv } from "@/content/lv";
+import { SliceShare } from "../cart/SliceShare";
 import { DiscountPanel } from "./DiscountPanel";
 import { OrderLines } from "./OrderLines";
 import { TotalsBlock } from "./TotalsBlock";
@@ -17,6 +18,7 @@ export function Summary() {
         <DiscountPanel />
         <div className="md:self-end">
           <OrderLines />
+          <SliceShare className="mb-4" />
           <TotalsBlock />
         </div>
       </div>
