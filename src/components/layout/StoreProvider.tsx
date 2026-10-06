@@ -29,8 +29,7 @@ function writeCookie(s: State) {
  */
 function writeUrl(s: State) {
   const search = searchFromPrefs({ ...persisted(s), cart: savedFromLines(s.cart) }, s.pizzeria);
-  if (search !== location.search)
-    history.replaceState(null, "", `${location.pathname}${search}${location.hash}`);
+  if (search !== location.search) history.replaceState(null, "", `${location.pathname}${search}${location.hash}`);
 }
 
 /**
@@ -40,7 +39,17 @@ function writeUrl(s: State) {
  * when a fresh tab opens the bare address).
  */
 export function StoreProvider({ initial, children }: { initial: InitialState; children: React.ReactNode }) {
-  const [store] = useState(() => createAppStore(initial));
+  const [holder, setHolder] = useState(() => ({ make: createAppStore, store: createAppStore(initial) }));
+  // Dev only: when store.ts is hot-reloaded, Fast Refresh keeps this state, so the
+  // old store would lack new actions. Rebuild it from its current contents.
+  if (holder.make !== createAppStore) {
+    const s = holder.store.getState();
+    setHolder({
+      make: createAppStore,
+      store: createAppStore({ ...persisted(s), today: s.today, pizzeria: s.pizzeria }),
+    });
+  }
+  const store = holder.store;
 
   useEffect(() => {
     let timer = 0;
