@@ -26,41 +26,46 @@ export function Planner({ sizes }: { sizes: SizeOption[] }) {
   const count = piecesNeeded(area, size);
 
   return (
-    <section aria-label="Aprēķins" className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-12">
-      <div className="flex flex-col gap-7">
-        <div>
-          <h1 className="text-3xl font-semibold leading-none tracking-tighter md:text-5xl">Cik picu vajag?</h1>
-          <p className="mt-3 max-w-[40ch] text-base leading-relaxed text-muted">
-            Ievadi cilvēku skaitu, izvēlies izmēru un salīdzini Picu darbnīcas un LuLū cenas.
-          </p>
+    <section aria-label="Aprēķins" className="flex flex-col gap-6">
+      <div>
+        <h1 className="text-3xl font-semibold leading-none tracking-tighter md:text-5xl">Cik picu vajag?</h1>
+        <p className="mt-3 max-w-[52ch] text-base leading-relaxed text-muted">
+          Ievadi cilvēku skaitu, izvēlies izmēru un salīdzini Picu darbnīcas un LuLū cenas.
+        </p>
+      </div>
+
+      {/* One control row: every block has its label on the same line and the same height below it. */}
+      <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-4 gap-y-6 lg:grid-cols-[auto_minmax(0,0.85fr)_minmax(0,2.4fr)]">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="people" className="text-sm font-medium text-muted">
+            Cilvēku skaits
+          </label>
+          <div className="flex flex-1 items-center">
+            <Stepper look="bevel" value={people} onChange={setPeople} min={1} max={60} label="Cilvēku skaits">
+              <input
+                id="people"
+                inputMode="numeric"
+                value={people}
+                onChange={(e) => {
+                  const n = Number(e.target.value.replace(/\D/g, ""));
+                  if (n) setPeople(n);
+                }}
+                className="tabular w-16 bg-transparent text-center font-pixel text-5xl leading-none outline-none"
+                aria-describedby="people-unit"
+              />
+            </Stepper>
+            <span id="people-unit" className="sr-only">
+              {cilveki(people)}
+            </span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-[auto_minmax(0,1fr)] items-end gap-4">
-          <div>
-            <label htmlFor="people" className="text-sm font-medium text-muted">
-              Cilvēku skaits
-            </label>
-            <div className="mt-2">
-              <Stepper look="bevel" value={people} onChange={setPeople} min={1} max={60} label="Cilvēku skaits">
-                <input
-                  id="people"
-                  inputMode="numeric"
-                  value={people}
-                  onChange={(e) => {
-                    const n = Number(e.target.value.replace(/\D/g, ""));
-                    if (n) setPeople(n);
-                  }}
-                  className="tabular w-16 bg-transparent text-center font-pixel text-5xl leading-none outline-none"
-                  aria-describedby="people-unit"
-                />
-              </Stepper>
-              <span id="people-unit" className="sr-only">
-                {cilveki(people)}
-              </span>
-            </div>
-          </div>
-
-          <div className="bevel bevel-in relative overflow-hidden px-4 py-3 text-right" aria-live="polite">
+        <div className="flex flex-col gap-2">
+          <p className="text-sm font-medium text-muted">Jums vajag</p>
+          <div
+            className="bevel bevel-in relative flex flex-1 flex-col justify-between gap-2 overflow-hidden px-4 py-3"
+            aria-live="polite"
+          >
             <Dither
               className="absolute inset-0"
               shape="linear"
@@ -68,21 +73,20 @@ export function Planner({ sizes }: { sizes: SizeOption[] }) {
               from="var(--surface)"
               to="color-mix(in oklch, var(--accent) 22%, var(--surface))"
             />
-            <p className="relative text-sm font-medium text-muted">Jums vajag</p>
-            <p className="relative mt-1.5 whitespace-nowrap font-pixel text-5xl leading-none sm:text-6xl">
+            <p className="relative whitespace-nowrap font-pixel text-5xl leading-none">
               <AnimatedNumber value={count} format={(n) => String(Math.round(n))} />
-              <span className="text-xl text-muted sm:text-2xl"> × {size} cm</span>
+              <span className="text-xl text-muted"> × {size} cm</span>
             </p>
+            <PizzaRow count={count} size={size} />
           </div>
         </div>
 
-        <PizzaRow count={count} size={size} />
+        <div className="col-span-2 lg:col-span-1">
+          <SizePicker sizes={sizes} area={area} selected={size} onSelect={setSize} />
+        </div>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <SizePicker sizes={sizes} area={area} selected={size} onSelect={setSize} />
-        <RulesPanel people={people} />
-      </div>
+      <RulesPanel people={people} />
     </section>
   );
 }
@@ -90,10 +94,10 @@ export function Planner({ sizes }: { sizes: SizeOption[] }) {
 /** Row of pizzas drawn to scale; they pop in and out as the count changes. */
 function PizzaRow({ count, size }: { count: number; size: number }) {
   const reduce = useReducedMotion();
-  const shown = Math.min(count, 18);
-  const px = Math.round(12 + (size / 45) * 36);
+  const shown = Math.min(count, 10);
+  const px = Math.round(8 + (size / 45) * 14);
   return (
-    <div className="flex min-h-14 flex-wrap items-center gap-1.5" aria-hidden>
+    <div className="relative flex min-h-6 items-center gap-1" aria-hidden>
       <AnimatePresence initial={false} mode="popLayout">
         {Array.from({ length: shown }, (_, i) => (
           <motion.span
@@ -126,13 +130,9 @@ function SizePicker({
 }) {
   const max = Math.max(...sizes.map((s) => s.diameter));
   return (
-    <div>
+    <div className="flex h-full flex-col gap-2">
       <p className="text-sm font-medium text-muted">Izmērs</p>
-      <div
-        className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4"
-        role="radiogroup"
-        aria-label="Izmērs"
-      >
+      <div className="grid flex-1 grid-cols-2 gap-2 sm:grid-cols-4" role="radiogroup" aria-label="Izmērs">
         {sizes.map((s) => {
           const exact = exactPieces(area, s.diameter);
           const n = piecesNeeded(area, s.diameter);
