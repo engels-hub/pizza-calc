@@ -26,61 +26,64 @@ export function Planner({ sizes }: { sizes: SizeOption[] }) {
   const count = piecesNeeded(area, size);
 
   return (
-    <div className="flex flex-col gap-7">
-      <div>
-        <h1 className="text-3xl font-semibold leading-none tracking-tighter md:text-5xl">Cik picu vajag?</h1>
-        <p className="mt-3 max-w-[40ch] text-base leading-relaxed text-muted">
-          Ievadi cilvēku skaitu, izvēlies izmēru un salīdzini Picu darbnīcas un LuLū cenas.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-end gap-4">
+    <section aria-label="Aprēķins" className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-12">
+      <div className="flex flex-col gap-7">
         <div>
-          <label htmlFor="people" className="text-sm font-medium text-muted">
-            Cilvēku skaits
-          </label>
-          <div className="mt-2">
-            <Stepper look="bevel" value={people} onChange={setPeople} min={1} max={60} label="Cilvēku skaits">
-              <input
-                id="people"
-                inputMode="numeric"
-                value={people}
-                onChange={(e) => {
-                  const n = Number(e.target.value.replace(/\D/g, ""));
-                  if (n) setPeople(n);
-                }}
-                className="tabular w-16 bg-transparent text-center font-pixel text-5xl leading-none outline-none"
-                aria-describedby="people-unit"
-              />
-            </Stepper>
-            <span id="people-unit" className="sr-only">
-              {cilveki(people)}
-            </span>
+          <h1 className="text-3xl font-semibold leading-none tracking-tighter md:text-5xl">Cik picu vajag?</h1>
+          <p className="mt-3 max-w-[40ch] text-base leading-relaxed text-muted">
+            Ievadi cilvēku skaitu, izvēlies izmēru un salīdzini Picu darbnīcas un LuLū cenas.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-[auto_minmax(0,1fr)] items-end gap-4">
+          <div>
+            <label htmlFor="people" className="text-sm font-medium text-muted">
+              Cilvēku skaits
+            </label>
+            <div className="mt-2">
+              <Stepper look="bevel" value={people} onChange={setPeople} min={1} max={60} label="Cilvēku skaits">
+                <input
+                  id="people"
+                  inputMode="numeric"
+                  value={people}
+                  onChange={(e) => {
+                    const n = Number(e.target.value.replace(/\D/g, ""));
+                    if (n) setPeople(n);
+                  }}
+                  className="tabular w-16 bg-transparent text-center font-pixel text-5xl leading-none outline-none"
+                  aria-describedby="people-unit"
+                />
+              </Stepper>
+              <span id="people-unit" className="sr-only">
+                {cilveki(people)}
+              </span>
+            </div>
+          </div>
+
+          <div className="bevel bevel-in relative overflow-hidden px-4 py-3 text-right" aria-live="polite">
+            <Dither
+              className="absolute inset-0"
+              shape="linear"
+              bands={6}
+              from="var(--surface)"
+              to="color-mix(in oklch, var(--accent) 22%, var(--surface))"
+            />
+            <p className="relative text-sm font-medium text-muted">Jums vajag</p>
+            <p className="relative mt-1.5 whitespace-nowrap font-pixel text-5xl leading-none sm:text-6xl">
+              <AnimatedNumber value={count} format={(n) => String(Math.round(n))} />
+              <span className="text-xl text-muted sm:text-2xl"> × {size} cm</span>
+            </p>
           </div>
         </div>
 
-        <div className="bevel bevel-in relative overflow-hidden px-4 py-3 text-right" aria-live="polite">
-          <Dither
-            className="absolute inset-0"
-            shape="linear"
-            bands={6}
-            from="var(--surface)"
-            to="color-mix(in oklch, var(--accent) 22%, var(--surface))"
-          />
-          <p className="relative text-sm font-medium text-muted">Jums vajag</p>
-          <p className="relative mt-1.5 whitespace-nowrap font-pixel text-5xl leading-none sm:text-6xl">
-            <AnimatedNumber value={count} format={(n) => String(Math.round(n))} />
-            <span className="text-xl text-muted sm:text-2xl"> × {size} cm</span>
-          </p>
-        </div>
+        <PizzaRow count={count} size={size} />
       </div>
 
-      <PizzaRow count={count} size={size} />
-
-      <SizePicker sizes={sizes} area={area} selected={size} onSelect={setSize} />
-
-      <RulesPanel people={people} />
-    </div>
+      <div className="flex flex-col gap-4">
+        <SizePicker sizes={sizes} area={area} selected={size} onSelect={setSize} />
+        <RulesPanel people={people} />
+      </div>
+    </section>
   );
 }
 
@@ -125,7 +128,11 @@ function SizePicker({
   return (
     <div>
       <p className="text-sm font-medium text-muted">Izmērs</p>
-      <div className="mt-2 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Izmērs">
+      <div
+        className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4"
+        role="radiogroup"
+        aria-label="Izmērs"
+      >
         {sizes.map((s) => {
           const exact = exactPieces(area, s.diameter);
           const n = piecesNeeded(area, s.diameter);
@@ -152,7 +159,9 @@ function SizePicker({
                   {s.pizzerias.map((p) => PIZZERIAS[p].name.split(" ")[0]).join(", ")}
                   {Math.abs(exact - Math.round(exact)) > 0.05 && `, precīzi ${oneDecimal(exact)}`}
                 </span>
-                <span className="block truncate text-xs text-muted" title="Lētākā cena par 100 cm²">no {twoDecimals(s.bestPer100)} €/dm²</span>
+                <span className="block truncate text-xs text-muted" title="Lētākā cena par 100 cm²">
+                  no {twoDecimals(s.bestPer100)} €/dm²
+                </span>
               </span>
             </button>
           );
@@ -168,7 +177,10 @@ function RulesPanel({ people }: { people: number }) {
   const setRules = useStore((s) => s.setRules);
   const resetRules = useStore((s) => s.resetRules);
   const base = basePizzas(people, rules);
-  const isDefault = rules.factor === DEFAULT_RULES.factor && rules.offset === DEFAULT_RULES.offset && rules.baseDiameter === DEFAULT_RULES.baseDiameter;
+  const isDefault =
+    rules.factor === DEFAULT_RULES.factor &&
+    rules.offset === DEFAULT_RULES.offset &&
+    rules.baseDiameter === DEFAULT_RULES.baseDiameter;
 
   const formula = useMemo(() => {
     const f = rules.factor === 1 ? "n" : `n × ${twoDecimals(rules.factor)}`;
@@ -293,4 +305,3 @@ function RulesPanel({ people }: { people: number }) {
     </div>
   );
 }
-

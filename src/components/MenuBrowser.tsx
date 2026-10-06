@@ -240,8 +240,7 @@ function PizzaRow({ pizza, size, showPizzeria }: { pizza: Pizza; size: number; s
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
   const addToCart = useStore((s) => s.addToCart);
-  const showPizza = useStore((s) => s.showPizza);
-  const isShown = useStore((s) => s.showcaseId === pizza.id);
+  const inCart = useStore((s) => s.cart.reduce((n, l) => (l.pizzaId === pizza.id ? n + l.qty : n), 0));
   const v = preferredVariant(pizza, size);
 
   const add = (variant: Variant, e: React.MouseEvent) => {
@@ -264,21 +263,23 @@ function PizzaRow({ pizza, size, showPizzeria }: { pizza: Pizza; size: number; s
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.98, transition: { duration: 0.12 } }}
       transition={spring}
-      className={`rounded-2xl transition-colors ${open || isShown ? "bg-surface shadow-soft" : "hover:bg-surface/70"}`}
+      className={`rounded-2xl transition-colors ${open ? "bg-surface shadow-soft" : "hover:bg-surface/70"}`}
     >
       <div className="flex items-center gap-3 p-2 pr-2 md:gap-4">
         <button
           type="button"
-          onClick={() => {
-            setOpen((o) => !o);
-            showPizza(pizza.id);
-          }}
+          onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
           className="flex min-w-0 flex-1 items-center gap-3 text-left md:gap-4"
         >
           <span className="relative size-14 shrink-0 overflow-hidden rounded-xl bg-sunken md:size-16">
             {pizza.imageUrl && (
               <Image src={pizza.imageUrl} alt="" fill sizes="64px" className="object-cover" loading="lazy" />
+            )}
+            {inCart > 0 && (
+              <span className="absolute right-1 top-1 grid min-w-5 place-items-center rounded-full bg-accent px-1 font-pixel text-xs leading-5 text-accent-ink">
+                {inCart}
+              </span>
             )}
           </span>
           <span className="min-w-0 flex-1">

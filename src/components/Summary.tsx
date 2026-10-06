@@ -1,7 +1,7 @@
 "use client";
 
-import { CheckIcon, CopyIcon, ReceiptIcon, TrashIcon, WarningCircleIcon } from "@phosphor-icons/react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { CheckIcon, CopyIcon, ReceiptIcon, WarningCircleIcon } from "@phosphor-icons/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { piecesNeeded, pizzaArea, targetArea } from "@/lib/calc";
 import { computeTotals, isPromoActive, togglePromo, type CustomDiscount, type Promo, type Totals } from "@/lib/discounts";
@@ -10,9 +10,6 @@ import { useStore } from "@/lib/store";
 import { PIZZERIAS, type PizzeriaId } from "@/lib/types";
 import { AnimatedNumber } from "./ui/AnimatedNumber";
 import { Segmented } from "./ui/Segmented";
-import { Stepper } from "./ui/Stepper";
-
-const spring = { type: "spring", stiffness: 100, damping: 20 } as const;
 
 export function useTotals(promos: Promo[], today: string | null): Totals {
   const cart = useStore((s) => s.cart);
@@ -24,85 +21,52 @@ export function useTotals(promos: Promo[], today: string | null): Totals {
   }, [cart, active, custom, promos, today]);
 }
 
-export function OrderTicket({ promos, today }: { promos: Promo[]; today: string | null }) {
-  const cart = useStore((s) => s.cart);
-  const setQty = useStore((s) => s.setQty);
-  const clearCart = useStore((s) => s.clearCart);
+export function Summary({ promos, today }: { promos: Promo[]; today: string | null }) {
   const totals = useTotals(promos, today);
-  const reduce = useReducedMotion();
-
-  const groups = (["picu", "lulu"] as PizzeriaId[])
-    .map((id) => ({ id, lines: cart.filter((l) => l.pizzeriaId === id) }))
-    .filter((g) => g.lines.length > 0);
-
   return (
-    <div className="flex flex-col gap-5">
-      <div className="flex items-center gap-3">
+    <section id="summary" aria-labelledby="summary-title" className="scroll-mt-6 rounded-3xl bg-surface p-5 shadow-soft md:p-7">
+      <div className="mb-5 flex items-center gap-3">
         <ReceiptIcon size={22} className="text-muted" />
-        <h2 className="text-xl font-semibold tracking-tight">Pasūtījums</h2>
-        {cart.length > 0 && (
-          <button
-            type="button"
-            onClick={clearCart}
-            className="ml-auto inline-flex min-h-10 items-center gap-1.5 rounded-full px-2 text-sm text-muted transition-colors hover:text-ink"
-          >
-            <TrashIcon size={16} />
-            Notīrīt
-          </button>
-        )}
+        <h2 id="summary-title" className="text-xl font-semibold tracking-tight md:text-2xl">
+          Kopsavilkums
+        </h2>
       </div>
-
-      <Coverage />
-
-      {cart.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-line px-4 py-6 text-sm text-muted">
-          <p className="font-medium text-ink">Grozs ir tukšs.</p>
-          <p className="mt-1">Pievieno picas no saraksta ar pogu +.</p>
+      <div className="grid gap-8 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:gap-12">
+        <DiscountPanel promos={promos} today={today} />
+        <div className="md:self-end">
+          <PizzeriaSubtotals />
+          <TotalsBlock totals={totals} />
         </div>
-      ) : (
-        <div className="flex flex-col gap-4">
-          {groups.map((g) => (
-            <div key={g.id}>
-              <p className="mb-1.5 text-xs font-semibold text-muted">{PIZZERIAS[g.id].name}</p>
-              <ul className="flex flex-col">
-                <AnimatePresence initial={false}>
-                  {g.lines.map((l) => (
-                    <motion.li
-                      key={l.key}
-                      layout={reduce ? false : "position"}
-                      initial={reduce ? false : { opacity: 0, x: 16 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -16, transition: { duration: 0.12 } }}
-                      transition={spring}
-                      className="flex items-center gap-3 py-1.5"
-                    >
-                      <span className="min-w-0 flex-1">
-                        <span className="block truncate text-sm font-medium">{l.name}</span>
-                        <span className="block text-xs text-muted">
-                          {l.variantLabel}, {euro(l.unitPrice)}
-                        </span>
-                      </span>
-                      <Stepper size="sm" label={`${l.name} skaits`} value={l.qty} min={0} max={30} onChange={(q) => setQty(l.key, q)}>
-                        <span className="tabular w-5 text-center text-sm">{l.qty}</span>
-                      </Stepper>
-                      <span className="tabular w-[4.5rem] text-right text-sm">{euro(l.unitPrice * l.qty)}</span>
-                    </motion.li>
-                  ))}
-                </AnimatePresence>
-              </ul>
-            </div>
-          ))}
+      </div>
+    </section>
+  );
+}
+
+/** Each pizzeria is a separate order, so show what goes to whom. */
+function PizzeriaSubtotals() {
+  const cart = useStore((s) => s.cart);
+  const rows = (["picu", "lulu"] as PizzeriaId[])
+    .map((id) => {
+      const lines = cart.filter((l) => l.pizzeriaId === id);
+      return { id, count: lines.reduce((n, l) => n + l.qty, 0), sum: lines.reduce((n, l) => n + l.qty * l.unitPrice, 0) };
+    })
+    .filter((r) => r.count > 0);
+  if (rows.length < 2) return null;
+  return (
+    <div className="mb-4 flex flex-col gap-1 text-sm">
+      {rows.map((r) => (
+        <div key={r.id} className="flex justify-between">
+          <span>
+            {PIZZERIAS[r.id].name} <span className="text-muted">({r.count})</span>
+          </span>
+          <span className="tabular">{euro(r.sum)}</span>
         </div>
-      )}
-
-      <DiscountPanel promos={promos} today={today} />
-
-      <TotalsBlock totals={totals} />
+      ))}
     </div>
   );
 }
 
-function Coverage() {
+export function Coverage() {
   const cart = useStore((s) => s.cart);
   const people = useStore((s) => s.people);
   const rules = useStore((s) => s.rules);

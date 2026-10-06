@@ -8,7 +8,6 @@ import type { PizzeriaId } from "./types";
 
 export type FilterState = "include" | "exclude";
 export type PizzeriaFilter = PizzeriaId | "all";
-export type ShowcaseMode = "photo" | "faux";
 
 interface State {
   people: number;
@@ -22,8 +21,8 @@ interface State {
   tagFilters: string[];
   activePromos: string[];
   custom: CustomDiscount;
-  showcaseId: string | null;
-  showcaseMode: ShowcaseMode;
+  /** Cart line under the pointer, shared by the 3D stack and the list. */
+  hovered: string | null;
 
   setPeople: (n: number) => void;
   setRules: (r: Partial<CalcRules>) => void;
@@ -39,8 +38,7 @@ interface State {
   clearFilters: () => void;
   setActivePromos: (ids: string[]) => void;
   setCustom: (c: CustomDiscount) => void;
-  showPizza: (id: string) => void;
-  setShowcaseMode: (m: ShowcaseMode) => void;
+  setHovered: (key: string | null) => void;
 }
 
 export const useStore = create<State>()(
@@ -56,8 +54,7 @@ export const useStore = create<State>()(
       tagFilters: [],
       activePromos: [],
       custom: null,
-      showcaseId: null,
-      showcaseMode: "photo",
+      hovered: null,
 
       setPeople: (n) => set({ people: Math.min(60, Math.max(1, Math.round(n))) }),
       setRules: (r) => set((s) => ({ rules: { ...s.rules, ...r } })),
@@ -70,7 +67,6 @@ export const useStore = create<State>()(
             cart: existing
               ? s.cart.map((l) => (l.key === line.key ? { ...l, qty: l.qty + 1 } : l))
               : [...s.cart, { ...line, qty: 1 }],
-            showcaseId: line.pizzaId,
           };
         }),
       setQty: (key, qty) =>
@@ -96,8 +92,7 @@ export const useStore = create<State>()(
       clearFilters: () => set({ ingredientFilters: {}, tagFilters: [], query: "" }),
       setActivePromos: (activePromos) => set({ activePromos }),
       setCustom: (custom) => set({ custom }),
-      showPizza: (showcaseId) => set({ showcaseId }),
-      setShowcaseMode: (showcaseMode) => set({ showcaseMode }),
+      setHovered: (hovered) => set({ hovered }),
     }),
     {
       name: "picu-kalkulators",
@@ -111,7 +106,6 @@ export const useStore = create<State>()(
         cart: s.cart,
         activePromos: s.activePromos,
         custom: s.custom,
-        showcaseMode: s.showcaseMode,
       }),
     },
   ),

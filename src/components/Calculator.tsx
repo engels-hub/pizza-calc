@@ -9,10 +9,10 @@ import { useStore } from "@/lib/store";
 import type { MenuData } from "@/lib/types";
 import { FlyLayer } from "./FlyLayer";
 import { MenuBrowser } from "./MenuBrowser";
-import { MobileTicket } from "./MobileTicket";
-import { OrderTicket } from "./OrderTicket";
+import { BottomBar } from "./BottomBar";
+import { Cart } from "./Cart";
 import { Planner } from "./Planner";
-import { PizzaShowcase } from "./PizzaShowcase";
+import { Summary } from "./Summary";
 
 const noop = () => () => {};
 
@@ -40,23 +40,20 @@ export function Calculator({ menu, promos }: { menu: MenuData; promos: Promo[] }
         </span>
       </header>
 
-      <main className="mx-auto grid max-w-[1400px] gap-10 px-4 pb-32 md:px-8 xl:grid-cols-[minmax(0,1.5fr)_minmax(360px,1fr)] xl:gap-14 xl:pb-16">
-        <div className="flex min-w-0 flex-col gap-12">
-          <section className="grid gap-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] md:items-start" aria-label="Aprēķins">
-            <PizzaShowcase pizzas={menu.pizzas} />
-            <Planner sizes={sizes} />
-          </section>
+      <main className="mx-auto flex max-w-[1400px] flex-col gap-12 px-4 pb-32 md:px-8 lg:gap-16 lg:pb-16">
+        <Planner sizes={sizes} />
+
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
+          <div className="min-w-0 lg:sticky lg:top-4">
+            <Cart pizzas={menu.pizzas} />
+          </div>
           <MenuBrowser pizzas={menu.pizzas} />
         </div>
 
-        <aside className="hidden xl:block">
-          <div className="sticky top-6 max-h-[calc(100dvh-3rem)] overflow-y-auto rounded-3xl bg-surface p-5 shadow-soft" data-fly-target>
-            <OrderTicket promos={promos} today={today} />
-          </div>
-        </aside>
+        <Summary promos={promos} today={today} />
       </main>
 
-      <footer className="mx-auto max-w-[1400px] px-4 pb-36 text-xs leading-relaxed text-muted md:px-8 xl:pb-10">
+      <footer className="mx-auto max-w-[1400px] px-4 pb-36 text-xs leading-relaxed text-muted md:px-8 lg:pb-10">
         Cenas no{" "}
         <a className="underline decoration-line underline-offset-2 hover:text-ink" href="https://www.picudarbnica.lv/picas/" target="_blank" rel="noreferrer">
           picudarbnica.lv
@@ -68,7 +65,7 @@ export function Calculator({ menu, promos }: { menu: MenuData; promos: Promo[] }
         . Pasūtījumu veic pašā picērijā, šeit tikai aprēķins.
       </footer>
 
-      <MobileTicket promos={promos} today={today} />
+      <BottomBar promos={promos} today={today} />
       <FlyLayer />
     </>
   );

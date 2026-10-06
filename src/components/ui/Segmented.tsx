@@ -17,7 +17,7 @@ export function Segmented<T extends string | number>({
   label: string;
 }) {
   return (
-    <div role="radiogroup" aria-label={label} className="inline-flex rounded-full bg-sunken p-1">
+    <div role="radiogroup" aria-label={label} className="no-scrollbar inline-flex max-w-full overflow-x-auto rounded-full bg-sunken p-1">
       {options.map((o) => {
         const active = o.value === value;
         return (
