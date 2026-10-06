@@ -18,7 +18,7 @@ interface State {
   pizzeria: PizzeriaFilter;
   query: string;
   ingredientFilters: Record<string, FilterState>;
-  tagFilters: string[];
+  tagFilters: Record<string, FilterState>;
   activePromos: string[];
   custom: CustomDiscount;
   /** Cart line under the pointer, shared by the 3D stack and the list. */
@@ -34,11 +34,20 @@ interface State {
   setPizzeria: (p: PizzeriaFilter) => void;
   setQuery: (q: string) => void;
   cycleIngredient: (key: string) => void;
-  toggleTag: (tag: string) => void;
+  cycleTag: (tag: string) => void;
   clearFilters: () => void;
   setActivePromos: (ids: string[]) => void;
   setCustom: (c: CustomDiscount) => void;
   setHovered: (key: string | null) => void;
+}
+
+/** off → include → exclude → off */
+function cycle(filters: Record<string, FilterState>, key: string): Record<string, FilterState> {
+  const next = { ...filters };
+  if (!next[key]) next[key] = "include";
+  else if (next[key] === "include") next[key] = "exclude";
+  else delete next[key];
+  return next;
 }
 
 type Persisted = Pick<State, "people" | "rules" | "size" | "cart" | "activePromos" | "custom">;
@@ -72,7 +81,7 @@ export const useStore = create<State>()(
       pizzeria: "all",
       query: "",
       ingredientFilters: {},
-      tagFilters: [],
+      tagFilters: {},
       activePromos: [],
       custom: null,
       hovered: null,
@@ -106,20 +115,9 @@ export const useStore = create<State>()(
       clearCart: () => set({ cart: [] }),
       setPizzeria: (pizzeria) => set({ pizzeria }),
       setQuery: (query) => set({ query }),
-      cycleIngredient: (key) =>
-        set((s) => {
-          const next = { ...s.ingredientFilters };
-          const cur = next[key];
-          if (!cur) next[key] = "include";
-          else if (cur === "include") next[key] = "exclude";
-          else delete next[key];
-          return { ingredientFilters: next };
-        }),
-      toggleTag: (tag) =>
-        set((s) => ({
-          tagFilters: s.tagFilters.includes(tag) ? s.tagFilters.filter((t) => t !== tag) : [...s.tagFilters, tag],
-        })),
-      clearFilters: () => set({ ingredientFilters: {}, tagFilters: [], query: "" }),
+      cycleIngredient: (key) => set((s) => ({ ingredientFilters: cycle(s.ingredientFilters, key) })),
+      cycleTag: (tag) => set((s) => ({ tagFilters: cycle(s.tagFilters, tag) })),
+      clearFilters: () => set({ ingredientFilters: {}, tagFilters: {}, query: "" }),
       setActivePromos: (activePromos) => set({ activePromos }),
       setCustom: (custom) => set({ custom }),
       setHovered: (hovered) => set({ hovered }),

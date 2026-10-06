@@ -20,7 +20,7 @@ export function MenuFilters({ filtersOpen, onToggleFilters }: { filtersOpen: boo
   const ingredientFilters = useStore((s) => s.ingredientFilters);
   const cycleIngredient = useStore((s) => s.cycleIngredient);
   const tagFilters = useStore((s) => s.tagFilters);
-  const toggleTag = useStore((s) => s.toggleTag);
+  const cycleTag = useStore((s) => s.cycleTag);
   const active = Object.entries(ingredientFilters);
 
   return (
@@ -49,12 +49,15 @@ export function MenuFilters({ filtersOpen, onToggleFilters }: { filtersOpen: boo
           {lv.menu.ingredients}
           {active.length > 0 && <span className="tabular">{active.length}</span>}
         </Chip>
-        {TAGS.map(({ id, Icon }) => (
-          <Chip key={id} active={tagFilters.includes(id)} onClick={() => toggleTag(id)} aria-pressed={tagFilters.includes(id)}>
-            <Icon size={16} />
-            {lv.tags[id]}
-          </Chip>
-        ))}
+        {TAGS.map(({ id, Icon }) => {
+          const state = tagFilters[id];
+          return (
+            <Chip key={id} active={!!state} tone={state} onClick={() => cycleTag(id)} aria-pressed={!!state}>
+              <Icon size={16} />
+              {state === "exclude" ? `${lv.menu.not} ${lv.tags[id].toLowerCase()}` : lv.tags[id]}
+            </Chip>
+          );
+        })}
         {active.map(([key, state]) => (
           <Chip
             key={key}

@@ -1,27 +1,35 @@
 import { pizzaArea } from "./calc";
 import { ingredientDef, ingredientLabel, type IngredientGroup } from "./ingredients";
 import type { FilterState, PizzeriaFilter } from "./store";
-import type { Pizza, Variant } from "./types";
+import type { Pizza, PizzaTag, Variant } from "./types";
 
 export interface FilterInput {
   pizzeria: PizzeriaFilter;
   query: string;
   ingredientFilters: Record<string, FilterState>;
-  tagFilters: string[];
+  tagFilters: Record<string, FilterState>;
 }
 
 function fold(s: string): string {
   return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 }
 
+/** Keys split into [included, excluded]. */
+function split(filters: Record<string, FilterState>): [string[], string[]] {
+  const keys = Object.keys(filters);
+  return [keys.filter((k) => filters[k] === "include"), keys.filter((k) => filters[k] === "exclude")];
+}
+
 export function filterPizzas(pizzas: Pizza[], f: FilterInput): Pizza[] {
   const q = fold(f.query.trim());
-  const include = Object.keys(f.ingredientFilters).filter((k) => f.ingredientFilters[k] === "include");
-  const exclude = Object.keys(f.ingredientFilters).filter((k) => f.ingredientFilters[k] === "exclude");
+  const [include, exclude] = split(f.ingredientFilters);
+  const [withTags, withoutTags] = split(f.tagFilters);
+  const tagged = (p: Pizza, t: string) => p.tags.includes(t as PizzaTag);
 
   return pizzas.filter((p) => {
     if (f.pizzeria !== "all" && p.pizzeriaId !== f.pizzeria) return false;
-    if (f.tagFilters.some((t) => !p.tags.includes(t as Pizza["tags"][number]))) return false;
+    if (withTags.some((t) => !tagged(p, t))) return false;
+    if (withoutTags.some((t) => tagged(p, t))) return false;
     if (include.some((k) => !p.ingredients.includes(k))) return false;
     if (exclude.some((k) => p.ingredients.includes(k))) return false;
     if (q && !fold(`${p.name} ${p.rawIngredients.join(" ")}`).includes(q)) return false;

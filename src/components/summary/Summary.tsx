@@ -1,7 +1,7 @@
 import { ReceiptIcon } from "@phosphor-icons/react/ssr";
 import { lv } from "@/content/lv";
 import { DiscountPanel } from "./DiscountPanel";
-import { PizzeriaSubtotals } from "./PizzeriaSubtotals";
+import { OrderLines } from "./OrderLines";
 import { TotalsBlock } from "./TotalsBlock";
 
 export function Summary() {
@@ -16,7 +16,7 @@ export function Summary() {
       <div className="grid gap-8 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:gap-12">
         <DiscountPanel />
         <div className="md:self-end">
-          <PizzeriaSubtotals />
+          <OrderLines />
           <TotalsBlock />
         </div>
       </div>

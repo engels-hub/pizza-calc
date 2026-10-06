@@ -26,7 +26,7 @@ export function MenuBrowser({ pizzas }: { pizzas: Pizza[] }) {
   const [sort, setSort] = useState<MenuSort>("menu");
 
   const visible = sortPizzas(filterPizzas(pizzas, { pizzeria, query, ingredientFilters, tagFilters }), sort, size);
-  const filterCount = Object.keys(ingredientFilters).length + tagFilters.length + (query ? 1 : 0);
+  const filterCount = Object.keys(ingredientFilters).length + Object.keys(tagFilters).length + (query ? 1 : 0);
   const inScope = pizzeria === "all" ? pizzas : pizzas.filter((p) => p.pizzeriaId === pizzeria);
 
   return (

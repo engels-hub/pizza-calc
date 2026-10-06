@@ -37,7 +37,7 @@ export const lv = {
   planner: {
     sectionLabel: "Aprēķins",
     title: "Cik picu vajag?",
-    lead: "Ievadi cilvēku skaitu, izvēlies izmēru un salīdzini Picu darbnīcas un LuLū cenas.",
+    lead: "Izvēlies picas no cilvēku skaita, izmēriem un izsalkuma. Gan PD, gan Lulu",
     people: "Cilvēku skaits",
     less: (what: string) => `${what}: mazāk`,
     more: (what: string) => `${what}: vairāk`,
@@ -45,22 +45,22 @@ export const lv = {
     size: "Izmērs",
     exact: (n: string) => `precīzi ${n}`,
     pricePerArea: (price: string) => `no ${price} €/dm²`,
-    pricePerAreaHint: "Lētākā cena par 100 cm²",
+    pricePerAreaHint: "Lētākais pēc laukuma",
   },
 
   rules: {
     title: "Aprēķina noteikums",
     summary: (formula: string, diameter: number) => `${formula} picas pa ${diameter} cm`,
     explainer:
-      "Picu darbnīcas īkšķa likums: n cilvēkiem pasūti n − 1 picas pa 30 cm. Citi izmēri tiek pārrēķināti pēc laukuma.",
+      "PD rule of thumb: N-1 30cm PD picas. Citi izmēri rēķināti attiecīgi laukumam",
     worked: (people: string, formula: string) => `${people} → ${formula} =`,
     perSize: (diameter: number) => `pa ${diameter} cm`,
     appetite: "Izsalkums",
     appetites: { light: "Viegli", normal: "Normāli", hungry: "Izsalkuši" },
     offset: "Atņemt picas",
     factor: "Picas uz cilvēku",
-    baseSize: "Mēra izmērs",
-    reset: "Atiestatīt uz n − 1",
+    baseSize: "Default izmērs",
+    reset: "Atpakaļ uz n − 1",
   },
 
   menu: {
@@ -70,8 +70,10 @@ export const lv = {
     searchLabel: "Meklēt picu vai sastāvdaļu",
     searchPlaceholder: "Meklēt, piem. bekons",
     ingredients: "Sastāvdaļas",
-    ingredientHelp: "Pieskaries vienreiz, lai pica to saturētu. Otrreiz, lai izslēgtu. Trešo reizi, lai noņemtu.",
+    ingredientHelp: "Viens klikšķis pievieno. Otrreiz izslēdz. Trešais noņem filtru.",
     without: "bez",
+    /** Prefix for an excluded tag, e.g. "ne asās". */
+    not: "ne",
     removeFilter: (label: string) => `Noņemt ${label}`,
     count: (n: number) => `${n} picas`,
     clearFilters: "Notīrīt filtrus",
