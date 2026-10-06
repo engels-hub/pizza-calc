@@ -15,7 +15,7 @@ import { easeOutExpo, spring } from "@/lib/motion";
 import { useStore } from "@/lib/store";
 
 /**
- * Below lg: a small pizza button that jumps to the cart total. It hides while
+ * A small pizza button that jumps to the cart total. It hides while
  * the total is on screen (or the cart is empty), points towards the total,
  * and nudges when a pizza lands in the cart.
  */
@@ -59,7 +59,7 @@ export function BottomBar() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.6 }}
           transition={spring}
-          className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-30 lg:hidden"
+          className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-30 lg:bottom-6 lg:right-6"
         >
           <motion.button
             animate={bump}

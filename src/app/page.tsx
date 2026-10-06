@@ -61,7 +61,7 @@ async function PersonalCalculator({ menu, searchParams }: { menu: MenuData; sear
         <Planner sizes={sizeOptions(menu.pizzas)} luckyPool={menu.pizzas.filter((p) => p.pizzeriaId === "darbnīca")} />
 
         <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
-          <div className="min-w-0 lg:sticky lg:top-4">
+          <div className="min-w-0">
             <Cart pizzas={menu.pizzas} />
           </div>
           <MenuBrowser pizzas={menu.pizzas} />

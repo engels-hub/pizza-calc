@@ -41,10 +41,7 @@ export function Cart({ pizzas }: { pizzas: Pizza[] }) {
   }
 
   return (
-    <section
-      aria-labelledby="cart-title"
-      className="flex flex-col overflow-hidden rounded-3xl bg-sunken lg:max-h-[calc(100dvh-2rem)]"
-    >
+    <section aria-labelledby="cart-title" className="flex flex-col overflow-hidden rounded-3xl bg-sunken">
       <div className="flex items-center gap-3 px-5 pt-4">
         <h2 id="cart-title" className="text-xl font-semibold tracking-tight">
           {lv.cart.title}
@@ -74,7 +71,9 @@ export function Cart({ pizzas }: { pizzas: Pizza[] }) {
           <StackStage units={units} hovered={hovered} onHover={setHovered} />
         </div>
         {count === 0 && (
-          <p className="pointer-events-none absolute inset-x-0 bottom-4 text-center text-sm text-muted">{lv.cart.empty}</p>
+          <p className="pointer-events-none absolute inset-x-0 bottom-4 text-center text-sm text-muted">
+            {lv.cart.empty}
+          </p>
         )}
         {count > MAX_STACK && (
           <p className="pointer-events-none absolute bottom-3 right-4 text-xs text-muted">
@@ -88,8 +87,7 @@ export function Cart({ pizzas }: { pizzas: Pizza[] }) {
       </div>
 
       {count > 0 && (
-        // On desktop the cart is sticky, so the lines and total scroll inside it.
-        <div className="flex min-h-0 flex-col gap-3 px-3 pb-3 lg:overflow-y-auto">
+        <div className="flex flex-col gap-3 px-3 pb-3">
           <div className="px-2">
             <Coverage />
           </div>
