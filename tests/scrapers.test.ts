@@ -51,3 +51,13 @@ describe("LuLū", () => {
     expect(p.tags).not.toContain("vegetarian");
   });
 });
+
+describe("variant labels", () => {
+  it("only one-size items say Viens izmērs", () => {
+    const calzone = parseDarbnica(fx("darbnica-list.html")).find((p) => /calzone/i.test(p.name))!;
+    expect(calzone.variants.map(variantLabel)).toEqual(["20 cm", "30 cm"]);
+    const lulu = parseLuluProduct(fx("lulu-calzone.html"), "calzone-vistas")!;
+    expect(lulu.variants.map(variantLabel)).toEqual(["Viens izmērs"]);
+    expect(variantLabel({ key: "darbnica-calzone-parlocita:20", shape: "calzone", diameterCm: 20 })).toBe("20 cm");
+  });
+});

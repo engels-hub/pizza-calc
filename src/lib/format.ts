@@ -15,9 +15,17 @@ export function shortDate(iso: string): string {
   return `${d}.${m}.`;
 }
 
-export function variantLabel(v: Pick<Variant, "shape" | "diameterCm">): string {
+type Labelled = Pick<Variant, "shape" | "diameterCm"> & ({ id: string } | { key: string });
+
+/**
+ * "30 cm", "Sirds 30 cm" or "Viens izmērs". Takes a variant or a cart line
+ * (whose key ends in the variant id). Only truly one-size items (variant id
+ * "one", e.g. LuLū calzones) say so; Picu darbnīca's calzone has real sizes.
+ */
+export function variantLabel(v: Labelled): string {
+  const id = "id" in v ? v.id : v.key.slice(v.key.lastIndexOf(":") + 1);
   if (v.shape === "heart") return lv.variants.heart;
-  if (v.shape === "calzone") return lv.variants.oneSize;
+  if (id === "one") return lv.variants.oneSize;
   return lv.variants.cm(v.diameterCm);
 }
 

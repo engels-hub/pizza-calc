@@ -5,6 +5,8 @@ import type { Pizza, PizzaTag, Variant } from "./types";
 
 export interface FilterInput {
   pizzeria: PizzeriaFilter;
+  /** Chosen diameter; only pizzas sold in this size are listed. */
+  size?: number;
   query: string;
   ingredientFilters: Record<string, FilterState>;
   tagFilters: Record<string, FilterState>;
@@ -12,6 +14,11 @@ export interface FilterInput {
 
 function fold(s: string): string {
   return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+}
+
+/** Sold in this diameter? Heart shapes do not count; a calzone counts as its diameter (30 cm). */
+export function soldInSize(p: Pizza, diameter: number): boolean {
+  return p.variants.some((v) => v.shape !== "heart" && v.diameterCm === diameter);
 }
 
 /** Keys split into [included, excluded]. */
@@ -28,6 +35,7 @@ export function filterPizzas(pizzas: Pizza[], f: FilterInput): Pizza[] {
 
   return pizzas.filter((p) => {
     if (f.pizzeria !== "all" && p.pizzeriaId !== f.pizzeria) return false;
+    if (f.size !== undefined && !soldInSize(p, f.size)) return false;
     if (withTags.some((t) => !tagged(p, t))) return false;
     if (withoutTags.some((t) => tagged(p, t))) return false;
     if (include.some((k) => !p.ingredients.includes(k))) return false;

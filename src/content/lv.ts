@@ -83,6 +83,9 @@ export const lv = {
     sorts: { menu: "Kā ēdienkartē", price: "Lētākās", value: "Izdevīgākās par cm²" },
     emptyTitle: "Nav picu ar šīm sastāvdaļām",
     emptyBody: "Pamēģini noņemt kādu filtru vai izvēlēties abas picērijas",
+    /** Shown when the selected pizzeria does not sell the chosen size at all. */
+    noSize: (pizzeria: string, diameter: number) => `${pizzeria} ${diameter} cm picas netaisa`,
+    noSizeBody: "Izvēlies citu izmēru vai abas picērijas",
     add: (name: string, size: string) => `Pievienot ${name} ${size}`,
     open: (pizzeria: string) => `Atvērt ${pizzeria}`,
     perArea: (price: string) => `${price} €/dm²`,
