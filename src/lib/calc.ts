@@ -1,5 +1,3 @@
-import type { Shape } from "./types";
-
 export interface CalcRules {
   /** Pizzas per person before the offset. */
   factor: number;
@@ -18,7 +16,7 @@ export const APPETITES = [
 ] as const;
 
 /** Heart shape and calzone are counted as the round pizza of the same size. */
-export function pizzaArea(diameterCm: number, _shape: Shape = "round"): number {
+export function pizzaArea(diameterCm: number): number {
   const r = diameterCm / 2;
   return Math.PI * r * r;
 }

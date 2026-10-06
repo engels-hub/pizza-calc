@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  cacheComponents: true,
+  images: {
+    remotePatterns: [new URL("https://www.picudarbnica.lv/wp-content/**"), new URL("https://www.lulu.lv/**")],
+  },
 };
 
 export default nextConfig;
