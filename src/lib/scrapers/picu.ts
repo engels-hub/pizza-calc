@@ -13,7 +13,7 @@ export function parsePicu(html: string): Pizza[] {
   $(".product").each((_, el) => {
     const $el = $(el);
     const title = $el.find("h3").first().text().trim();
-    const name = title.replace(/^\d+\.\s*/, "").trim();
+    const name = title.replace(/^\d+\.\s*/, "").replace(/\s*[–—]\s*/g, " - ").trim();
     if (!name) return;
 
     const variants: Variant[] = [];
@@ -24,7 +24,7 @@ export function parsePicu(html: string): Pizza[] {
       const price = parsePrice($(k).siblings(".price").first().text());
       variants.push({
         id: `${cm[1]}`,
-        label,
+        label: `${cm[1]} cm`,
         diameterCm: Number(cm[1]),
         shape: /calzone|pārlocīt/i.test(name) ? "calzone" : "round",
         price,

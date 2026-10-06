@@ -23,7 +23,7 @@ export function parseLuluList(html: string): string[] {
 /** One LuLū product page. Sizes live in `input[data-size-master]`. */
 export function parseLuluProduct(html: string, slug: string): Pizza | null {
   const $ = cheerio.load(html);
-  const name = $("h1").first().text().replace(/\s+/g, " ").trim();
+  const name = $("h1").first().text().replace(/\s+/g, " ").replace(/\s*[–—]\s*/g, " - ").trim();
   if (!name) return null;
 
   const variants: Variant[] = [];

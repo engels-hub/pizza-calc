@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-06T08:54:57.958Z",
+  "fetchedAt": "2026-10-06T09:10:25.961Z",
   "pizzas": [
     {
       "id": "lulu-desu-pica",
@@ -1282,7 +1282,7 @@
     {
       "id": "lulu-senu-vegetara-pica",
       "pizzeriaId": "lulu",
-      "name": "Sēņu – Veģetārā pica",
+      "name": "Sēņu - Veģetārā pica",
       "url": "https://www.lulu.lv/picas/senu-vegetara-pica",
       "imageUrl": "https://www.lulu.lv/cache/images/2251636503/senu-vegetara-pica_2885872971.jpg",
       "rawIngredients": [

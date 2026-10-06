@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Picu kalkulators
 
-## Getting Started
+How much pizza to order for a group, and what it costs at **Picu darbnīca** and **LuLū** in Riga.
 
-First, run the development server:
+- **Amount:** the rule of thumb is *n − 1 pizzas of 30 cm for n people*. Other sizes (20, 23 and 45 cm) are converted by area. The rule is adjustable: offset, pizzas per person, appetite and base size.
+- **Menus:** scraped live from picudarbnica.lv and lulu.lv, cached for 6 hours. If a scrape fails, a bundled snapshot is used instead.
+- **Filters:** by pizzeria, by vegetarian / vegan / spicy, and by ingredient, with include and exclude.
+- **Prices:** the total before and after the real promos (takeaway −15%, every 3rd pizza free, flash codes, birthday −15%) and an optional custom % or € discount.
+- **3D pizza:** a spinning pizza in PS1 style, built from the pizzeria photo or from its ingredients.
+
+The UI is in Latvian.
+
+## Develop
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Command | What it does |
+| --- | --- |
+| `npm test` | unit tests (calculation, discounts, scrapers against saved HTML, snapshot fallback) |
+| `npm run snapshot` | re-scrape both menus into `src/data/snapshot/` |
+| `npm run build` | production build (scrapes during prerender) |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Promo codes and their dates live in `src/data/promos.ts` and are updated by hand.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stack
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js 16 (Cache Components), React 19, Tailwind CSS 4, Motion, React Three Fiber, zustand, vaul, cheerio, sharp, vitest.
