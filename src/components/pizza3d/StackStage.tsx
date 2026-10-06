@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Group } from "three";
 import { lv } from "@/content/lv";
 import type { Pizza, Shape } from "@/lib/types";
+import { Calzone } from "./Calzone";
 import { FauxPizza } from "./FauxPizza";
 
 // Internal render height in real pixels: pixelated on purpose and cheap to draw.
@@ -264,7 +265,11 @@ function Unit({
       onPointerOut={onHover ? () => onHover(null) : undefined}
     >
       <group ref={inner}>
-        <FauxPizza pizza={unit.pizza} shape={unit.shape} reduce={reduce} />
+        {unit.shape === "calzone" ? (
+          <Calzone pizza={unit.pizza} reduce={reduce} />
+        ) : (
+          <FauxPizza pizza={unit.pizza} shape={unit.shape} reduce={reduce} />
+        )}
       </group>
     </group>
   );
