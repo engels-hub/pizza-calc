@@ -1,13 +1,14 @@
 import { describe, expect, it } from "vitest";
 import { computeTotals, togglePromo, type CartLine, type Promo } from "@/lib/discounts";
 import { PROMOS } from "@/data/promos";
+import type { PizzeriaId } from "@/lib/types";
 
-const line = (pizzeriaId: "picu" | "lulu", unitPrice: number, qty = 1): CartLine => ({
+const line = (pizzeriaId: PizzeriaId, unitPrice: number, qty = 1): CartLine => ({
   key: `${pizzeriaId}-${unitPrice}`,
   pizzaId: "x",
   pizzeriaId,
   name: "x",
-  variantLabel: "30 cm",
+  shape: "round",
   diameterCm: 30,
   unitPrice,
   qty,
@@ -23,20 +24,26 @@ describe("computeTotals", () => {
   });
 
   it("promos only touch their own pizzeria", () => {
-    const t = computeTotals([line("lulu", 20), line("picu", 10)], [promo("lulu-picrudens")], null);
+    const t = computeTotals([line("lulu", 20), line("darbnīca", 10)], [promo("lulu-picrudens")], null);
     expect(t.saved).toBe(10);
     expect(t.total).toBe(20);
   });
 
+  it("drauga card takes 10% off Picu darbnīca only", () => {
+    const t = computeTotals([line("darbnīca", 9.1, 2), line("lulu", 14.49)], [promo("darbnica-drauga")], null);
+    expect(t.saved).toBe(1.82);
+    expect(t.total).toBe(30.87);
+  });
+
   it("custom discount applies last on the remaining total", () => {
-    const t = computeTotals([line("picu", 10, 2)], [promo("picu-birthday")], { kind: "percent", value: 10 });
+    const t = computeTotals([line("darbnīca", 10, 2)], [promo("darbnica-birthday")], { kind: "percent", value: 10 });
     // 20 − 15% = 17, then −10% = 15.30
     expect(t.total).toBe(15.3);
     expect(t.discounts.map((d) => d.amount)).toEqual([3, 1.7]);
   });
 
   it("fixed custom discount cannot go below zero", () => {
-    expect(computeTotals([line("picu", 6.9)], [], { kind: "fixed", value: 50 }).total).toBe(0);
+    expect(computeTotals([line("darbnīca", 6.9)], [], { kind: "fixed", value: 50 }).total).toBe(0);
   });
 
   it("stacked 50% and every 3rd free never goes negative", () => {
@@ -56,7 +63,15 @@ describe("togglePromo", () => {
   });
 
   it("does not touch the other pizzeria", () => {
-    const active = togglePromo(["picu-birthday"], promo("lulu-takeaway"), all);
-    expect(active).toEqual(["picu-birthday", "lulu-takeaway"]);
+    const active = togglePromo(["darbnica-drauga"], promo("lulu-takeaway"), all);
+    expect(active).toEqual(["darbnica-drauga", "lulu-takeaway"]);
+  });
+
+  it("drauga card and birthday discount replace each other", () => {
+    let active = togglePromo([], promo("darbnica-drauga"), all);
+    active = togglePromo(active, promo("darbnica-birthday"), all);
+    expect(active).toEqual(["darbnica-birthday"]);
+    active = togglePromo(active, promo("darbnica-drauga"), all);
+    expect(active).toEqual(["darbnica-drauga"]);
   });
 });

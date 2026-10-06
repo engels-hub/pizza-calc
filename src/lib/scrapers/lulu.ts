@@ -36,7 +36,6 @@ export function parseLuluProduct(html: string, slug: string): Pizza | null {
     const isCalzone = !cm && !heart;
     variants.push({
       id: heart ? "heart" : cm ? cm[1] : "one",
-      label: heart ? "Sirds 30 cm" : isCalzone ? "Viens izmērs" : `${cm![1]} cm`,
       diameterCm: heart ? 30 : cm ? Number(cm[1]) : 30,
       shape: heart ? "heart" : isCalzone ? "calzone" : "round",
       price,

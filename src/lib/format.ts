@@ -1,3 +1,6 @@
+import { lv } from "@/content/lv";
+import type { Variant } from "./types";
+
 const eur = new Intl.NumberFormat("lv-LV", { style: "currency", currency: "EUR" });
 const dec1 = new Intl.NumberFormat("lv-LV", { maximumFractionDigits: 1 });
 const dec2 = new Intl.NumberFormat("lv-LV", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -12,11 +15,8 @@ export function shortDate(iso: string): string {
   return `${d}.${m}.`;
 }
 
-/** Latvian plural for "pica": 1 pica, 2 picas, 21 pica, 11 picu is not used here. */
-export function picas(n: number): string {
-  return n % 10 === 1 && n % 100 !== 11 ? "pica" : "picas";
-}
-
-export function cilveki(n: number): string {
-  return n % 10 === 1 && n % 100 !== 11 ? "cilvēks" : "cilvēki";
+export function variantLabel(v: Pick<Variant, "shape" | "diameterCm">): string {
+  if (v.shape === "heart") return lv.variants.heart;
+  if (v.shape === "calzone") return lv.variants.oneSize;
+  return lv.variants.cm(v.diameterCm);
 }

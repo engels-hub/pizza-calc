@@ -4,7 +4,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { DEFAULT_RULES, type CalcRules } from "./calc";
 import type { CartLine, CustomDiscount } from "./discounts";
-import type { PizzeriaId } from "./types";
+import type { Pizza, PizzeriaId, Variant } from "./types";
 
 export type FilterState = "include" | "exclude";
 export type PizzeriaFilter = PizzeriaId | "all";
@@ -28,7 +28,7 @@ interface State {
   setRules: (r: Partial<CalcRules>) => void;
   resetRules: () => void;
   setSize: (d: number) => void;
-  addToCart: (line: Omit<CartLine, "qty">) => void;
+  addPizza: (pizza: Pizza, variant: Variant) => void;
   setQty: (key: string, qty: number) => void;
   clearCart: () => void;
   setPizzeria: (p: PizzeriaFilter) => void;
@@ -39,6 +39,27 @@ interface State {
   setActivePromos: (ids: string[]) => void;
   setCustom: (c: CustomDiscount) => void;
   setHovered: (key: string | null) => void;
+}
+
+type Persisted = Pick<State, "people" | "rules" | "size" | "cart" | "activePromos" | "custom">;
+
+/** v1 used "picu" as the Picu darbnīca id and stored a display label per cart line. */
+function migrateV1(state: unknown, version: number): Persisted {
+  const s = state as Persisted;
+  if (version >= 2) return s;
+  const id = (x: string) => x.replace(/^picu-/, "darbnica-");
+  type V1Line = Omit<CartLine, "pizzeriaId" | "shape"> & { pizzeriaId: string; variantLabel?: string };
+  return {
+    ...s,
+    cart: (s.cart as unknown as V1Line[]).map(({ variantLabel, ...l }) => ({
+      ...l,
+      key: id(l.key),
+      pizzaId: id(l.pizzaId),
+      pizzeriaId: l.pizzeriaId === "picu" ? "darbnīca" : (l.pizzeriaId as CartLine["pizzeriaId"]),
+      shape: /sirds/i.test(variantLabel ?? "") ? "heart" : /viens/i.test(variantLabel ?? "") ? "calzone" : "round",
+    })),
+    activePromos: s.activePromos.map((p) => (p === "picu-birthday" ? "darbnica-birthday" : p)),
+  };
 }
 
 export const useStore = create<State>()(
@@ -60,13 +81,22 @@ export const useStore = create<State>()(
       setRules: (r) => set((s) => ({ rules: { ...s.rules, ...r } })),
       resetRules: () => set({ rules: DEFAULT_RULES }),
       setSize: (size) => set({ size }),
-      addToCart: (line) =>
+      addPizza: (pizza, variant) =>
         set((s) => {
-          const existing = s.cart.find((l) => l.key === line.key);
+          const key = `${pizza.id}:${variant.id}`;
+          const existing = s.cart.find((l) => l.key === key);
+          const line: CartLine = {
+            key,
+            pizzaId: pizza.id,
+            pizzeriaId: pizza.pizzeriaId,
+            name: pizza.name,
+            diameterCm: variant.diameterCm,
+            shape: variant.shape,
+            unitPrice: variant.price,
+            qty: 1,
+          };
           return {
-            cart: existing
-              ? s.cart.map((l) => (l.key === line.key ? { ...l, qty: l.qty + 1 } : l))
-              : [...s.cart, { ...line, qty: 1 }],
+            cart: existing ? s.cart.map((l) => (l.key === key ? { ...l, qty: l.qty + 1 } : l)) : [...s.cart, line],
           };
         }),
       setQty: (key, qty) =>
@@ -96,10 +126,11 @@ export const useStore = create<State>()(
     }),
     {
       name: "picu-kalkulators",
-      version: 1,
+      version: 2,
+      migrate: migrateV1,
       storage: createJSONStorage(() => localStorage),
       skipHydration: true,
-      partialize: (s) => ({
+      partialize: (s): Persisted => ({
         people: s.people,
         rules: s.rules,
         size: s.size,

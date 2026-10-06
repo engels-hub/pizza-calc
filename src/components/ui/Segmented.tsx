@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { snappy } from "@/lib/motion";
 
 export function Segmented<T extends string | number>({
   options,
@@ -35,7 +36,7 @@ export function Segmented<T extends string | number>({
               <motion.span
                 layoutId={`seg-${id}`}
                 className="absolute inset-0 rounded-full bg-surface shadow-soft"
-                transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                transition={snappy}
               />
             )}
             <span className="relative">{o.label}</span>

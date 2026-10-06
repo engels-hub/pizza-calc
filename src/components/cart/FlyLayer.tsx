@@ -1,7 +1,9 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import { easeOutExpo } from "@/lib/motion";
 
 interface Flyer {
   id: number;
@@ -50,7 +52,6 @@ export function FlyLayer() {
           <motion.span
             key={f.id}
             className="pizza-dot absolute left-0 top-0 block size-10 overflow-hidden rounded-full"
-            style={f.img ? { backgroundImage: `url(/api/img?s=96&src=${encodeURIComponent(f.img)})`, backgroundSize: "cover" } : undefined}
             initial={{ x: f.from.x - 20, y: f.from.y - 20, scale: 1, opacity: 1 }}
             animate={{
               x: [f.from.x - 20, (f.from.x + f.to.x) / 2 - 20, f.to.x - 20],
@@ -58,9 +59,11 @@ export function FlyLayer() {
               scale: [1, 1.15, 0.35],
               opacity: [1, 1, 0.6],
             }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], times: [0, 0.4, 1] }}
+            transition={{ duration: 0.6, ease: easeOutExpo, times: [0, 0.4, 1] }}
             onAnimationComplete={() => setFlyers((all) => all.filter((x) => x.id !== f.id))}
-          />
+          >
+            {f.img && <Image src={f.img} alt="" fill sizes="40px" className="object-cover" />}
+          </motion.span>
         ))}
       </AnimatePresence>
     </div>

@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-06T09:10:25.961Z",
+  "fetchedAt": "2026-10-06T09:58:42.760Z",
   "pizzas": [
     {
       "id": "lulu-desu-pica",
@@ -21,28 +21,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 8.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 10.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 13.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 19.99
@@ -69,28 +65,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 10.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -125,28 +117,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -179,28 +167,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 10.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -237,28 +221,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 14.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 19.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 22.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 29.99
@@ -297,28 +277,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -345,28 +321,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 14.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 19.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 22.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 29.99
@@ -405,28 +377,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -453,28 +421,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -513,28 +477,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -575,28 +535,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -634,28 +590,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -690,28 +642,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 10.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -742,21 +690,18 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -795,28 +740,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 14.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 19.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 22.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 29.99
@@ -851,28 +792,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 14.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 19.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 22.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 29.99
@@ -907,28 +844,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -968,28 +901,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -1022,28 +951,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -1079,28 +1004,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -1133,28 +1054,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 10.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -1187,28 +1104,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 8.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -1251,28 +1164,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -1307,28 +1216,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 10.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -1355,28 +1260,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 8.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 10.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 13.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 19.99
@@ -1405,28 +1306,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 10.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -1464,28 +1361,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 14.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 19.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 22.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 29.99
@@ -1526,28 +1419,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -1586,28 +1475,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 10.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -1650,28 +1535,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -1708,28 +1589,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -1764,28 +1641,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -1830,28 +1703,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -1889,28 +1758,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -1937,28 +1802,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 8.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 10.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 13.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 19.99
@@ -1990,28 +1851,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 10.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -2044,28 +1901,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -2096,28 +1949,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 8.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -2154,7 +2003,6 @@
       "variants": [
         {
           "id": "one",
-          "label": "Viens izmērs",
           "diameterCm": 30,
           "shape": "calzone",
           "price": 11.99
@@ -2191,7 +2039,6 @@
       "variants": [
         {
           "id": "one",
-          "label": "Viens izmērs",
           "diameterCm": 30,
           "shape": "calzone",
           "price": 11.99
@@ -2228,7 +2075,6 @@
       "variants": [
         {
           "id": "one",
-          "label": "Viens izmērs",
           "diameterCm": 30,
           "shape": "calzone",
           "price": 11.99
@@ -2269,28 +2115,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 8.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -2323,28 +2165,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 8.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -2382,28 +2220,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 10.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -2445,28 +2279,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 10.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99
@@ -2507,28 +2337,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 11.99
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 15.99
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 18.49
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 25.99
@@ -2567,28 +2393,24 @@
       "variants": [
         {
           "id": "23",
-          "label": "23 cm",
           "diameterCm": 23,
           "shape": "round",
           "price": 10.49
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 14.49
         },
         {
           "id": "heart",
-          "label": "Sirds 30 cm",
           "diameterCm": 30,
           "shape": "heart",
           "price": 16.99
         },
         {
           "id": "45",
-          "label": "45 cm",
           "diameterCm": 45,
           "shape": "round",
           "price": 23.99

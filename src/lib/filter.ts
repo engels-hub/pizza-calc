@@ -1,4 +1,5 @@
-import { ingredientDef, type IngredientGroup } from "./ingredients";
+import { pizzaArea } from "./calc";
+import { ingredientDef, ingredientLabel, type IngredientGroup } from "./ingredients";
 import type { FilterState, PizzeriaFilter } from "./store";
 import type { Pizza, Variant } from "./types";
 
@@ -43,12 +44,24 @@ export function ingredientOptions(pizzas: Pizza[]): { group: IngredientGroup; it
   for (const [key, count] of counts) {
     const def = ingredientDef(key);
     if (def.group === "base") continue;
-    groups.set(def.group, [...(groups.get(def.group) ?? []), { key, label: def.label, count }]);
+    groups.set(def.group, [...(groups.get(def.group) ?? []), { key, label: ingredientLabel(key), count }]);
   }
   const order: IngredientGroup[] = ["meat", "seafood", "veg", "cheese", "sauce", "herb", "other"];
   return order
     .filter((g) => groups.has(g))
     .map((group) => ({ group, items: groups.get(group)!.sort((a, b) => b.count - a.count || a.label.localeCompare(b.label, "lv")) }));
+}
+
+export type MenuSort = "menu" | "price" | "value";
+
+/** Menu order, cheapest first, or cheapest per cm², priced at the chosen size. */
+export function sortPizzas(list: Pizza[], sort: MenuSort, diameter: number): Pizza[] {
+  if (sort === "menu") return list;
+  const key = (p: Pizza) => {
+    const v = preferredVariant(p, diameter);
+    return sort === "price" ? v.price : v.price / pizzaArea(v.diameterCm);
+  };
+  return [...list].sort((a, b) => key(a) - key(b));
 }
 
 /** Round variant closest to the chosen diameter (exact match wins). */

@@ -1,7 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
 
+vi.mock("server-only", () => ({}));
 vi.mock("next/cache", () => ({ cacheLife: () => {} }));
-vi.mock("@/lib/scrapers/picu", () => ({ scrapePicu: vi.fn(async () => Promise.reject(new Error("HTTP 503"))) }));
+vi.mock("@/lib/scrapers/darbnica", () => ({ scrapeDarbnica: vi.fn(async () => Promise.reject(new Error("HTTP 503"))) }));
 vi.mock("@/lib/scrapers/lulu", () => ({ scrapeLulu: vi.fn(async () => []) }));
 
 describe("getMenus", () => {
@@ -10,7 +11,7 @@ describe("getMenus", () => {
     const { getMenus } = await import("@/lib/menu");
     const menu = await getMenus();
     expect(menu.stale).toBe(true);
-    expect(menu.sources.picu).toMatchObject({ live: false, count: 30 });
+    expect(menu.sources["darbnīca"]).toMatchObject({ live: false, count: 30 });
     expect(menu.sources.lulu).toMatchObject({ live: false, count: 47 });
     expect(menu.pizzas).toHaveLength(77);
   });

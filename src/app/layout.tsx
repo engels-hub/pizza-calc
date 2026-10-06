@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { GeistPixelSquare } from "geist/font/pixel";
 import { Geist } from "next/font/google";
+import { lv } from "@/content/lv";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -10,8 +11,8 @@ const geistSans = Geist({
 
 
 export const metadata: Metadata = {
-  title: "Picu kalkulators",
-  description: "Cik picu pasūtīt, no kuras picērijas un par cik. Picu darbnīca un LuLū vienuviet.",
+  title: lv.meta.title,
+  description: lv.meta.description,
 };
 
 export const viewport: Viewport = {

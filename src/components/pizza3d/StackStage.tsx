@@ -3,6 +3,7 @@
 import { Canvas, useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import type { Group } from "three";
+import { lv } from "@/content/lv";
 import type { Pizza } from "@/lib/types";
 import { FauxPizza } from "./FauxPizza";
 
@@ -116,7 +117,7 @@ export default function StackStage({
       onPointerCancel={() => spin.release()}
       onPointerLeave={() => onHover(null)}
       role="img"
-      aria-label={units.length ? `${units.length} picas kaudzē` : "Tukšs pasūtījums"}
+      aria-label={units.length ? lv.cart.stackLabel(units.length) : lv.cart.stackEmpty}
     >
       {dpr !== null && (
         <Canvas
@@ -151,7 +152,7 @@ function Ticker({ active }: { active: boolean }) {
 
 const PLAIN: Pizza = {
   id: "empty",
-  pizzeriaId: "picu",
+  pizzeriaId: "darbnīca",
   name: "",
   url: "",
   rawIngredients: [],

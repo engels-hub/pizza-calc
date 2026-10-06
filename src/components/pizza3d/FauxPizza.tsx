@@ -34,6 +34,12 @@ interface Part {
   items: Item[];
 }
 
+// Scratch objects for per-frame matrix math; render loops run one at a time.
+const tmpMatrix = new Matrix4();
+const tmpQuat = new Quaternion();
+const tmpPos = new Vector3();
+const tmpScale = new Vector3(1, 1, 1);
+
 const DROP_FROM = 1.5;
 const DROP_TIME = 0.42;
 const MAX_ITEMS = 220;
@@ -113,7 +119,7 @@ export function FauxPizza({ pizza, reduce }: { pizza: Pizza; reduce: boolean }) 
   useLayoutEffect(
     () => () => {
       material.dispose();
-      parts.forEach((p) => p.geometry.dispose());
+      parts.forEach((part) => part.geometry.dispose());
       Object.values(base).forEach((b) => {
         b?.geo.dispose();
         b?.mat.dispose();
@@ -141,10 +147,6 @@ export function FauxPizza({ pizza, reduce }: { pizza: Pizza; reduce: boolean }) 
     start.current = null;
   }, [parts]);
 
-  const m = useMemo(() => new Matrix4(), []);
-  const q = useMemo(() => new Quaternion(), []);
-  const p = useMemo(() => new Vector3(), []);
-  const s = useMemo(() => new Vector3(1, 1, 1), []);
 
   useFrame((state) => {
     if (settled.current) return;
@@ -172,10 +174,10 @@ export function FauxPizza({ pizza, reduce }: { pizza: Pizza; reduce: boolean }) 
       if (!mesh) return;
       part.items.forEach((it, j) => {
         const d = drop(it.delay, it.y);
-        p.set(it.x, d.y, it.z);
-        q.setFromEuler(it.rot);
-        s.setScalar(d.visible ? 1 : 0);
-        mesh.setMatrixAt(j, m.compose(p, q, s));
+        tmpPos.set(it.x, d.y, it.z);
+        tmpQuat.setFromEuler(it.rot);
+        tmpScale.setScalar(d.visible ? 1 : 0);
+        mesh.setMatrixAt(j, tmpMatrix.compose(tmpPos, tmpQuat, tmpScale));
         last = Math.max(last, it.delay + DROP_TIME);
       });
       mesh.instanceMatrix.needsUpdate = true;

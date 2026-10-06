@@ -10,10 +10,13 @@ export interface CalcRules {
 export const DEFAULT_RULES: CalcRules = { factor: 1, offset: 1, baseDiameter: 30 };
 
 export const APPETITES = [
-  { id: "light", label: "Viegli", factor: 0.8 },
-  { id: "normal", label: "Normāli", factor: 1 },
-  { id: "hungry", label: "Izsalkuši", factor: 1.25 },
+  { id: "light", factor: 0.8 },
+  { id: "normal", factor: 1 },
+  { id: "hungry", factor: 1.25 },
 ] as const;
+
+/** Diameters the rule can be counted in. */
+export const BASE_DIAMETERS = [20, 23, 30, 45] as const;
 
 /** Heart shape and calzone are counted as the round pizza of the same size. */
 export function pizzaArea(diameterCm: number): number {

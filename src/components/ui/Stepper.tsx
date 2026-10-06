@@ -1,6 +1,7 @@
 "use client";
 
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
+import { lv } from "@/content/lv";
 
 const looks = {
   soft: "rounded-full bg-sunken transition-transform duration-150 active:scale-[0.94] hover:bg-line",
@@ -35,7 +36,7 @@ export function Stepper({
         className={`${btn} ${small ? "size-9" : ""}`}
         onClick={() => onChange(value - 1)}
         disabled={value <= min}
-        aria-label={`${label}: mazāk`}
+        aria-label={lv.planner.less(label)}
       >
         <MinusIcon size={small ? 14 : 18} weight="bold" />
       </button>
@@ -45,7 +46,7 @@ export function Stepper({
         className={`${btn} ${small ? "size-9" : ""}`}
         onClick={() => onChange(value + 1)}
         disabled={value >= max}
-        aria-label={`${label}: vairāk`}
+        aria-label={lv.planner.more(label)}
       >
         <PlusIcon size={small ? 14 : 18} weight="bold" />
       </button>

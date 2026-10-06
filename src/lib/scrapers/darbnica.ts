@@ -3,10 +3,10 @@ import { canonicalizeAll, deriveTags } from "../ingredients";
 import type { Pizza, PizzaTag, Variant } from "../types";
 import { fetchHtml, parsePrice, slugify } from "./http";
 
-export const PICU_URL = "https://www.picudarbnica.lv/picas/";
+export const DARBNICA_URL = "https://www.picudarbnica.lv/picas/";
 
 /** Picu darbnīca: one static WordPress page lists every pizza. */
-export function parsePicu(html: string): Pizza[] {
+export function parseDarbnica(html: string): Pizza[] {
   const $ = cheerio.load(html);
   const pizzas: Pizza[] = [];
 
@@ -18,13 +18,11 @@ export function parsePicu(html: string): Pizza[] {
 
     const variants: Variant[] = [];
     $el.find(".kom").each((_, k) => {
-      const label = $(k).text().trim();
-      const cm = /(\d+)\s*cm/i.exec(label);
+      const cm = /(\d+)\s*cm/i.exec($(k).text());
       if (!cm) return;
       const price = parsePrice($(k).siblings(".price").first().text());
       variants.push({
         id: `${cm[1]}`,
-        label: `${cm[1]} cm`,
         diameterCm: Number(cm[1]),
         shape: /calzone|pārlocīt/i.test(name) ? "calzone" : "round",
         price,
@@ -49,10 +47,10 @@ export function parsePicu(html: string): Pizza[] {
     const image = $el.find("a.zoom").attr("href") ?? $el.find("img").attr("src");
 
     pizzas.push({
-      id: `picu-${slugify(name)}`,
-      pizzeriaId: "picu",
+      id: `darbnica-${slugify(name)}`,
+      pizzeriaId: "darbnīca",
       name: prettyCase(name),
-      url: PICU_URL,
+      url: DARBNICA_URL,
       imageUrl: image,
       rawIngredients,
       ingredients,
@@ -74,6 +72,6 @@ function dedupe(list: Pizza[]): Pizza[] {
   return list.filter((p) => (seen.has(p.id) ? false : (seen.add(p.id), true)));
 }
 
-export async function scrapePicu(): Promise<Pizza[]> {
-  return parsePicu(await fetchHtml(PICU_URL));
+export async function scrapeDarbnica(): Promise<Pizza[]> {
+  return parseDarbnica(await fetchHtml(DARBNICA_URL));
 }

@@ -1,12 +1,12 @@
-import type { PizzeriaId } from "./types";
+import type { PizzeriaId, Shape } from "./types";
 
 export interface CartLine {
   key: string;
   pizzaId: string;
   pizzeriaId: PizzeriaId;
   name: string;
-  variantLabel: string;
   diameterCm: number;
+  shape: Shape;
   unitPrice: number;
   qty: number;
 }
@@ -18,23 +18,24 @@ export type DiscountRule =
 export interface Promo {
   id: string;
   pizzeriaId: PizzeriaId;
-  title: string;
   /** Code to type at checkout, if any. */
   code?: string;
-  note: string;
   rule: DiscountRule;
   /** ISO date (inclusive). Missing means always. */
   validFrom?: string;
   validTo?: string;
-  /** Promos sharing a group cannot be combined; the newest pick wins. */
+  /**
+   * Promos sharing a group cannot be combined; the newest pick wins.
+   * "solo" means the promo cannot be combined with anything at that pizzeria.
+   */
   exclusiveGroup?: string;
 }
 
 export type CustomDiscount = { kind: "percent"; value: number } | { kind: "fixed"; value: number } | null;
 
+/** `id` is a promo id, or "custom" for the user's own discount. */
 export interface AppliedDiscount {
   id: string;
-  title: string;
   amount: number;
 }
 
@@ -84,7 +85,7 @@ export function computeTotals(lines: CartLine[], promos: Promo[], custom: Custom
     for (const p of promos.filter((x) => x.pizzeriaId === pizzeriaId)) {
       const amount = promoAmount(p.rule, remaining);
       if (amount <= 0) continue;
-      discounts.push({ id: p.id, title: p.title, amount });
+      discounts.push({ id: p.id, amount });
       // Scale the remaining prices so the next promo sees discounted prices.
       const sum = remaining.reduce((a, b) => a + b, 0);
       const k = sum === 0 ? 0 : (sum - amount) / sum;
@@ -99,7 +100,7 @@ export function computeTotals(lines: CartLine[], promos: Promo[], custom: Custom
         ? round2(afterPromos * Math.min(custom.value, 100) / 100)
         : round2(Math.min(custom.value, afterPromos));
     if (amount > 0) {
-      discounts.push({ id: "custom", title: custom.kind === "percent" ? `Sava atlaide ${custom.value}%` : "Sava atlaide", amount });
+      discounts.push({ id: "custom", amount });
       afterPromos = round2(afterPromos - amount);
     }
   }
@@ -114,13 +115,15 @@ export function computeTotals(lines: CartLine[], promos: Promo[], custom: Custom
   };
 }
 
-/** Toggle a promo on, dropping any other promo in its exclusive group. */
+/** Toggle a promo on, dropping any promo it cannot be combined with. */
 export function togglePromo(active: string[], promo: Promo, all: Promo[]): string[] {
   if (active.includes(promo.id)) return active.filter((id) => id !== promo.id);
-  const clash = new Set(
-    all
-      .filter((p) => p.pizzeriaId === promo.pizzeriaId && (promo.exclusiveGroup === "solo" || p.exclusiveGroup === "solo"))
-      .map((p) => p.id),
-  );
-  return [...active.filter((id) => !clash.has(id)), promo.id];
+  const clashes = (p: Promo) =>
+    p.id !== promo.id &&
+    p.pizzeriaId === promo.pizzeriaId &&
+    (promo.exclusiveGroup === "solo" ||
+      p.exclusiveGroup === "solo" ||
+      (!!promo.exclusiveGroup && p.exclusiveGroup === promo.exclusiveGroup));
+  const drop = new Set(all.filter(clashes).map((p) => p.id));
+  return [...active.filter((id) => !drop.has(id)), promo.id];
 }

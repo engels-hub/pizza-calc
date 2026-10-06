@@ -1,9 +1,9 @@
 {
-  "fetchedAt": "2026-10-06T09:10:25.961Z",
+  "fetchedAt": "2026-10-06T09:58:42.760Z",
   "pizzas": [
     {
-      "id": "picu-cetru-sieru",
-      "pizzeriaId": "picu",
+      "id": "darbnica-cetru-sieru",
+      "pizzeriaId": "darbnīca",
       "name": "Četru sieru",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2026/04/001_cetru-sieru-1000x667.jpg",
@@ -30,14 +30,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 8
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 11.4
@@ -45,8 +43,8 @@
       ]
     },
     {
-      "id": "picu-lasa",
-      "pizzeriaId": "picu",
+      "id": "darbnica-lasa",
+      "pizzeriaId": "darbnīca",
       "name": "Laša",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2026/04/006_lasa-1000x667.jpg",
@@ -74,14 +72,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 8
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 11.4
@@ -89,8 +85,8 @@
       ]
     },
     {
-      "id": "picu-vasaras",
-      "pizzeriaId": "picu",
+      "id": "darbnica-vasaras",
+      "pizzeriaId": "darbnīca",
       "name": "Vasaras",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2026/04/011_vasaras-1000x667.jpg",
@@ -118,14 +114,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 6.9
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 9.9
@@ -133,8 +127,8 @@
       ]
     },
     {
-      "id": "picu-margarita",
-      "pizzeriaId": "picu",
+      "id": "darbnica-margarita",
+      "pizzeriaId": "darbnīca",
       "name": "Margarita",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9426-1000x667.jpg",
@@ -160,14 +154,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 5
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 6.9
@@ -175,8 +167,8 @@
       ]
     },
     {
-      "id": "picu-salami",
-      "pizzeriaId": "picu",
+      "id": "darbnica-salami",
+      "pizzeriaId": "darbnīca",
       "name": "Salami",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9436-1000x667.jpg",
@@ -196,14 +188,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 5.2
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 7.4
@@ -211,8 +201,8 @@
       ]
     },
     {
-      "id": "picu-funghi",
-      "pizzeriaId": "picu",
+      "id": "darbnica-funghi",
+      "pizzeriaId": "darbnīca",
       "name": "Funghi",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9444-1000x667.jpg",
@@ -234,14 +224,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 5.2
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 7.4
@@ -249,8 +237,8 @@
       ]
     },
     {
-      "id": "picu-ham-cheese",
-      "pizzeriaId": "picu",
+      "id": "darbnica-ham-cheese",
+      "pizzeriaId": "darbnīca",
       "name": "Ham&Cheese",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9445-1000x667.jpg",
@@ -270,14 +258,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 5.2
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 7.4
@@ -285,8 +271,8 @@
       ]
     },
     {
-      "id": "picu-peperoni-asa",
-      "pizzeriaId": "picu",
+      "id": "darbnica-peperoni-asa",
+      "pizzeriaId": "darbnīca",
       "name": "Peperoni (asa)",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9456-1000x667.jpg",
@@ -312,14 +298,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 5.8
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 8.3
@@ -327,8 +311,8 @@
       ]
     },
     {
-      "id": "picu-mikela-ipasa",
-      "pizzeriaId": "picu",
+      "id": "darbnica-mikela-ipasa",
+      "pizzeriaId": "darbnīca",
       "name": "Miķeļa īpašā",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9482-1000x667.jpg",
@@ -351,14 +335,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 5.8
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 8.3
@@ -366,8 +348,8 @@
       ]
     },
     {
-      "id": "picu-super-mario",
-      "pizzeriaId": "picu",
+      "id": "darbnica-super-mario",
+      "pizzeriaId": "darbnīca",
       "name": "Super Mario",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2013/11/IMG_9471-1000x667.jpg",
@@ -389,14 +371,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 5.8
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 8.3
@@ -404,8 +384,8 @@
       ]
     },
     {
-      "id": "picu-hawaii",
-      "pizzeriaId": "picu",
+      "id": "darbnica-hawaii",
+      "pizzeriaId": "darbnīca",
       "name": "Hawaii",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9485-1000x667.jpg",
@@ -429,14 +409,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 6.3
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 9.1
@@ -444,8 +422,8 @@
       ]
     },
     {
-      "id": "picu-deluxe",
-      "pizzeriaId": "picu",
+      "id": "darbnica-deluxe",
+      "pizzeriaId": "darbnīca",
       "name": "Deluxe",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9489-1000x667.jpg",
@@ -469,14 +447,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 6.3
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 9.1
@@ -484,8 +460,8 @@
       ]
     },
     {
-      "id": "picu-chicken-curry",
-      "pizzeriaId": "picu",
+      "id": "darbnica-chicken-curry",
+      "pizzeriaId": "darbnīca",
       "name": "Chicken curry",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2016/11/IMG_9495-1000x667.jpg",
@@ -515,14 +491,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 6.3
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 9.1
@@ -530,8 +504,8 @@
       ]
     },
     {
-      "id": "picu-supreme",
-      "pizzeriaId": "picu",
+      "id": "darbnica-supreme",
+      "pizzeriaId": "darbnīca",
       "name": "Supreme",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9501-1000x667.jpg",
@@ -559,14 +533,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 6.3
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 9.1
@@ -574,8 +546,8 @@
       ]
     },
     {
-      "id": "picu-gruzinu",
-      "pizzeriaId": "picu",
+      "id": "darbnica-gruzinu",
+      "pizzeriaId": "darbnīca",
       "name": "Gruzīnu",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9475-1000x667.jpg",
@@ -601,14 +573,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 6.3
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 9.1
@@ -616,8 +586,8 @@
       ]
     },
     {
-      "id": "picu-ozo",
-      "pizzeriaId": "picu",
+      "id": "darbnica-ozo",
+      "pizzeriaId": "darbnīca",
       "name": "Ozo",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2013/11/IMG_9461-1000x667.jpg",
@@ -641,14 +611,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 6.3
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 9.1
@@ -656,8 +624,8 @@
       ]
     },
     {
-      "id": "picu-annas-garda",
-      "pizzeriaId": "picu",
+      "id": "darbnica-annas-garda",
+      "pizzeriaId": "darbnīca",
       "name": "Annas gardā",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2018/11/IMG_1951-1000x667.jpg",
@@ -681,14 +649,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 6.3
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 9.1
@@ -696,8 +662,8 @@
       ]
     },
     {
-      "id": "picu-mexicana-asa",
-      "pizzeriaId": "picu",
+      "id": "darbnica-mexicana-asa",
+      "pizzeriaId": "darbnīca",
       "name": "Mexicana (asa)",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9515-1000x667.jpg",
@@ -725,14 +691,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 6.9
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 9.9
@@ -740,8 +704,8 @@
       ]
     },
     {
-      "id": "picu-cheeseburger",
-      "pizzeriaId": "picu",
+      "id": "darbnica-cheeseburger",
+      "pizzeriaId": "darbnīca",
       "name": "Cheeseburger",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2013/04/15-Cheeseburger-1000x667.jpg",
@@ -767,14 +731,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 6.9
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 9.9
@@ -782,8 +744,8 @@
       ]
     },
     {
-      "id": "picu-krasaina",
-      "pizzeriaId": "picu",
+      "id": "darbnica-krasaina",
+      "pizzeriaId": "darbnīca",
       "name": "Krāsainā",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2013/11/IMG_9510-1000x667.jpg",
@@ -813,14 +775,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 6.9
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 9.9
@@ -828,8 +788,8 @@
       ]
     },
     {
-      "id": "picu-pavasara",
-      "pizzeriaId": "picu",
+      "id": "darbnica-pavasara",
+      "pizzeriaId": "darbnīca",
       "name": "Pavasara",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2017/04/IMG_9632-1000x667.jpg",
@@ -857,14 +817,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 6.9
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 9.9
@@ -872,8 +830,8 @@
       ]
     },
     {
-      "id": "picu-vegetara",
-      "pizzeriaId": "picu",
+      "id": "darbnica-vegetara",
+      "pizzeriaId": "darbnīca",
       "name": "Veģetārā",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/01/IMG_9523-1000x667.jpg",
@@ -901,14 +859,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 7.3
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 10.4
@@ -916,8 +872,8 @@
       ]
     },
     {
-      "id": "picu-new-york",
-      "pizzeriaId": "picu",
+      "id": "darbnica-new-york",
+      "pizzeriaId": "darbnīca",
       "name": "New York",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9519-1-1000x667.jpg",
@@ -949,14 +905,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 7.3
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 10.4
@@ -964,8 +918,8 @@
       ]
     },
     {
-      "id": "picu-calzone-parlocita",
-      "pizzeriaId": "picu",
+      "id": "darbnica-calzone-parlocita",
+      "pizzeriaId": "darbnīca",
       "name": "Calzone (pārlocītā)",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9526-1000x667.jpg",
@@ -989,14 +943,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "calzone",
           "price": 7.3
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "calzone",
           "price": 10.4
@@ -1004,8 +956,8 @@
       ]
     },
     {
-      "id": "picu-tuna",
-      "pizzeriaId": "picu",
+      "id": "darbnica-tuna",
+      "pizzeriaId": "darbnīca",
       "name": "Tuna",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9540-1000x667.jpg",
@@ -1031,14 +983,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 7.3
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 10.4
@@ -1046,8 +996,8 @@
       ]
     },
     {
-      "id": "picu-speka",
-      "pizzeriaId": "picu",
+      "id": "darbnica-speka",
+      "pizzeriaId": "darbnīca",
       "name": "Spēka",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2018/11/IMG_1957-1000x667.jpg",
@@ -1077,14 +1027,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 7.8
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 11
@@ -1092,8 +1040,8 @@
       ]
     },
     {
-      "id": "picu-bbq",
-      "pizzeriaId": "picu",
+      "id": "darbnica-bbq",
+      "pizzeriaId": "darbnīca",
       "name": "Bbq",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9533-1000x667.jpg",
@@ -1121,14 +1069,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 7.8
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 11
@@ -1136,8 +1082,8 @@
       ]
     },
     {
-      "id": "picu-sea-food",
-      "pizzeriaId": "picu",
+      "id": "darbnica-sea-food",
+      "pizzeriaId": "darbnīca",
       "name": "Sea food",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9549-1000x667.jpg",
@@ -1163,14 +1109,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 8
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 11.4
@@ -1178,8 +1122,8 @@
       ]
     },
     {
-      "id": "picu-happy-shrimp",
-      "pizzeriaId": "picu",
+      "id": "darbnica-happy-shrimp",
+      "pizzeriaId": "darbnīca",
       "name": "Happy shrimp",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2012/02/IMG_9544-1000x667.jpg",
@@ -1205,14 +1149,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 8
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 11.4
@@ -1220,8 +1162,8 @@
       ]
     },
     {
-      "id": "picu-fiksitis",
-      "pizzeriaId": "picu",
+      "id": "darbnica-fiksitis",
+      "pizzeriaId": "darbnīca",
       "name": "Fiksītis",
       "url": "https://www.picudarbnica.lv/picas/",
       "imageUrl": "https://www.picudarbnica.lv/wp-content/uploads/2013/11/IMG_9537-1000x667.jpg",
@@ -1253,14 +1195,12 @@
       "variants": [
         {
           "id": "20",
-          "label": "20 cm",
           "diameterCm": 20,
           "shape": "round",
           "price": 8
         },
         {
           "id": "30",
-          "label": "30 cm",
           "diameterCm": 30,
           "shape": "round",
           "price": 11.4
