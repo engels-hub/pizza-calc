@@ -33,8 +33,13 @@ Promo codes and their dates live in `src/data/promos.ts` and are updated by hand
 | `src/lib/` | pure logic (calculation, discounts, filters, ingredient matching), scrapers, the store |
 | `src/hooks/` | shared client hooks (`useTotals`, `useRecommendation`, `useToday`) |
 | `src/components/` | grouped by feature: `planner`, `cart`, `menu`, `summary`, `pizza3d`, `layout`, `ui` |
-| `src/app/page.tsx` | a Server Component that loads the menus and composes the client islands |
+| `src/app/page.tsx` | a Server Component: cached static shell plus the personal calculator in a `<Suspense>` boundary |
+| `src/lib/prefs.ts` | the visitor's saved choices, encoded into one small cookie the server reads |
+
+## Rendering
+
+`/` uses Partial Prerendering (Cache Components). The header, footer and menu data are prerendered and cached for 6 hours. The calculator reads the `picu` cookie (people, rules, size, cart ids, active discounts), so it renders on the server per request and streams into the same response. Saved carts arrive already in the HTML, with prices from the current menu, and promo dates are judged in Riga time on the server. The zustand store is created per request through a context provider, never as a module singleton.
 
 ## Stack
 
-Next.js 16 (Cache Components, React Compiler), React 19, Tailwind CSS 4, Motion, React Three Fiber, zustand, vaul, cheerio, sharp, vitest.
+Next.js 16 (Cache Components, Partial Prerendering, React Compiler), React 19, Tailwind CSS 4, Motion, React Three Fiber, zustand, vaul, cheerio, sharp, vitest.

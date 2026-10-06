@@ -1,15 +1,8 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useStore } from "@/lib/store";
 
-const subscribe = () => () => {};
-
-function localToday(): string {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-}
-
-/** Today's local date as YYYY-MM-DD. Null during prerender, since the page is static. */
-export function useToday(): string | null {
-  return useSyncExternalStore(subscribe, localToday, () => null);
+/** Today's date in Riga as YYYY-MM-DD, decided by the server for this request. */
+export function useToday(): string {
+  return useStore((s) => s.today);
 }

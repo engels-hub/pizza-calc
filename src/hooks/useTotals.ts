@@ -11,6 +11,6 @@ export function useTotals(): Totals {
   const active = useStore((s) => s.activePromos);
   const custom = useStore((s) => s.custom);
   const today = useToday();
-  const applied = PROMOS.filter((p) => active.includes(p.id) && (!today || isPromoActive(p, today)));
+  const applied = PROMOS.filter((p) => active.includes(p.id) && isPromoActive(p, today));
   return computeTotals(cart, applied, custom);
 }

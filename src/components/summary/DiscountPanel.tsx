@@ -10,10 +10,10 @@ import { shortDate } from "@/lib/format";
 import { useStore } from "@/lib/store";
 import { Segmented } from "../ui/Segmented";
 
-function validity(p: Promo, today: string | null): string | null {
+function validity(p: Promo, today: string): string | null {
   if (!p.validTo) return null;
-  if (today && today > p.validTo) return lv.summary.endedOn(shortDate(p.validTo));
-  if (today && p.validFrom && today < p.validFrom) return lv.summary.startsOn(shortDate(p.validFrom));
+  if (today > p.validTo) return lv.summary.endedOn(shortDate(p.validTo));
+  if (p.validFrom && today < p.validFrom) return lv.summary.startsOn(shortDate(p.validFrom));
   return lv.summary.until(shortDate(p.validTo));
 }
 
@@ -27,7 +27,7 @@ export function DiscountPanel() {
       <p className="text-sm font-medium text-muted">{lv.summary.discounts}</p>
       <ul className="flex flex-col gap-1.5">
         {PROMOS.map((p) => {
-          const live = !today || isPromoActive(p, today);
+          const live = isPromoActive(p, today);
           return (
             <PromoRow
               key={p.id}
