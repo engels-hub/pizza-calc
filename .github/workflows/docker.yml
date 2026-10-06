@@ -22,6 +22,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Route and layout prop types are generated into .next/, which is not committed.
+      - run: npx next typegen
       - run: npx tsc --noEmit
       - run: npx eslint src tests
       - run: npm test
