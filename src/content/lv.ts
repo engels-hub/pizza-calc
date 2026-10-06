@@ -149,6 +149,7 @@ export const lv = {
     saved: (price: string) => `Ietaupi ${price}`,
     copyLink: "Kopēt saiti uz šo pasūtījumu",
     linkCopied: "Saite nokopēta",
+    remove: (name: string, size: string) => `Izņemt ${name} ${size}`,
   },
 
   pizzerias: {
