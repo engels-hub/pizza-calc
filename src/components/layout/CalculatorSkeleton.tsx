@@ -9,7 +9,7 @@ const block = "animate-pulse rounded-2xl bg-sunken";
 export function CalculatorSkeleton() {
   return (
     <main
-      className="mx-auto flex max-w-[1400px] flex-col gap-12 px-4 pb-32 md:px-8 lg:gap-16 lg:pb-16"
+      className="mx-auto flex max-w-[1400px] flex-col gap-12 px-4 pb-24 md:px-8 lg:gap-16 lg:pb-16"
       aria-busy="true"
     >
       <section className="flex flex-col gap-6">

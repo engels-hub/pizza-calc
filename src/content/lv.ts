@@ -129,8 +129,7 @@ export const lv = {
   },
 
   bottomBar: {
-    order: "Pasūtījums",
-    empty: "Tukšs",
+    toSummary: "Uz kopsavilkumu",
   },
 
   summary: {

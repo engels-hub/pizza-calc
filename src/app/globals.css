@@ -150,19 +150,9 @@ body {
   animation-delay: 140ms;
 }
 
-@keyframes rise {
-  from {
-    transform: translateY(120%);
-  }
-}
-
-.rise {
-  animation: rise 600ms cubic-bezier(0.16, 1, 0.3, 1) 200ms backwards;
-}
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal > *,
-  .rise {
+  .reveal > * {
     animation: none;
   }
 }
