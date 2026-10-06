@@ -1,17 +1,18 @@
 "use client";
 
 import { FireIcon, LeafIcon, PlusIcon } from "@phosphor-icons/react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { lv } from "@/content/lv";
 import { pricePer100cm2 } from "@/lib/calc";
 import { preferredVariant, toppingLine } from "@/lib/filter";
 import { euro, twoDecimals, variantLabel } from "@/lib/format";
-import { fadeSlide, spring } from "@/lib/motion";
+import { spring } from "@/lib/motion";
 import { useStore } from "@/lib/store";
 import type { Pizza, Variant } from "@/lib/types";
 import { flyToTicket } from "../cart/FlyLayer";
+import { Collapse } from "../ui/Collapse";
 
 export function PizzaRow({ pizza, size, showPizzeria }: { pizza: Pizza; size: number; showPizzeria: boolean }) {
   const [open, setOpen] = useState(false);
@@ -81,45 +82,37 @@ export function PizzaRow({ pizza, size, showPizzeria }: { pizza: Pizza; size: nu
         </div>
       </div>
 
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, transition: { duration: 0.1 } }}
-            transition={fadeSlide}
-            className="px-3 pb-3 md:pl-[5.5rem]"
-          >
-            <p className="mb-3 text-sm leading-relaxed text-muted">{pizza.rawIngredients.join(", ")}</p>
-            <div className="flex flex-wrap gap-2">
-              {pizza.variants.map((variant) => (
-                <button
-                  key={variant.id}
-                  type="button"
-                  onClick={(e) => add(variant, e)}
-                  aria-label={lv.menu.add(pizza.name, variantLabel(variant))}
-                  className="flex min-h-11 items-center gap-2 rounded-full border border-line bg-bg px-3.5 text-sm transition-[transform,border-color] hover:border-accent active:scale-[0.97]"
-                >
-                  <PlusIcon size={14} className="text-accent" weight="bold" />
-                  {variantLabel(variant)}
-                  <span className="tabular font-medium">{euro(variant.price)}</span>
-                  <span className="tabular hidden text-xs text-muted sm:inline">
-                    {lv.menu.perArea(twoDecimals(pricePer100cm2(variant.price, variant.diameterCm)))}
-                  </span>
-                </button>
-              ))}
-              <a
-                href={pizza.url}
-                target="_blank"
-                rel="noreferrer"
-                className="flex min-h-11 items-center px-2 text-sm font-medium text-accent"
+      <Collapse open={open}>
+        <div className="px-3 pb-3 md:pl-[5.5rem]">
+          <p className="mb-3 text-sm leading-relaxed text-muted">{pizza.rawIngredients.join(", ")}</p>
+          <div className="flex flex-wrap gap-2">
+            {pizza.variants.map((variant) => (
+              <button
+                key={variant.id}
+                type="button"
+                onClick={(e) => add(variant, e)}
+                aria-label={lv.menu.add(pizza.name, variantLabel(variant))}
+                className="flex min-h-11 items-center gap-2 rounded-full border border-line bg-bg px-3.5 text-sm transition-[transform,border-color] hover:border-accent active:scale-[0.97]"
               >
-                {lv.menu.open(pizzeria)}
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                <PlusIcon size={14} className="text-accent" weight="bold" />
+                {variantLabel(variant)}
+                <span className="tabular font-medium">{euro(variant.price)}</span>
+                <span className="tabular hidden text-xs text-muted sm:inline">
+                  {lv.menu.perArea(twoDecimals(pricePer100cm2(variant.price, variant.diameterCm)))}
+                </span>
+              </button>
+            ))}
+            <a
+              href={pizza.url}
+              target="_blank"
+              rel="noreferrer"
+              className="flex min-h-11 items-center px-2 text-sm font-medium text-accent"
+            >
+              {lv.menu.open(pizzeria)}
+            </a>
+          </div>
+        </div>
+      </Collapse>
     </motion.li>
   );
 }

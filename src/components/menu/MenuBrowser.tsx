@@ -1,12 +1,12 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { lv } from "@/content/lv";
 import { filterPizzas, sortPizzas, type MenuSort } from "@/lib/filter";
-import { fadeSlide } from "@/lib/motion";
 import { useStore, type PizzeriaFilter } from "@/lib/store";
 import { PIZZERIA_IDS, type Pizza } from "@/lib/types";
+import { Collapse } from "../ui/Collapse";
 import { Segmented } from "../ui/Segmented";
 import { IngredientPanel } from "./IngredientPanel";
 import { MenuFilters } from "./MenuFilters";
@@ -49,18 +49,9 @@ export function MenuBrowser({ pizzas }: { pizzas: Pizza[] }) {
 
       <MenuFilters filtersOpen={filtersOpen} onToggleFilters={() => setFiltersOpen((o) => !o)} />
 
-      <AnimatePresence initial={false}>
-        {filtersOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={fadeSlide}
-          >
-            <IngredientPanel pizzas={inScope} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Collapse open={filtersOpen} id="ingredient-panel">
+        <IngredientPanel pizzas={inScope} />
+      </Collapse>
 
       <div className="flex items-center justify-between gap-3 text-sm text-muted">
         <span aria-live="polite">

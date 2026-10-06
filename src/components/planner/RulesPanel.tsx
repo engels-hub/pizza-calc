@@ -1,13 +1,14 @@
 "use client";
 
 import { ArrowCounterClockwiseIcon, CaretDownIcon, SlidersHorizontalIcon } from "@phosphor-icons/react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { useState } from "react";
 import { lv } from "@/content/lv";
 import { APPETITES, BASE_DIAMETERS, DEFAULT_RULES, basePizzas, type CalcRules } from "@/lib/calc";
 import { oneDecimal, twoDecimals } from "@/lib/format";
-import { fadeSlide, spring } from "@/lib/motion";
+import { spring } from "@/lib/motion";
 import { useStore } from "@/lib/store";
+import { Collapse } from "../ui/Collapse";
 import { Segmented } from "../ui/Segmented";
 import { Stepper } from "../ui/Stepper";
 
@@ -42,19 +43,9 @@ export function RulesPanel() {
         </motion.span>
       </button>
 
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            id="rules-panel"
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={fadeSlide}
-          >
-            <RulesForm formula={formula} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Collapse open={open} id="rules-panel">
+        <RulesForm formula={formula} />
+      </Collapse>
     </div>
   );
 }

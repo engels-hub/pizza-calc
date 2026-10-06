@@ -7,7 +7,7 @@ const one = (n: number) => n % 10 === 1 && n % 100 !== 11;
 export const lv = {
   meta: {
     title: "Picu kalkulators",
-    description: "Cik picu pasūtīt, no kuras picērijas un par cik. Picu darbnīca un LuLū vienuviet.",
+    description: "Cik picu pasūtīt, no kuras picērijas un par cik. Picu darbnīca un LuLū vienuviet",
   },
 
   plural: {
@@ -25,12 +25,12 @@ export const lv = {
   footer: {
     before: "Cenas no",
     and: "un",
-    after: ". Pasūtījumu veic pašā picērijā, šeit tikai aprēķins.",
+    after: ". Pasūtījumu veic pašā picērijā, šeit tikai aprēķins",
   },
 
   error: {
-    title: "Kaut kas nogāja greizi.",
-    body: "Neizdevās ielādēt kalkulatoru. Pamēģini vēlreiz.",
+    title: "Kaut kas nogāja greizi",
+    body: "Neizdevās ielādēt kalkulatoru. Pamēģini vēlreiz",
     retry: "Mēģināt vēlreiz",
   },
 
@@ -70,7 +70,7 @@ export const lv = {
     searchLabel: "Meklēt picu vai sastāvdaļu",
     searchPlaceholder: "Meklēt, piem. bekons",
     ingredients: "Sastāvdaļas",
-    ingredientHelp: "Viens klikšķis pievieno. Otrreiz izslēdz. Trešais noņem filtru.",
+    ingredientHelp: "Viens klikšķis pievieno. Otrreiz izslēdz. Trešais noņem filtru",
     without: "bez",
     /** Prefix for an excluded tag, e.g. "ne asās". */
     not: "ne",
@@ -79,8 +79,8 @@ export const lv = {
     clearFilters: "Notīrīt filtrus",
     sort: "Kārtot",
     sorts: { menu: "Kā ēdienkartē", price: "Lētākās", value: "Izdevīgākās par cm²" },
-    emptyTitle: "Nav picu ar šīm sastāvdaļām.",
-    emptyBody: "Pamēģini noņemt kādu filtru vai izvēlēties abas picērijas.",
+    emptyTitle: "Nav picu ar šīm sastāvdaļām",
+    emptyBody: "Pamēģini noņemt kādu filtru vai izvēlēties abas picērijas",
     add: (name: string, size: string) => `Pievienot ${name} ${size}`,
     open: (pizzeria: string) => `Atvērt ${pizzeria}`,
     perArea: (price: string) => `${price} €/dm²`,
@@ -98,7 +98,7 @@ export const lv = {
   cart: {
     title: "Jūsu picas",
     clear: "Notīrīt",
-    empty: "Pievieno picas no saraksta, tās sakrausies šeit.",
+    empty: "Pievieno picas sarakstā",
     shownOf: (shown: number, total: number) => `Rādītas ${shown} no ${total}`,
     stackLabel: (n: number) => `${n} picas kaudzē`,
     stackEmpty: "Tukšs pasūtījums",
@@ -149,15 +149,15 @@ export const lv = {
   promos: {
     "lulu-takeaway": {
       title: "Paņem pats −15%",
-      note: "Pasūti tiešsaistē un izņem picērijā. Nesummējas ar citām atlaidēm.",
+      note: "Pasūti tiešsaistē un izņem picērijā. Nesummējas ar citām atlaidēm",
     },
-    "lulu-picrudens": { title: "Visas picas −50%", note: "Rudens akcija visām picām." },
-    "lulu-davana": { title: "Katra 3. pica bez maksas", note: "Lētākā pica katrā trijniekā ir par brīvu." },
-    "lulu-atgriesanas": { title: "Visas picas −50%", note: "Septembra akcija." },
-    "darbnica-drauga": { title: "Drauga karte −10%", note: "Pastāvīgā lojalitātes karte, vienmēr −10%." },
+    "lulu-picrudens": { title: "Visas picas −50%", note: "Rudens akcija visām picām" },
+    "lulu-davana": { title: "Katra 3. pica bez maksas", note: "Lētākā pica katrā trijniekā ir par brīvu" },
+    "lulu-atgriesanas": { title: "Visas picas −50%", note: "Septembra akcija" },
+    "darbnica-drauga": { title: "Drauga karte −10%", note: "Pastāvīgā lojalitātes karte, vienmēr −10%" },
     "darbnica-birthday": {
       title: "Dzimšanas vai vārda diena −15%",
-      note: "Tikai pašā svētku dienā, jāpasaka pasūtot. Nesummējas ar drauga karti.",
+      note: "Tikai pašā svētku dienā, jāpasaka pasūtot. Nesummējas ar drauga karti",
     },
   } as Record<string, { title: string; note: string }>,
 
