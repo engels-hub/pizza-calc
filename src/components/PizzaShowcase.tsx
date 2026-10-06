@@ -3,6 +3,7 @@
 import { CameraIcon, CubeIcon } from "@phosphor-icons/react";
 import { AnimatePresence, motion } from "motion/react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { useCallback, useMemo, useState } from "react";
 import { ingredientDef } from "@/lib/ingredients";
 import { useStore } from "@/lib/store";
@@ -36,7 +37,30 @@ export function PizzaShowcase({ pizzas }: { pizzas: Pizza[] }) {
   return (
     <div className="relative flex h-full flex-col overflow-hidden rounded-3xl bg-sunken">
       <div className="ps1-backdrop relative h-[34dvh] min-h-56 w-full md:aspect-square md:h-auto">
-        <PizzaStage pizza={pizza} mode={effective} onPhotoError={onPhotoError} />
+        {effective === "photo" ? (
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={pizza.id}
+              initial={{ opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={pizza.imageUrl!}
+                alt={pizza.name}
+                fill
+                sizes="(min-width: 1280px) 400px, (min-width: 768px) 45vw, 100vw"
+                className="object-cover"
+                priority
+                onError={onPhotoError}
+              />
+            </motion.div>
+          </AnimatePresence>
+        ) : (
+          <PizzaStage pizza={pizza} />
+        )}
       </div>
 
       <div className="flex flex-col gap-2 px-4 pb-4 pt-3 md:gap-3 md:p-5">

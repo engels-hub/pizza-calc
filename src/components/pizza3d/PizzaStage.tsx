@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import type { Group } from "three";
 import type { Pizza } from "@/lib/types";
 import { FauxPizza } from "./FauxPizza";
-import { PhotoPizza } from "./PhotoPizza";
 
 // Internal render height in real pixels. ~1/4 of a PS1 frame per axis on a
 // phone, so the canvas is pixelated on purpose and cheap to draw.
@@ -48,15 +47,7 @@ class Spin {
   }
 }
 
-export default function PizzaStage({
-  pizza,
-  mode,
-  onPhotoError,
-}: {
-  pizza: Pizza;
-  mode: "photo" | "faux";
-  onPhotoError: () => void;
-}) {
+export default function PizzaStage({ pizza }: { pizza: Pizza }) {
   const wrap = useRef<HTMLDivElement>(null);
   // Measured before the Canvas mounts; a dpr change remounts it, because
   // changing it live leaves the GL viewport out of sync with the buffer.
@@ -125,11 +116,7 @@ export default function PizzaStage({
         >
           <Ticker active={visible} />
           <Spinner spin={spin} reduce={reduce}>
-            {mode === "photo" && pizza.imageUrl ? (
-              <PhotoPizza key={`p-${pizza.id}`} url={pizza.imageUrl} onError={onPhotoError} reduce={reduce} />
-            ) : (
-              <FauxPizza key={`f-${pizza.id}`} pizza={pizza} reduce={reduce} />
-            )}
+            <FauxPizza key={pizza.id} pizza={pizza} reduce={reduce} />
           </Spinner>
         </Canvas>
       )}
