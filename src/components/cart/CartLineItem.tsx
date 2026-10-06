@@ -1,5 +1,6 @@
 "use client";
 
+import { XIcon } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { lv } from "@/content/lv";
@@ -54,7 +55,18 @@ export function CartLineItem({ line, pizza }: { line: CartLine; pizza?: Pizza })
         >
           <span className="tabular w-5 text-center text-sm font-medium">{line.qty}</span>
         </Stepper>
-        <span className="tabular text-sm font-medium">{euro(line.unitPrice * line.qty)}</span>
+        <span className="flex items-center gap-1">
+          <span className="tabular text-sm font-medium">{euro(line.unitPrice * line.qty)}</span>
+          <button
+            type="button"
+            onClick={() => setQty(line.key, 0)}
+            aria-label={lv.summary.remove(line.name, variantLabel(line))}
+            title={lv.summary.remove(line.name, variantLabel(line))}
+            className="-mr-1 grid size-8 place-items-center rounded-full text-muted transition-colors hover:bg-bg hover:text-accent active:scale-[0.94]"
+          >
+            <XIcon size={13} weight="bold" />
+          </button>
+        </span>
       </span>
       {toppings.length > 0 && (
         <span className="col-span-2 col-start-2 flex flex-wrap gap-1">

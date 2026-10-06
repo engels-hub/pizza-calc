@@ -17,15 +17,15 @@ function validity(p: Promo, today: string): string | null {
   return lv.summary.until(shortDate(p.validTo));
 }
 
-export function DiscountPanel() {
+/** Every deal as a switch, plus the user's own discount. */
+export function DealsList() {
   const today = useToday();
   const active = useStore((s) => s.activePromos);
   const setActive = useStore((s) => s.setActivePromos);
 
   return (
-    <div className="flex flex-col gap-3">
-      <p className="text-sm font-medium text-muted">{lv.summary.discounts}</p>
-      <ul className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-4">
+      <ul className="grid gap-1.5 md:grid-cols-2">
         {PROMOS.map((p) => {
           const live = isPromoActive(p, today);
           return (

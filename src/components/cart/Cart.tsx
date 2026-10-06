@@ -10,7 +10,9 @@ import type { StackUnit } from "../pizza3d/StackStage";
 import { Dither } from "../ui/Dither";
 import { CartLineItem } from "./CartLineItem";
 import { Coverage } from "./Coverage";
+import { ShareLink } from "./ShareLink";
 import { SliceShare } from "./SliceShare";
+import { TotalsBlock } from "./TotalsBlock";
 
 // Three.js lives in its own client-only chunk, away from the Motion tree.
 const StackStage = dynamic(() => import("../pizza3d/StackStage"), {
@@ -38,7 +40,10 @@ export function Cart({ pizzas }: { pizzas: Pizza[] }) {
   }
 
   return (
-    <section aria-labelledby="cart-title" className="flex flex-col overflow-hidden rounded-3xl bg-sunken">
+    <section
+      aria-labelledby="cart-title"
+      className="flex flex-col overflow-hidden rounded-3xl bg-sunken lg:max-h-[calc(100dvh-2rem)]"
+    >
       <div className="flex items-center gap-3 px-5 pt-4">
         <h2 id="cart-title" className="text-xl font-semibold tracking-tight">
           {lv.cart.title}
@@ -56,7 +61,7 @@ export function Cart({ pizzas }: { pizzas: Pizza[] }) {
         )}
       </div>
 
-      <div className="relative h-[38dvh] min-h-64 lg:h-[44dvh]" data-fly-target>
+      <div className="relative h-[38dvh] min-h-64 shrink-0 lg:h-[40dvh]" data-fly-target>
         <Dither
           className="absolute inset-0"
           from="var(--sunken)"
@@ -78,10 +83,10 @@ export function Cart({ pizzas }: { pizzas: Pizza[] }) {
       </div>
 
       {count > 0 && (
-        <div className="flex flex-col gap-3 px-3 pb-3">
-          <div className="flex flex-col gap-3 px-2">
+        // On desktop the cart is sticky, so the lines and total scroll inside it.
+        <div className="flex min-h-0 flex-col gap-3 px-3 pb-3 lg:overflow-y-auto">
+          <div className="px-2">
             <Coverage />
-            <SliceShare withHint className="px-1.5" />
           </div>
           <ul className="flex flex-col gap-1" onMouseLeave={() => setHovered(null)}>
             <AnimatePresence initial={false}>
@@ -90,6 +95,12 @@ export function Cart({ pizzas }: { pizzas: Pizza[] }) {
               ))}
             </AnimatePresence>
           </ul>
+
+          <div id="totals" className="flex scroll-mt-6 flex-col gap-4 border-t border-line px-2 pt-4">
+            <SliceShare withHint />
+            <TotalsBlock />
+            <ShareLink />
+          </div>
         </div>
       )}
     </section>

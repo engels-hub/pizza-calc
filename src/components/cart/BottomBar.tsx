@@ -1,22 +1,30 @@
 "use client";
 
 import { CaretDownIcon } from "@phosphor-icons/react";
-import { AnimatePresence, motion, useAnimationControls, useReducedMotion } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  useAnimationControls,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+} from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { lv } from "@/content/lv";
 import { easeOutExpo, spring } from "@/lib/motion";
 import { useStore } from "@/lib/store";
 
 /**
- * Below lg: a small pizza button that jumps to the summary. It hides while the
- * summary is already on screen, and nudges when a pizza lands in the cart.
+ * Below lg: a small pizza button that jumps to the cart total. It hides while
+ * the total is on screen (or the cart is empty), points towards the total,
+ * and nudges when a pizza lands in the cart.
  */
 export function BottomBar() {
   const count = useStore((s) => s.cart.reduce((n, l) => n + l.qty, 0));
   const bump = useAnimationControls();
   const reduce = useReducedMotion();
   const prev = useRef(count);
-  const [summaryVisible, setSummaryVisible] = useState(false);
+  const [totals, setTotals] = useState<"visible" | "above" | "below">("below");
 
   useEffect(() => {
     if (count > prev.current && !reduce) {
@@ -25,17 +33,27 @@ export function BottomBar() {
     prev.current = count;
   }, [count, bump, reduce]);
 
+  // Where the total is relative to the screen. Derived from the scroll position
+  // (not an IntersectionObserver, which misses jumps straight past the total,
+  // e.g. a reload that restores a scrolled position).
+  const hasTotals = count > 0;
+  const { scrollY } = useScroll();
+  const locate = () => {
+    const el = document.getElementById("totals");
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const h = window.innerHeight;
+    const next = r.bottom < h * 0.15 ? "above" : r.top > h * 0.85 ? "below" : "visible";
+    setTotals((prev) => (prev === next ? prev : next));
+  };
+  useMotionValueEvent(scrollY, "change", locate);
   useEffect(() => {
-    const summary = document.getElementById("summary");
-    if (!summary) return;
-    const io = new IntersectionObserver(([entry]) => setSummaryVisible(entry.isIntersecting), { threshold: 0.15 });
-    io.observe(summary);
-    return () => io.disconnect();
-  }, []);
+    if (hasTotals) requestAnimationFrame(locate);
+  }, [hasTotals, count]);
 
   return (
     <AnimatePresence>
-      {!summaryVisible && (
+      {hasTotals && totals !== "visible" && (
         <motion.div
           initial={reduce ? false : { opacity: 0, scale: 0.6 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -49,12 +67,20 @@ export function BottomBar() {
             data-fly-target
             aria-label={lv.bottomBar.toSummary}
             title={lv.bottomBar.toSummary}
-            onClick={() => document.getElementById("summary")?.scrollIntoView({ behavior: reduce ? "auto" : "smooth" })}
+            onClick={() =>
+              document
+                .getElementById("totals")
+                ?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" })
+            }
             className="pizza-dot grid size-14 place-items-center rounded-full shadow-soft"
           >
-            <span className="grid size-7 place-items-center rounded-full bg-ink/80 text-bg">
+            <motion.span
+              animate={{ rotate: totals === "above" ? 180 : 0 }}
+              transition={spring}
+              className="grid size-7 place-items-center rounded-full bg-ink/80 text-bg"
+            >
               <CaretDownIcon size={16} weight="bold" />
-            </span>
+            </motion.span>
           </motion.button>
         </motion.div>
       )}

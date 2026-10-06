@@ -9,7 +9,6 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { StoreProvider } from "@/components/layout/StoreProvider";
 import { MenuBrowser } from "@/components/menu/MenuBrowser";
 import { Planner } from "@/components/planner/Planner";
-import { Summary } from "@/components/summary/Summary";
 import { sizeOptions } from "@/lib/filter";
 import { getMenus } from "@/lib/menu";
 import {
@@ -67,8 +66,6 @@ async function PersonalCalculator({ menu, searchParams }: { menu: MenuData; sear
           </div>
           <MenuBrowser pizzas={menu.pizzas} />
         </div>
-
-        <Summary />
       </main>
       <BottomBar />
       <FlyLayer />

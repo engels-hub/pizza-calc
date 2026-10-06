@@ -129,12 +129,15 @@ export const lv = {
   },
 
   bottomBar: {
-    toSummary: "Uz kopsavilkumu",
+    toSummary: "Uz kopsummu",
   },
 
   summary: {
-    title: "Kopsavilkums",
     discounts: "Atlaides",
+    /** Status line under the closed deals dropdown. */
+    dealsNone: "Neviena nav ieslēgta",
+    dealsActive: (n: number, saved: string | null) =>
+      `${n} ${one(n) ? "ieslēgta" : "ieslēgtas"}${saved ? `, ietaupi ${saved}` : ""}`,
     custom: "Sava atlaide",
     customKind: "Atlaides veids",
     customTitle: (value: number) => `Sava atlaide ${value}%`,

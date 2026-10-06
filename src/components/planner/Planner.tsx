@@ -1,4 +1,5 @@
 import { lv } from "@/content/lv";
+import { DealsPanel } from "../deals/DealsPanel";
 import type { SizeOption } from "@/lib/filter";
 import { PeopleControl } from "./PeopleControl";
 import { Recommendation } from "./Recommendation";
@@ -23,7 +24,10 @@ export function Planner({ sizes }: { sizes: SizeOption[] }) {
         </div>
       </div>
 
-      <RulesPanel />
+      <div className="flex flex-col gap-3">
+        <RulesPanel />
+        <DealsPanel />
+      </div>
     </section>
   );
 }

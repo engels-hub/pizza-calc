@@ -6,6 +6,7 @@ import { useTotals } from "@/hooks/useTotals";
 import type { AppliedDiscount, CustomDiscount } from "@/lib/discounts";
 import { euro } from "@/lib/format";
 import { useStore } from "@/lib/store";
+import { PIZZERIA_IDS } from "@/lib/types";
 import { AnimatedNumber } from "../ui/AnimatedNumber";
 
 function discountTitle(d: AppliedDiscount, custom: CustomDiscount): string {
@@ -17,10 +18,23 @@ export function TotalsBlock() {
   const totals = useTotals();
   const people = useStore((s) => s.people);
   const custom = useStore((s) => s.custom);
+  const cart = useStore((s) => s.cart);
   const hasDiscount = totals.saved > 0;
+  // Each pizzeria is a separate order, so show what goes to whom.
+  const perPizzeria = PIZZERIA_IDS.map((id) => ({
+    id,
+    sum: cart.filter((l) => l.pizzeriaId === id).reduce((n, l) => n + l.qty * l.unitPrice, 0),
+  })).filter((r) => r.sum > 0);
 
   return (
-    <div className="flex flex-col gap-1.5 border-t border-line pt-4">
+    <div className="flex flex-col gap-1.5">
+      {perPizzeria.length > 1 &&
+        perPizzeria.map((r) => (
+          <div key={r.id} className="flex justify-between text-sm text-muted">
+            <span>{lv.pizzerias[r.id]}</span>
+            <span className="tabular">{euro(r.sum)}</span>
+          </div>
+        ))}
       <div className="flex justify-between text-sm text-muted">
         <span>{lv.summary.subtotal}</span>
         <span className={`tabular ${hasDiscount ? "line-through decoration-1" : ""}`}>{euro(totals.subtotal)}</span>

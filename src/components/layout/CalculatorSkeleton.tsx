@@ -22,7 +22,10 @@ export function CalculatorSkeleton() {
           <div className={`${block} h-28`} />
           <div className={`${block} col-span-2 h-28 lg:col-span-1`} />
         </div>
-        <div className={`${block} h-14`} />
+        <div className="flex flex-col gap-3">
+          <div className={`${block} h-14`} />
+          <div className={`${block} h-14`} />
+        </div>
       </section>
       <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div className={`${block} h-[50dvh] rounded-3xl`} />

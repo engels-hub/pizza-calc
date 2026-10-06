@@ -32,7 +32,7 @@ Promo codes and their dates live in `src/data/promos.ts` and are updated by hand
 | `src/content/lv.ts` | every user-facing string: UI copy, promo titles, ingredient and pizzeria names |
 | `src/lib/` | pure logic (calculation, discounts, filters, ingredient matching), scrapers, the store |
 | `src/hooks/` | shared client hooks (`useTotals`, `useRecommendation`, `useToday`) |
-| `src/components/` | grouped by feature: `planner`, `cart`, `menu`, `summary`, `pizza3d`, `layout`, `ui` |
+| `src/components/` | grouped by feature: `planner`, `deals`, `cart`, `menu`, `pizza3d`, `layout`, `ui` |
 | `src/app/page.tsx` | a Server Component: cached static shell plus the personal calculator in a `<Suspense>` boundary |
 | `src/lib/prefs.ts` | the visitor's saved choices, encoded into one small cookie the server reads |
 
