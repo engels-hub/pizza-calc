@@ -10,7 +10,7 @@ import { ingredientDef, ingredientLabel } from "@/lib/ingredients";
 import { spring } from "@/lib/motion";
 import { useStore } from "@/lib/store";
 import type { Pizza } from "@/lib/types";
-import { SizePills } from "../ui/SizePills";
+import { SizeSelect } from "../ui/SizeSelect";
 import { Stepper } from "../ui/Stepper";
 
 export function CartLineItem({ line, pizza }: { line: CartLine; pizza?: Pizza }) {
@@ -42,16 +42,15 @@ export function CartLineItem({ line, pizza }: { line: CartLine; pizza?: Pizza })
       </span>
       <span className="min-w-0">
         <span className="block truncate text-sm font-medium">{line.name}</span>
-        <span className="block truncate text-xs text-muted">
-          {lv.cart.line(lv.pizzerias[line.pizzeriaId], variantLabel(line), euro(line.unitPrice))}
-        </span>
+        <span className="block truncate text-xs text-muted">{lv.pizzerias[line.pizzeriaId]}</span>
         {pizza && (
           <span className="mt-1.5 block">
-            <SizePills
+            <SizeSelect
               variants={pizza.variants}
               value={line.key.slice(pizza.id.length + 1)}
               onChange={(v) => setVariant(line.key, pizza, v)}
               label={lv.cart.sizeOf(line.name)}
+              withPrices
             />
           </span>
         )}

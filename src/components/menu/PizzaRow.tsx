@@ -13,7 +13,7 @@ import { useStore } from "@/lib/store";
 import type { Pizza, Variant } from "@/lib/types";
 import { flyToTicket } from "../cart/FlyLayer";
 import { Collapse } from "../ui/Collapse";
-import { SizePills } from "../ui/SizePills";
+import { SizeSelect } from "../ui/SizeSelect";
 
 export function PizzaRow({ pizza, size, showPizzeria }: { pizza: Pizza; size: number; showPizzeria: boolean }) {
   const [open, setOpen] = useState(false);
@@ -87,18 +87,14 @@ export function PizzaRow({ pizza, size, showPizzeria }: { pizza: Pizza; size: nu
         </div>
       </div>
 
-      {pizza.variants.length > 1 ? (
-        <div className="-mt-1 pb-2 pl-[4.75rem] pr-2 md:pl-[5.5rem]">
-          <SizePills
-            variants={pizza.variants}
-            value={selected.id}
-            onChange={(v) => setPicked(v.id)}
-            label={lv.cart.sizeOf(pizza.name)}
-          />
-        </div>
-      ) : (
-        <p className="-mt-1 pb-2 pl-[4.75rem] text-xs text-muted md:pl-[5.5rem]">{variantLabel(selected)}</p>
-      )}
+      <div className="-mt-1 pb-2 pl-[4.75rem] pr-2 md:pl-[5.5rem]">
+        <SizeSelect
+          variants={pizza.variants}
+          value={selected.id}
+          onChange={(v) => setPicked(v.id)}
+          label={lv.cart.sizeOf(pizza.name)}
+        />
+      </div>
 
       <Collapse open={open}>
         <div className="px-3 pb-3 md:pl-[5.5rem]">

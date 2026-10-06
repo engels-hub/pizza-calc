@@ -110,7 +110,6 @@ export const lv = {
     area: "Pasūtītā platība",
     areaValue: (have: string, need: string) => `${have} no ${need} cm²`,
     areaOver: (pct: number) => `+${pct}% virs vajadzīgā`,
-    line: (pizzeria: string, size: string, price: string) => `${pizzeria}, ${size}, ${price}`,
   },
 
   coverage: {
@@ -190,8 +189,8 @@ export const lv = {
     heart: "Sirds 30 cm",
     oneSize: "Viens izmērs",
     cm: (d: number) => `${d} cm`,
-    /** Compact pill text; the full label is read out by screen readers. */
-    heartShort: "♥",
+    /** One entry in a size dropdown: "Sirds 30 cm, 16,99 €". */
+    option: (label: string, price: string) => `${label}, ${price}`,
   },
 
   ingredientGroups: {
