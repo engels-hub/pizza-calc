@@ -102,7 +102,7 @@ export function MenuBrowser({ pizzas }: { pizzas: Pizza[] }) {
         <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 md:mx-0 md:flex-wrap md:px-0">
           <Chip active={filtersOpen || activeIngredients.length > 0} onClick={() => setFiltersOpen((o) => !o)}>
             <FunnelSimpleIcon size={16} />
-            Sastāvdaļas{activeIngredients.length > 0 && <span className="font-mono">{activeIngredients.length}</span>}
+            Sastāvdaļas{activeIngredients.length > 0 && <span className="">{activeIngredients.length}</span>}
           </Chip>
           {TAGS.map((t) => (
             <Chip key={t.id} active={tagFilters.includes(t.id)} onClick={() => toggleTag(t.id)}>
@@ -148,7 +148,7 @@ export function MenuBrowser({ pizzas }: { pizzas: Pizza[] }) {
                       >
                         {ingredientFilters[o.key] === "exclude" && "bez "}
                         {o.label}
-                        <span className="font-mono text-[0.7rem] opacity-60">{o.count}</span>
+                        <span className=" text-[0.7rem] opacity-60">{o.count}</span>
                       </Chip>
                     ))}
                   </div>
@@ -161,7 +161,7 @@ export function MenuBrowser({ pizzas }: { pizzas: Pizza[] }) {
 
       <div className="flex items-center justify-between gap-3 text-sm text-muted">
         <span aria-live="polite">
-          <span className="font-mono text-ink">{visible.length}</span> picas
+          <span className=" text-ink">{visible.length}</span> picas
           {filterCount > 0 && (
             <button type="button" onClick={clearFilters} className="ml-3 font-medium text-accent">
               Notīrīt filtrus
@@ -294,7 +294,7 @@ function PizzaRow({ pizza, size, showPizzeria }: { pizza: Pizza; size: number; s
 
         <div className="flex shrink-0 items-center gap-2">
           <span className="text-right">
-            <span className="tabular block font-mono text-[0.95rem] font-medium">{euro(v.price)}</span>
+            <span className="tabular block text-[0.95rem] font-medium">{euro(v.price)}</span>
             <span className="block text-xs text-muted">{v.label}</span>
           </span>
           <button
@@ -328,8 +328,8 @@ function PizzaRow({ pizza, size, showPizzeria }: { pizza: Pizza; size: number; s
                 >
                   <PlusIcon size={14} className="text-accent" weight="bold" />
                   {variant.label}
-                  <span className="font-mono font-medium">{euro(variant.price)}</span>
-                  <span className="hidden font-mono text-xs text-muted sm:inline">
+                  <span className=" font-medium">{euro(variant.price)}</span>
+                  <span className="hidden text-xs text-muted sm:inline">
                     {twoDecimals((variant.price / pizzaArea(variant.diameterCm)) * 100)} €/dm²
                   </span>
                 </button>

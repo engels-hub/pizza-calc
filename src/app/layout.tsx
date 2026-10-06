@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { GeistPixelSquare } from "geist/font/pixel";
+import { Geist } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -7,10 +8,6 @@ const geistSans = Geist({
   subsets: ["latin", "latin-ext"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin", "latin-ext"],
-});
 
 export const metadata: Metadata = {
   title: "Picu kalkulators",
@@ -29,7 +26,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="lv" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="lv" className={`${geistSans.variable} ${GeistPixelSquare.variable} antialiased`}>
       <body className="min-h-[100dvh]">{children}</body>
     </html>
   );

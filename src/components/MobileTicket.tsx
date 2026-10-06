@@ -42,8 +42,8 @@ export function MobileTicket({ promos, today }: { promos: Promo[]; today: string
               </span>
             </span>
             <span className="ml-auto flex items-baseline gap-2">
-              {totals.saved > 0 && <span className="tabular font-mono text-xs line-through opacity-60">{euro(totals.subtotal)}</span>}
-              <AnimatedNumber value={totals.total} format={euro} className="font-mono text-lg font-medium" />
+              {totals.saved > 0 && <span className="tabular text-xs line-through opacity-60">{euro(totals.subtotal)}</span>}
+              <AnimatedNumber value={totals.total} format={euro} className="font-pixel text-xl leading-none" />
             </span>
             <span className="grid size-9 place-items-center rounded-full bg-bg/15">
               <CaretUpIcon size={16} weight="bold" />

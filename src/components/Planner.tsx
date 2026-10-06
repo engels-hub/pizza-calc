@@ -10,6 +10,7 @@ import { useStore } from "@/lib/store";
 import { PIZZERIAS } from "@/lib/types";
 import { AnimatedNumber } from "./ui/AnimatedNumber";
 import { Segmented } from "./ui/Segmented";
+import { Dither } from "./ui/Dither";
 import { Stepper } from "./ui/Stepper";
 
 const spring = { type: "spring", stiffness: 100, damping: 20 } as const;
@@ -33,13 +34,13 @@ export function Planner({ sizes }: { sizes: SizeOption[] }) {
         </p>
       </div>
 
-      <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-5">
+      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-end gap-4">
         <div>
           <label htmlFor="people" className="text-sm font-medium text-muted">
             Cilvēku skaits
           </label>
           <div className="mt-2">
-            <Stepper value={people} onChange={setPeople} min={1} max={60} label="Cilvēku skaits">
+            <Stepper look="bevel" value={people} onChange={setPeople} min={1} max={60} label="Cilvēku skaits">
               <input
                 id="people"
                 inputMode="numeric"
@@ -48,7 +49,7 @@ export function Planner({ sizes }: { sizes: SizeOption[] }) {
                   const n = Number(e.target.value.replace(/\D/g, ""));
                   if (n) setPeople(n);
                 }}
-                className="tabular w-16 bg-transparent text-center font-mono text-4xl font-medium tracking-tight outline-none"
+                className="tabular w-16 bg-transparent text-center font-pixel text-5xl leading-none outline-none"
                 aria-describedby="people-unit"
               />
             </Stepper>
@@ -58,11 +59,18 @@ export function Planner({ sizes }: { sizes: SizeOption[] }) {
           </div>
         </div>
 
-        <div className="text-right" aria-live="polite">
-          <p className="text-sm font-medium text-muted">Jums vajag</p>
-          <p className="mt-1 font-mono text-5xl font-medium leading-none tracking-tighter">
+        <div className="bevel bevel-in relative overflow-hidden px-4 py-3 text-right" aria-live="polite">
+          <Dither
+            className="absolute inset-0"
+            shape="linear"
+            bands={6}
+            from="var(--surface)"
+            to="color-mix(in oklch, var(--accent) 22%, var(--surface))"
+          />
+          <p className="relative text-sm font-medium text-muted">Jums vajag</p>
+          <p className="relative mt-1.5 whitespace-nowrap font-pixel text-5xl leading-none sm:text-6xl">
             <AnimatedNumber value={count} format={(n) => String(Math.round(n))} />
-            <span className="text-2xl text-muted"> × {size} cm</span>
+            <span className="text-xl text-muted sm:text-2xl"> × {size} cm</span>
           </p>
         </div>
       </div>
@@ -97,7 +105,7 @@ function PizzaRow({ count, size }: { count: number; size: number }) {
           />
         ))}
       </AnimatePresence>
-      {count > shown && <span className="ml-1 font-mono text-sm text-muted">+{count - shown}</span>}
+      {count > shown && <span className="ml-1 text-sm text-muted">+{count - shown}</span>}
     </div>
   );
 }
@@ -130,9 +138,7 @@ function SizePicker({
               role="radio"
               aria-checked={active}
               onClick={() => onSelect(s.diameter)}
-              className={`flex min-w-0 items-center gap-3 rounded-2xl border p-3 text-left transition-[transform,border-color,background-color] duration-200 active:scale-[0.98] ${
-                active ? "border-accent bg-accent-soft" : "border-line bg-surface hover:border-muted/40"
-              }`}
+              className={`bevel flex min-w-0 items-center gap-3 p-3 text-left ${active ? "!bg-accent-soft" : ""}`}
             >
               <span className="grid size-11 shrink-0 place-items-center">
                 <span className="pizza-dot rounded-full" style={{ width: dot, height: dot }} />
@@ -140,13 +146,13 @@ function SizePicker({
               <span className="min-w-0 flex-1">
                 <span className="flex items-baseline justify-between gap-2">
                   <span className="text-sm font-semibold">{s.diameter} cm</span>
-                  <span className="font-mono text-lg font-medium leading-none tracking-tight">{n}×</span>
+                  <span className="font-pixel text-2xl leading-none">{n}×</span>
                 </span>
                 <span className="mt-1 block truncate text-xs text-muted">
                   {s.pizzerias.map((p) => PIZZERIAS[p].name.split(" ")[0]).join(", ")}
                   {Math.abs(exact - Math.round(exact)) > 0.05 && `, precīzi ${oneDecimal(exact)}`}
                 </span>
-                <span className="block truncate font-mono text-xs text-muted" title="Lētākā cena par 100 cm²">no {twoDecimals(s.bestPer100)} €/dm²</span>
+                <span className="block truncate text-xs text-muted" title="Lētākā cena par 100 cm²">no {twoDecimals(s.bestPer100)} €/dm²</span>
               </span>
             </button>
           );
@@ -183,7 +189,7 @@ function RulesPanel({ people }: { people: number }) {
         <SlidersHorizontalIcon size={18} className="shrink-0 text-muted" />
         <span className="min-w-0 flex-1 py-2">
           <span className="block text-sm font-medium">Aprēķina noteikums</span>
-          <span className="block font-mono text-xs text-muted">
+          <span className="block text-xs text-muted">
             {formula} picas pa {rules.baseDiameter} cm
           </span>
         </span>
@@ -206,7 +212,7 @@ function RulesPanel({ people }: { people: number }) {
               laukuma.
             </p>
 
-            <div className="font-mono text-sm">
+            <div className=" text-sm">
               {people} {cilveki(people)} → {formula.replace("n", String(people))} ={" "}
               <strong className="font-semibold text-accent">
                 {oneDecimal(base)} {picas(Math.ceil(base))}
@@ -239,14 +245,14 @@ function RulesPanel({ people }: { people: number }) {
                   max={3}
                   onChange={(offset) => setRules({ offset })}
                 >
-                  <span className="tabular w-10 text-center font-mono text-lg">{rules.offset}</span>
+                  <span className="tabular w-10 text-center text-lg">{rules.offset}</span>
                 </Stepper>
               </div>
 
               <div>
                 <label htmlFor="factor" className="mb-2 flex justify-between text-sm font-medium text-muted">
                   Picas uz cilvēku
-                  <span className="font-mono text-ink">{twoDecimals(rules.factor)}</span>
+                  <span className=" text-ink">{twoDecimals(rules.factor)}</span>
                 </label>
                 <input
                   id="factor"

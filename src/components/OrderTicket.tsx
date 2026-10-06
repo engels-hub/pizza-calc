@@ -83,9 +83,9 @@ export function OrderTicket({ promos, today }: { promos: Promo[]; today: string 
                         </span>
                       </span>
                       <Stepper size="sm" label={`${l.name} skaits`} value={l.qty} min={0} max={30} onChange={(q) => setQty(l.key, q)}>
-                        <span className="tabular w-5 text-center font-mono text-sm">{l.qty}</span>
+                        <span className="tabular w-5 text-center text-sm">{l.qty}</span>
                       </Stepper>
-                      <span className="tabular w-[4.5rem] text-right font-mono text-sm">{euro(l.unitPrice * l.qty)}</span>
+                      <span className="tabular w-[4.5rem] text-right text-sm">{euro(l.unitPrice * l.qty)}</span>
                     </motion.li>
                   ))}
                 </AnimatePresence>
@@ -214,7 +214,7 @@ function DiscountPanel({ promos, today }: { promos: Promo[]; today: string | nul
                   <button
                     type="button"
                     onClick={() => copy(p.code!)}
-                    className="inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-full bg-sunken px-2.5 font-mono text-xs font-medium transition-transform active:scale-[0.96]"
+                    className="inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-full bg-sunken px-2.5 text-xs font-medium transition-transform active:scale-[0.96]"
                     aria-label={`Kopēt kodu ${p.code}`}
                   >
                     {p.code}
@@ -241,7 +241,7 @@ function DiscountPanel({ promos, today }: { promos: Promo[]; today: string | nul
               const v = Number(e.target.value.replace(",", ".").replace(/[^\d.]/g, ""));
               setCustom(v > 0 ? ({ kind, value: v } as CustomDiscount) : null);
             }}
-            className="tabular h-10 w-20 rounded-full border border-line bg-surface px-3 text-right font-mono text-sm outline-none focus:border-accent"
+            className="tabular h-10 w-20 rounded-full border border-line bg-surface px-3 text-right text-sm outline-none focus:border-accent"
           />
           <Segmented
             id="custom-kind"
@@ -266,7 +266,7 @@ function TotalsBlock({ totals }: { totals: Totals }) {
     <div className="flex flex-col gap-1.5 border-t border-line pt-4">
       <div className="flex justify-between text-sm text-muted">
         <span>Bez atlaidēm</span>
-        <span className={`tabular font-mono ${hasDiscount ? "line-through decoration-1" : ""}`}>{euro(totals.subtotal)}</span>
+        <span className={`tabular ${hasDiscount ? "line-through decoration-1" : ""}`}>{euro(totals.subtotal)}</span>
       </div>
       <AnimatePresence initial={false}>
         {totals.discounts.map((d) => (
@@ -278,13 +278,13 @@ function TotalsBlock({ totals }: { totals: Totals }) {
             className="flex justify-between text-sm"
           >
             <span className="truncate pr-3">{d.title}</span>
-            <span className="tabular font-mono text-accent">−{euro(d.amount)}</span>
+            <span className="tabular text-accent">−{euro(d.amount)}</span>
           </motion.div>
         ))}
       </AnimatePresence>
       <div className="mt-2 flex items-end justify-between">
         <span className="text-sm font-medium">Kopā</span>
-        <AnimatedNumber value={totals.total} format={euro} className="font-mono text-3xl font-medium tracking-tighter" />
+        <AnimatedNumber value={totals.total} format={euro} className="font-pixel text-4xl leading-none" />
       </div>
       <div className="flex justify-between text-xs text-muted">
         <span>

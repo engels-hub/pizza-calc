@@ -8,7 +8,7 @@ import { useCallback, useMemo, useState } from "react";
 import { ingredientDef } from "@/lib/ingredients";
 import { useStore } from "@/lib/store";
 import { PIZZERIAS, type Pizza } from "@/lib/types";
-import { Segmented } from "./ui/Segmented";
+import { Dither } from "./ui/Dither";
 
 // Three.js lives in its own client-only chunk, away from the Motion tree.
 const PizzaStage = dynamic(() => import("./pizza3d/PizzaStage"), {
@@ -36,7 +36,14 @@ export function PizzaShowcase({ pizzas }: { pizzas: Pizza[] }) {
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden rounded-3xl bg-sunken">
-      <div className="ps1-backdrop relative h-[34dvh] min-h-56 w-full md:aspect-square md:h-auto">
+      <div className="relative h-[34dvh] min-h-56 w-full md:aspect-square md:h-auto">
+        <Dither
+          className="absolute inset-0"
+          from="var(--sunken)"
+          to="color-mix(in oklch, var(--accent) 26%, var(--sunken))"
+          bands={7}
+          cell={4}
+        />
         {effective === "photo" ? (
           <AnimatePresence initial={false}>
             <motion.div
@@ -59,7 +66,9 @@ export function PizzaShowcase({ pizzas }: { pizzas: Pizza[] }) {
             </motion.div>
           </AnimatePresence>
         ) : (
-          <PizzaStage pizza={pizza} />
+          <div className="relative size-full">
+            <PizzaStage pizza={pizza} />
+          </div>
         )}
       </div>
 
@@ -78,16 +87,26 @@ export function PizzaShowcase({ pizzas }: { pizzas: Pizza[] }) {
               <p className="text-sm text-muted">{PIZZERIAS[pizza.pizzeriaId].name}</p>
             </motion.div>
           </AnimatePresence>
-          <Segmented
-            id="showcase-mode"
-            label="Skats"
-            value={mode}
-            onChange={setMode}
-            options={[
-              { value: "photo", label: <CameraIcon size={16} aria-label="Foto" /> },
-              { value: "faux", label: <CubeIcon size={16} aria-label="No sastāvdaļām" /> },
-            ]}
-          />
+          <div className="flex shrink-0 gap-1.5" role="group" aria-label="Skats">
+            {(
+              [
+                { value: "photo", label: "Foto", Icon: CameraIcon },
+                { value: "faux", label: "3D no sastāvdaļām", Icon: CubeIcon },
+              ] as const
+            ).map(({ value, label, Icon }) => (
+              <button
+                key={value}
+                type="button"
+                aria-pressed={mode === value}
+                aria-label={label}
+                title={label}
+                onClick={() => setMode(value)}
+                className={`bevel grid size-10 place-items-center ${mode === value ? "bevel-accent" : "text-muted"}`}
+              >
+                <Icon size={18} weight={mode === value ? "fill" : "regular"} />
+              </button>
+            ))}
+          </div>
         </div>
         <p className="line-clamp-2 text-sm leading-relaxed text-muted">{toppings.join(", ") || "Siers un mērce"}</p>
       </div>

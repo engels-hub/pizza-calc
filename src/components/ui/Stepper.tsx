@@ -2,8 +2,10 @@
 
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 
-const btn =
-  "grid size-11 place-items-center rounded-full bg-sunken text-ink transition-transform duration-150 active:scale-[0.94] disabled:opacity-35 hover:bg-line";
+const looks = {
+  soft: "rounded-full bg-sunken transition-transform duration-150 active:scale-[0.94] hover:bg-line",
+  bevel: "bevel",
+};
 
 export function Stepper({
   value,
@@ -13,6 +15,7 @@ export function Stepper({
   label,
   children,
   size = "md",
+  look = "soft",
 }: {
   value: number;
   onChange: (n: number) => void;
@@ -21,8 +24,10 @@ export function Stepper({
   label: string;
   children?: React.ReactNode;
   size?: "md" | "sm";
+  look?: keyof typeof looks;
 }) {
   const small = size === "sm";
+  const btn = `grid size-11 place-items-center text-ink disabled:opacity-35 ${looks[look]}`;
   return (
     <div className="flex items-center gap-2" role="group" aria-label={label}>
       <button

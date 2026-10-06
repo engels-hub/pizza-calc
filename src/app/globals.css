@@ -11,6 +11,9 @@
   --accent-ink: oklch(0.985 0.008 33);
   --accent-soft: oklch(0.93 0.035 33);
   --shadow: 28 30% 25%;
+  --bevel-hi: oklch(0.995 0.003 70);
+  --bevel-lo: oklch(0.74 0.012 60);
+  --bevel-edge: oklch(0.52 0.014 55);
   color-scheme: light;
 }
 
@@ -26,6 +29,9 @@
     --accent-ink: oklch(0.18 0.02 36);
     --accent-soft: oklch(0.29 0.05 33);
     --shadow: 28 40% 3%;
+    --bevel-hi: oklch(0.37 0.012 55);
+    --bevel-lo: oklch(0.12 0.008 55);
+    --bevel-edge: oklch(0.08 0.006 55);
     color-scheme: dark;
   }
 }
@@ -41,7 +47,7 @@
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-pixel: var(--font-geist-pixel-square);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -86,6 +92,40 @@ body {
   box-shadow: inset 0 0 0 1px oklch(0.45 0.08 50 / 0.25);
 }
 
-.ps1-backdrop {
-  background: radial-gradient(circle at 50% 46%, color-mix(in oklch, var(--accent) 12%, var(--sunken)) 0 30%, var(--sunken) 68%);
+/* PS1 era chunky bevels, used in the hero only. Light top-left edge,
+   dark bottom-right edge, inverted when pressed or selected. */
+.bevel {
+  border-radius: 4px;
+  background: var(--surface);
+  box-shadow:
+    inset 2px 2px 0 var(--bevel-hi),
+    inset -2px -2px 0 var(--bevel-lo),
+    0 0 0 1px var(--bevel-edge);
+  transition: transform 80ms steps(2);
+}
+
+.bevel:active:not(:disabled),
+.bevel[aria-checked="true"],
+.bevel[aria-pressed="true"],
+.bevel-in {
+  box-shadow:
+    inset 2px 2px 0 var(--bevel-lo),
+    inset -2px -2px 0 var(--bevel-hi),
+    0 0 0 1px var(--bevel-edge);
+  transform: translateY(1px);
+}
+
+.bevel-accent {
+  --bevel-hi: oklch(0.74 0.13 38);
+  --bevel-lo: oklch(0.4 0.13 30);
+  --bevel-edge: oklch(0.3 0.09 30);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.font-pixel {
+  font-family: var(--font-pixel), ui-sans-serif, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
 }
