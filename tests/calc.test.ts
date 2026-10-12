@@ -1,10 +1,20 @@
 import { describe, expect, it } from "vitest";
-import { DEFAULT_RULES, basePizzas, exactPieces, piecesNeeded, shareOf, targetArea } from "@/lib/calc";
+import {
+  DEFAULT_RULES,
+  areaPerPerson,
+  basePizzas,
+  exactPieces,
+  piecesNeeded,
+  shareOf,
+  slicesPerPerson,
+  targetArea,
+} from "@/lib/calc";
 
 const need = (people: number, d: number, rules = DEFAULT_RULES) => piecesNeeded(targetArea(people, rules), d);
 
-describe("n − 1 rule", () => {
-  it("5 people → 4 × 30 cm and the area equivalents", () => {
+describe("slices per person", () => {
+  it("6 slices of a 30 cm for 5 people → 3,75 → 4 × 30 cm, and the area equivalents", () => {
+    expect(basePizzas(5, DEFAULT_RULES)).toBeCloseTo(3.75, 9);
     expect(need(5, 30)).toBe(4);
     expect(need(5, 45)).toBe(2);
     expect(need(5, 23)).toBe(7);
@@ -12,21 +22,28 @@ describe("n − 1 rule", () => {
   });
 
   it("exact ratios do not round up from float noise", () => {
-    expect(exactPieces(targetArea(5, DEFAULT_RULES), 20)).toBeCloseTo(9, 9);
-    expect(need(9, 20)).toBe(18);
+    // 16 × 6 / 8 = 12 × 30 cm = exactly 27 × 20 cm
+    expect(exactPieces(targetArea(16, DEFAULT_RULES), 20)).toBeCloseTo(27, 9);
+    expect(need(16, 20)).toBe(27);
   });
 
   it("never below one pizza", () => {
-    expect(basePizzas(1, DEFAULT_RULES)).toBe(1);
     expect(need(1, 30)).toBe(1);
     expect(need(1, 45)).toBe(1);
   });
 
-  it("offset and factor are adjustable", () => {
-    expect(need(5, 30, { ...DEFAULT_RULES, offset: 0 })).toBe(5);
-    expect(need(5, 30, { ...DEFAULT_RULES, offset: -2 })).toBe(7);
-    expect(need(4, 30, { ...DEFAULT_RULES, factor: 1.25 })).toBe(4);
-    expect(need(8, 30, { ...DEFAULT_RULES, factor: 0.5 })).toBe(3);
+  it("appetite scales the slices", () => {
+    expect(slicesPerPerson({ ...DEFAULT_RULES, appetite: "hungry" })).toBe(7.5);
+    expect(need(4, 30, { ...DEFAULT_RULES, appetite: "hungry" })).toBe(4); // 3,75
+    expect(need(8, 30, { ...DEFAULT_RULES, appetite: "light" })).toBe(5); // 4,5
+    expect(need(5, 30, { ...DEFAULT_RULES, slices: 8 })).toBe(5);
+  });
+
+  it("slices are counted in the base size's own cut", () => {
+    // 20 cm is cut in 4: 2 slices each = half a 20 cm pizza per person
+    expect(areaPerPerson({ ...DEFAULT_RULES, slices: 2, baseDiameter: 20 })).toBeCloseTo(Math.PI * 50, 9);
+    // 45 cm is cut in 12: 3 slices each, 8 people = 2 × 45 cm = 4,5 × 30 cm
+    expect(need(8, 30, { ...DEFAULT_RULES, slices: 3, baseDiameter: 45 })).toBe(5);
   });
 });
 

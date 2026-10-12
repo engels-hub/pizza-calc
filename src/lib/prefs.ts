@@ -1,4 +1,4 @@
-import { DEFAULT_RULES, type CalcRules } from "./calc";
+import { APPETITES, DEFAULT_RULES, SLICES_MAX, SLICES_MIN, type AppetiteId, type CalcRules } from "./calc";
 import type { CartLine, CustomDiscount } from "./discounts";
 import { PIZZERIA_IDS, type Pizza, type PizzeriaId } from "./types";
 
@@ -35,10 +35,14 @@ export const DEFAULT_PREFS: Prefs = {
   custom: null,
 };
 
-/** Compact wire format: short keys, cart as "pizzaId:variantId:qty". */
+/**
+ * Compact wire format: short keys, cart as "pizzaId:variantId:qty".
+ * Rules are `e` (slices, appetite, base diameter); the older `r` held a
+ * different rule and is ignored.
+ */
 interface Wire {
   p?: number;
-  r?: [number, number, number];
+  e?: [number, string, number];
   s?: number;
   c?: string[];
   a?: string[];
@@ -48,7 +52,7 @@ interface Wire {
 export function encodePrefs(prefs: Prefs): string {
   const wire: Wire = {
     p: prefs.people,
-    r: [prefs.rules.factor, prefs.rules.offset, prefs.rules.baseDiameter],
+    e: [prefs.rules.slices, prefs.rules.appetite, prefs.rules.baseDiameter],
     s: prefs.size,
     c: prefs.cart.map(cartEntry),
     a: prefs.activePromos,
@@ -70,6 +74,15 @@ function parseCart(entries: unknown[]): SavedLine[] {
   });
 }
 
+/** Rules from untrusted input, clamped field by field. */
+function parseRules(slices: unknown, appetite: unknown, baseDiameter: unknown): CalcRules {
+  return {
+    slices: Math.round(num(slices, SLICES_MIN, SLICES_MAX, DEFAULT_RULES.slices)),
+    appetite: APPETITES.some((a) => a.id === appetite) ? (appetite as AppetiteId) : DEFAULT_RULES.appetite,
+    baseDiameter: num(baseDiameter, 10, 60, DEFAULT_RULES.baseDiameter),
+  };
+}
+
 const cartEntry = (l: SavedLine) => `${l.pizzaId}:${l.variantId}:${l.qty}`;
 
 /** Never throws: anything malformed falls back to the defaults field by field. */
@@ -83,7 +96,7 @@ export function decodePrefs(raw: string | undefined): Prefs {
   }
   if (!wire || typeof wire !== "object") return DEFAULT_PREFS;
 
-  const [factor, offset, baseDiameter] = Array.isArray(wire.r) ? wire.r : [];
+  const [slices, appetite, baseDiameter] = Array.isArray(wire.e) ? wire.e : [];
   const cart = parseCart(Array.isArray(wire.c) ? wire.c : []);
   const custom: CustomDiscount =
     Array.isArray(wire.x) && typeof wire.x[1] === "number" && wire.x[1] > 0
@@ -92,11 +105,7 @@ export function decodePrefs(raw: string | undefined): Prefs {
 
   return {
     people: Math.round(num(wire.p, 1, 60, DEFAULT_PREFS.people)),
-    rules: {
-      factor: num(factor, 0.5, 1.5, DEFAULT_RULES.factor),
-      offset: Math.round(num(offset, -2, 3, DEFAULT_RULES.offset)),
-      baseDiameter: num(baseDiameter, 10, 60, DEFAULT_RULES.baseDiameter),
-    },
+    rules: parseRules(slices, appetite, baseDiameter),
     size: num(wire.s, 10, 60, DEFAULT_PREFS.size),
     cart,
     activePromos: Array.isArray(wire.a) ? wire.a.filter((a): a is string => typeof a === "string") : [],
@@ -112,7 +121,7 @@ export function decodePrefs(raw: string | undefined): Prefs {
 export type SearchParams = Record<string, string | string[] | undefined>;
 
 /** Query keys owned by the calculator. */
-const URL_KEYS = ["n", "size", "rule", "cart", "promo", "pct", "eur", "pizzeria"] as const;
+const URL_KEYS = ["n", "size", "eat", "cart", "promo", "pct", "eur", "pizzeria"] as const;
 
 const first = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
 const list = (v: string | string[] | undefined) => (first(v) ?? "").split(",").filter(Boolean);
@@ -133,7 +142,7 @@ export function hasUrlState(sp: SearchParams): boolean {
  * that is missing means "default", never "whatever the cookie says".
  */
 export function prefsFromSearch(sp: SearchParams): Prefs {
-  const [factor, offset, baseDiameter] = list(sp.rule).map(Number);
+  const [slices, appetite, baseDiameter] = list(sp.eat);
   const pct = numParam(sp.pct);
   const eur = numParam(sp.eur);
   const custom: CustomDiscount =
@@ -144,11 +153,7 @@ export function prefsFromSearch(sp: SearchParams): Prefs {
         : null;
   return {
     people: Math.round(num(numParam(sp.n), 1, 60, DEFAULT_PREFS.people)),
-    rules: {
-      factor: num(factor, 0.5, 1.5, DEFAULT_RULES.factor),
-      offset: Math.round(num(offset, -2, 3, DEFAULT_RULES.offset)),
-      baseDiameter: num(baseDiameter, 10, 60, DEFAULT_RULES.baseDiameter),
-    },
+    rules: parseRules(numParam(slices), appetite, numParam(baseDiameter)),
     size: num(numParam(sp.size), 10, 60, DEFAULT_PREFS.size),
     cart: parseCart(list(sp.cart)),
     activePromos: list(sp.promo),
@@ -165,13 +170,13 @@ export function pizzeriaFromSearch(sp: SearchParams): PizzeriaId | "all" {
 export function searchFromPrefs(prefs: Prefs, pizzeria: PizzeriaId | "all"): string {
   const q: string[] = [`n=${prefs.people}`];
   if (prefs.size !== DEFAULT_PREFS.size) q.push(`size=${prefs.size}`);
-  const { factor, offset, baseDiameter } = prefs.rules;
+  const { slices, appetite, baseDiameter } = prefs.rules;
   if (
-    factor !== DEFAULT_RULES.factor ||
-    offset !== DEFAULT_RULES.offset ||
+    slices !== DEFAULT_RULES.slices ||
+    appetite !== DEFAULT_RULES.appetite ||
     baseDiameter !== DEFAULT_RULES.baseDiameter
   ) {
-    q.push(`rule=${factor},${offset},${baseDiameter}`);
+    q.push(`eat=${slices},${appetite},${baseDiameter}`);
   }
   if (prefs.cart.length) q.push(`cart=${prefs.cart.map(cartEntry).map(enc).join(",")}`);
   if (prefs.activePromos.length) q.push(`promo=${prefs.activePromos.map(enc).join(",")}`);

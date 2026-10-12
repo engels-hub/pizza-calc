@@ -1,23 +1,34 @@
 import type { Shape } from "./types";
 
+export type AppetiteId = "light" | "normal" | "hungry";
+
+/**
+ * The group's appetite, counted in slices: an average person eats `slices`
+ * slices of a `baseDiameter` pizza, scaled by how hungry the group is.
+ */
 export interface CalcRules {
-  /** Pizzas per person before the offset. */
-  factor: number;
-  /** Subtracted from people × factor. Default 1, so n people → n − 1 pizzas. */
-  offset: number;
-  /** Diameter of the pizza the rule is counted in. */
+  /** Slices of the base pizza one average person eats. */
+  slices: number;
+  appetite: AppetiteId;
+  /** Diameter of the pizza the slices are counted in. */
   baseDiameter: number;
 }
 
-export const DEFAULT_RULES: CalcRules = { factor: 1, offset: 1, baseDiameter: 30 };
+export const DEFAULT_RULES: CalcRules = { slices: 6, appetite: "normal", baseDiameter: 30 };
 
-export const APPETITES = [
-  { id: "light", factor: 0.8 },
+export const APPETITES: readonly { id: AppetiteId; factor: number }[] = [
+  { id: "light", factor: 0.75 },
   { id: "normal", factor: 1 },
   { id: "hungry", factor: 1.25 },
-] as const;
+];
 
-/** Diameters the rule can be counted in. */
+export const appetiteFactor = (id: AppetiteId) => APPETITES.find((a) => a.id === id)?.factor ?? 1;
+
+/** Slices one person may eat, before appetite. */
+export const SLICES_MIN = 1;
+export const SLICES_MAX = 16;
+
+/** Diameters the slices can be counted in. */
 export const BASE_DIAMETERS = [20, 23, 30, 45] as const;
 
 /** Heart shape and calzone are counted as the round pizza of the same size. */
@@ -26,13 +37,23 @@ export function pizzaArea(diameterCm: number): number {
   return Math.PI * r * r;
 }
 
-/** How many base-size pizzas the rule asks for. Never less than one. */
+/** Slices one person eats once appetite is applied, e.g. 6 × 1,25 = 7,5. */
+export function slicesPerPerson(rules: CalcRules): number {
+  return rules.slices * appetiteFactor(rules.appetite);
+}
+
+/** cm² one person eats: their slices of the base pizza, cut the usual way for its size. */
+export function areaPerPerson(rules: CalcRules): number {
+  return (pizzaArea(rules.baseDiameter) * slicesPerPerson(rules)) / slicesFor(rules.baseDiameter, "round");
+}
+
+/** How many base-size pizzas the group eats, unrounded. */
 export function basePizzas(people: number, rules: CalcRules): number {
-  return Math.max(1, people * rules.factor - rules.offset);
+  return (people * slicesPerPerson(rules)) / slicesFor(rules.baseDiameter, "round");
 }
 
 export function targetArea(people: number, rules: CalcRules): number {
-  return basePizzas(people, rules) * pizzaArea(rules.baseDiameter);
+  return people * areaPerPerson(rules);
 }
 
 /** Unrounded number of pizzas of `diameter` that cover `area`. */

@@ -4,6 +4,9 @@
 /** Latvian singular is used for numbers ending in 1, except 11. */
 const one = (n: number) => n % 10 === 1 && n % 100 !== 11;
 
+/** "gabals" only for whole numbers ending in 1; 1,5 is "gabali". */
+const slicesWord = (n: number) => (Number.isInteger(n) && one(n) ? "gabals" : "gabali");
+
 export const lv = {
   meta: {
     title: "Picu kalkulators",
@@ -57,17 +60,22 @@ export const lv = {
 
   rules: {
     title: "Aprēķina noteikums",
-    summary: (formula: string, diameter: number) => `${formula} picas pa ${diameter} cm`,
+    /** Collapsed summary: "6 gabali no 30 cm picas katram". */
+    summary: (slices: number, shown: string, diameter: number, appetite: string | null) =>
+      `${shown} ${slicesWord(slices)} no ${diameter} cm picas katram${appetite ? `, ${appetite.toLowerCase()}` : ""}`,
     explainer:
-      "PD rule of thumb: N-1 30cm PD picas. Citi izmēri rēķināti attiecīgi laukumam",
-    worked: (people: string, formula: string) => `${people} → ${formula} =`,
+      "Cik gabalu vidēji apēd viens cilvēks. Izsalkums to palielina vai samazina. Gabali ir no default izmēra picas, citi izmēri rēķināti pēc laukuma",
+    /** "5 cilvēki × 7,5 gabali ÷ 8 gabali picā =" */
+    worked: (people: string, slices: number, shown: string, perPizza: number) =>
+      `${people} × ${shown} ${slicesWord(slices)} ÷ ${perPizza} gabali picā =`,
     perSize: (diameter: number) => `pa ${diameter} cm`,
     appetite: "Izsalkums",
     appetites: { light: "Viegli", normal: "Normāli", hungry: "Izsalkuši" },
-    offset: "Atņemt picas",
-    factor: "Picas uz cilvēku",
+    slices: "Gabali uz cilvēku",
     baseSize: "Default izmērs",
-    reset: "Atpakaļ uz n − 1",
+    /** Under the base size: how that size is cut. */
+    slicesInBase: (n: number) => `${n} gabali picā`,
+    reset: "Atpakaļ uz noklusējumu",
   },
 
   menu: {

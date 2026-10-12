@@ -20,7 +20,7 @@ const pizzas = snapshot.pizzas as Pizza[];
 describe("prefs cookie", () => {
   const prefs: Prefs = {
     people: 7,
-    rules: { factor: 1.25, offset: 0, baseDiameter: 45 },
+    rules: { slices: 3, appetite: "hungry", baseDiameter: 45 },
     size: 23,
     cart: [
       { pizzaId: "darbnica-margarita", variantId: "30", qty: 2 },
@@ -42,9 +42,9 @@ describe("prefs cookie", () => {
   it("falls back to defaults on garbage and clamps bad values", () => {
     expect(decodePrefs(undefined)).toEqual(DEFAULT_PREFS);
     expect(decodePrefs("%7Bnot json")).toEqual(DEFAULT_PREFS);
-    const odd = decodePrefs(encodeURIComponent(JSON.stringify({ p: 999, r: [9, -9, 30], c: ["x", "a:b:0", 5], x: ["%", -1] })));
+    const odd = decodePrefs(encodeURIComponent(JSON.stringify({ p: 999, e: [99, "starving", 30], c: ["x", "a:b:0", 5], x: ["%", -1] })));
     expect(odd.people).toBe(60);
-    expect(odd.rules).toEqual({ factor: 1.5, offset: -2, baseDiameter: 30 });
+    expect(odd.rules).toEqual({ slices: 16, appetite: "normal", baseDiameter: 30 });
     expect(odd.cart).toEqual([]);
     expect(odd.custom).toBeNull();
   });
@@ -70,7 +70,7 @@ describe("URL state", () => {
   it("round-trips through the address", () => {
     const prefs: Prefs = {
       people: 7,
-      rules: { factor: 1.25, offset: 0, baseDiameter: 45 },
+      rules: { slices: 3, appetite: "hungry", baseDiameter: 45 },
       size: 23,
       cart: [
         { pizzaId: "darbnica-margarita", variantId: "30", qty: 2 },
@@ -92,7 +92,7 @@ describe("URL state", () => {
   });
 
   it("treats missing keys as defaults and survives garbage", () => {
-    const p = prefsFromSearch(parse("?n=abc&size=999&rule=x&cart=bad,,a:b:-1&eur=-3&pizzeria=nope"));
+    const p = prefsFromSearch(parse("?n=abc&size=999&eat=x,y&cart=bad,,a:b:-1&eur=-3&pizzeria=nope"));
     expect(p).toEqual({ ...DEFAULT_PREFS, size: 60 });
     expect(pizzeriaFromSearch(parse("?pizzeria=nope"))).toBe("all");
     expect(pizzeriaFromSearch(parse(`?pizzeria=${encodeURIComponent("darbnīca")}`))).toBe("darbnīca");

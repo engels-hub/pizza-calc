@@ -2,7 +2,7 @@
 
 How much pizza to order for a group, and what it costs at **Picu darbnīca** and **LuLū** in Riga.
 
-- **Amount:** the rule of thumb is *n − 1 pizzas of 30 cm for n people*. Other sizes (20, 23 and 45 cm) are converted by area. The rule is adjustable: offset, pizzas per person, appetite and base size.
+- **Amount:** an average person eats *n_b slices* of a base pizza (default 6 slices of a 30 cm, cut in 8). Appetite scales that (×0.75 / ×1 / ×1.25). Area per person = π(D_b/2)² · slices / slices in the base pizza; total area = that × people; pizzas = ⌈total ÷ π(D_p/2)²⌉ for the chosen size. Slices per pizza follow the usual cut for each size (20 cm 4, 23 cm 6, 30 cm 8, 45 cm 12), and the cart shows how the actual slices split between people.
 - **Menus:** scraped live from picudarbnica.lv and lulu.lv, cached for 6 hours. If a scrape fails, a bundled snapshot is used instead.
 - **Filters:** by pizzeria, by vegetarian / vegan / spicy, and by ingredient, with include and exclude.
 - **Prices:** the total before and after the real promos (LuLū takeaway −15%, every 3rd pizza free, flash codes; Picu darbnīca drauga card −10%, birthday −15%) and an optional custom % or € discount.
