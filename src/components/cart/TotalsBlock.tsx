@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { lv } from "@/content/lv";
+import { BOX_FEES } from "@/data/fees";
 import { useTotals } from "@/hooks/useTotals";
 import type { AppliedDiscount, CustomDiscount } from "@/lib/discounts";
 import { euro } from "@/lib/format";
@@ -20,7 +21,8 @@ export function TotalsBlock() {
   const custom = useStore((s) => s.custom);
   const cart = useStore((s) => s.cart);
   const hasDiscount = totals.saved > 0;
-  // Each pizzeria is a separate order, so show what goes to whom.
+  // Each pizzeria is a separate order, so show what goes to whom. Pizzas only,
+  // so these rows add up to the subtotal; boxes get their own line below.
   const perPizzeria = PIZZERIA_IDS.map((id) => ({
     id,
     sum: cart.filter((l) => l.pizzeriaId === id).reduce((n, l) => n + l.qty * l.unitPrice, 0),
@@ -53,6 +55,12 @@ export function TotalsBlock() {
           </motion.div>
         ))}
       </AnimatePresence>
+      {totals.boxes.count > 0 && (
+        <div className="flex justify-between text-sm text-muted">
+          <span className="truncate pr-3">{lv.summary.boxes(totals.boxes.count, euro(BOX_FEES.lulu ?? 0))}</span>
+          <span className="tabular">+{euro(totals.boxes.amount)}</span>
+        </div>
+      )}
       <div className="mt-2 flex items-end justify-between">
         <span className="text-sm font-medium">{lv.summary.total}</span>
         <AnimatedNumber value={totals.total} format={euro} className="font-pixel text-4xl leading-none" />

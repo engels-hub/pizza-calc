@@ -175,6 +175,8 @@ export const lv = {
     startsOn: (date: string) => `no ${date}`,
     until: (date: string) => `līdz ${date}`,
     subtotal: "Bez atlaidēm",
+    /** "LuLū kastes, 3 × 0,39 €" */
+    boxes: (n: number, each: string) => `LuLū ${one(n) ? "kaste" : "kastes"}, ${n} × ${each}`,
     total: "Kopā",
     perPerson: (pizzas: string, price: string) => `${pizzas}, ${price} uz cilvēku`,
     saved: (price: string) => `Ietaupi ${price}`,

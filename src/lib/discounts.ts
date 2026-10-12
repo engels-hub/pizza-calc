@@ -42,12 +42,18 @@ export interface AppliedDiscount {
 }
 
 export interface Totals {
+  /** Pizzas only, before discounts. */
   subtotal: number;
   discounts: AppliedDiscount[];
   saved: number;
+  /** Box charges, added after discounts. */
+  boxes: { count: number; amount: number };
   total: number;
   pizzaCount: number;
 }
+
+/** Box charge per pizza, by pizzeria. */
+export type BoxFees = Partial<Record<PizzeriaId, number>>;
 
 export const round2 = (n: number) => Math.round(n * 100) / 100;
 
@@ -74,8 +80,9 @@ function promoAmount(rule: DiscountRule, prices: number[]): number {
  * Each promo only touches its own pizzeria's lines. Promos on the same
  * pizzeria stack in order on what is left, so 50% + every 3rd free never goes negative.
  * The custom discount applies last, on the whole remaining total.
+ * Box charges are added after all discounts: deals only cover the pizzas.
  */
-export function computeTotals(lines: CartLine[], promos: Promo[], custom: CustomDiscount): Totals {
+export function computeTotals(lines: CartLine[], promos: Promo[], custom: CustomDiscount, boxFees: BoxFees = {}): Totals {
   const subtotal = round2(lines.reduce((s, l) => s + l.unitPrice * l.qty, 0));
   const discounts: AppliedDiscount[] = [];
 
@@ -108,11 +115,17 @@ export function computeTotals(lines: CartLine[], promos: Promo[], custom: Custom
   }
 
   const saved = round2(subtotal - afterPromos);
+  const boxed = lines.filter((l) => boxFees[l.pizzeriaId]);
+  const boxes = {
+    count: boxed.reduce((n, l) => n + l.qty, 0),
+    amount: round2(boxed.reduce((s, l) => s + l.qty * boxFees[l.pizzeriaId]!, 0)),
+  };
   return {
     subtotal,
     discounts,
     saved,
-    total: Math.max(0, afterPromos),
+    boxes,
+    total: round2(Math.max(0, afterPromos) + boxes.amount),
     pizzaCount: lines.reduce((s, l) => s + l.qty, 0),
   };
 }

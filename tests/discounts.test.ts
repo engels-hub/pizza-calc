@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { computeTotals, togglePromo, type CartLine, type Promo } from "@/lib/discounts";
+import { BOX_FEES } from "@/data/fees";
 import { PROMOS } from "@/data/promos";
 import type { PizzeriaId } from "@/lib/types";
 
@@ -14,6 +15,20 @@ const line = (pizzeriaId: PizzeriaId, unitPrice: number, qty = 1): CartLine => (
   qty,
 });
 const promo = (id: string) => PROMOS.find((p) => p.id === id)!;
+
+describe("box charges", () => {
+  it("adds 0,39 € per LuLū pizza, none for Picu darbnīca", () => {
+    const t = computeTotals([line("lulu", 10, 3), line("darbnīca", 9)], [], null, BOX_FEES);
+    expect(t.boxes).toEqual({ count: 3, amount: 1.17 });
+    expect(t.subtotal).toBe(39);
+    expect(t.total).toBe(40.17);
+  });
+
+  it("deals and the custom discount do not touch the boxes", () => {
+    const t = computeTotals([line("lulu", 20, 2)], [promo("lulu-picrudens")], { kind: "fixed", value: 100 }, BOX_FEES);
+    expect(t.total).toBe(0.78);
+  });
+});
 
 describe("computeTotals", () => {
   it("every 3rd free makes the cheapest of each three free", () => {
