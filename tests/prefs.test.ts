@@ -20,7 +20,7 @@ const pizzas = snapshot.pizzas as Pizza[];
 describe("prefs cookie", () => {
   const prefs: Prefs = {
     people: 7,
-    rules: { slices: 3, appetite: "hungry", baseDiameter: 45 },
+    rules: { method: "minusOne", slices: 3, appetite: "hungry", baseDiameter: 45 },
     size: 23,
     cart: [
       { pizzaId: "darbnica-margarita", variantId: "30", qty: 2 },
@@ -44,7 +44,7 @@ describe("prefs cookie", () => {
     expect(decodePrefs("%7Bnot json")).toEqual(DEFAULT_PREFS);
     const odd = decodePrefs(encodeURIComponent(JSON.stringify({ p: 999, e: [99, "starving", 30], c: ["x", "a:b:0", 5], x: ["%", -1] })));
     expect(odd.people).toBe(60);
-    expect(odd.rules).toEqual({ slices: 16, appetite: "normal", baseDiameter: 30 });
+    expect(odd.rules).toEqual({ method: "slices", slices: 16, appetite: "normal", baseDiameter: 30 });
     expect(odd.cart).toEqual([]);
     expect(odd.custom).toBeNull();
   });
@@ -70,7 +70,7 @@ describe("URL state", () => {
   it("round-trips through the address", () => {
     const prefs: Prefs = {
       people: 7,
-      rules: { slices: 3, appetite: "hungry", baseDiameter: 45 },
+      rules: { method: "minusOne", slices: 3, appetite: "hungry", baseDiameter: 45 },
       size: 23,
       cart: [
         { pizzaId: "darbnica-margarita", variantId: "30", qty: 2 },

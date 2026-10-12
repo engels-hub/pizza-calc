@@ -63,8 +63,17 @@ export const lv = {
     /** Collapsed summary: "6 gabali no 30 cm picas katram". */
     summary: (slices: number, shown: string, diameter: number, appetite: string | null) =>
       `${shown} ${slicesWord(slices)} no ${diameter} cm picas katram${appetite ? `, ${appetite.toLowerCase()}` : ""}`,
+    /** Collapsed summary for n − 1: "n − 1 picas pa 30 cm". */
+    summaryMinusOne: (formula: string, diameter: number, appetite: string | null) =>
+      `${formula} picas pa ${diameter} cm${appetite ? `, ${appetite.toLowerCase()}` : ""}`,
+    method: "Metode",
+    methods: { slices: "Gabali uz cilvēku", minusOne: "PD n − 1" },
     explainer:
       "Cik gabalu vidēji apēd viens cilvēks. Izsalkums to palielina vai samazina. Gabali ir no default izmēra picas, citi izmēri rēķināti pēc laukuma",
+    explainerMinusOne:
+      "PD rule of thumb: N-1 30cm PD picas. Izsalkums palielina vai samazina N. Citi izmēri rēķināti attiecīgi laukumam",
+    /** "5 cilvēki → 5 − 1 =" */
+    workedMinusOne: (people: string, formula: string) => `${people} → ${formula} =`,
     /** "5 cilvēki × 7,5 gabali ÷ 8 gabali picā =" */
     worked: (people: string, slices: number, shown: string, perPizza: number) =>
       `${people} × ${shown} ${slicesWord(slices)} ÷ ${perPizza} gabali picā =`,

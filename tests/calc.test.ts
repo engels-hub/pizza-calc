@@ -47,6 +47,30 @@ describe("slices per person", () => {
   });
 });
 
+describe("n − 1 method", () => {
+  const n1 = { ...DEFAULT_RULES, method: "minusOne" as const };
+
+  it("5 people → 4 × 30 cm and the area equivalents", () => {
+    expect(need(5, 30, n1)).toBe(4);
+    expect(need(5, 45, n1)).toBe(2);
+    expect(need(5, 20, n1)).toBe(9);
+    expect(need(26, 30, n1)).toBe(25);
+  });
+
+  it("never below one pizza", () => {
+    expect(basePizzas(1, n1)).toBe(1);
+  });
+
+  it("appetite scales n before the − 1", () => {
+    expect(basePizzas(4, { ...n1, appetite: "hungry" })).toBe(4); // 4 × 1,25 − 1
+    expect(basePizzas(8, { ...n1, appetite: "light" })).toBe(5); // 8 × 0,75 − 1
+  });
+
+  it("ignores the slices setting", () => {
+    expect(need(5, 30, { ...n1, slices: 12 })).toBe(4);
+  });
+});
+
 describe("shareOf", () => {
   const line = (diameterCm: number, qty: number, shape: "round" | "calzone" = "round") => ({ diameterCm, qty, shape });
 

@@ -3,18 +3,25 @@ import type { Shape } from "./types";
 export type AppetiteId = "light" | "normal" | "hungry";
 
 /**
- * The group's appetite, counted in slices: an average person eats `slices`
- * slices of a `baseDiameter` pizza, scaled by how hungry the group is.
+ * How the amount is counted:
+ * - "slices": an average person eats `slices` slices of a `baseDiameter`
+ *   pizza, scaled by appetite (the client's method).
+ * - "minusOne": Picu darbnīca's rule of thumb, n − 1 base pizzas for n people,
+ *   with appetite scaling n.
  */
+export type CalcMethod = "slices" | "minusOne";
+export const CALC_METHODS: readonly CalcMethod[] = ["slices", "minusOne"];
+
 export interface CalcRules {
-  /** Slices of the base pizza one average person eats. */
+  method: CalcMethod;
+  /** Slices of the base pizza one average person eats ("slices" method only). */
   slices: number;
   appetite: AppetiteId;
   /** Diameter of the pizza the slices are counted in. */
   baseDiameter: number;
 }
 
-export const DEFAULT_RULES: CalcRules = { slices: 6, appetite: "normal", baseDiameter: 30 };
+export const DEFAULT_RULES: CalcRules = { method: "slices", slices: 6, appetite: "normal", baseDiameter: 30 };
 
 export const APPETITES: readonly { id: AppetiteId; factor: number }[] = [
   { id: "light", factor: 0.75 },
@@ -47,13 +54,14 @@ export function areaPerPerson(rules: CalcRules): number {
   return (pizzaArea(rules.baseDiameter) * slicesPerPerson(rules)) / slicesFor(rules.baseDiameter, "round");
 }
 
-/** How many base-size pizzas the group eats, unrounded. */
+/** How many base-size pizzas the group eats, unrounded. n − 1 never drops below one. */
 export function basePizzas(people: number, rules: CalcRules): number {
+  if (rules.method === "minusOne") return Math.max(1, people * appetiteFactor(rules.appetite) - 1);
   return (people * slicesPerPerson(rules)) / slicesFor(rules.baseDiameter, "round");
 }
 
 export function targetArea(people: number, rules: CalcRules): number {
-  return people * areaPerPerson(rules);
+  return basePizzas(people, rules) * pizzaArea(rules.baseDiameter);
 }
 
 /** Unrounded number of pizzas of `diameter` that cover `area`. */

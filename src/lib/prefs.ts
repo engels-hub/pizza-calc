@@ -1,4 +1,4 @@
-import { APPETITES, DEFAULT_RULES, SLICES_MAX, SLICES_MIN, type AppetiteId, type CalcRules } from "./calc";
+import { APPETITES, CALC_METHODS, DEFAULT_RULES, SLICES_MAX, SLICES_MIN, type AppetiteId, type CalcMethod, type CalcRules } from "./calc";
 import type { CartLine, CustomDiscount } from "./discounts";
 import { PIZZERIA_IDS, type Pizza, type PizzeriaId } from "./types";
 
@@ -37,12 +37,12 @@ export const DEFAULT_PREFS: Prefs = {
 
 /**
  * Compact wire format: short keys, cart as "pizzaId:variantId:qty".
- * Rules are `e` (slices, appetite, base diameter); the older `r` held a
+ * Rules are `e` (slices, appetite, base diameter, method); the older `r` held a
  * different rule and is ignored.
  */
 interface Wire {
   p?: number;
-  e?: [number, string, number];
+  e?: [number, string, number, string?];
   s?: number;
   c?: string[];
   a?: string[];
@@ -52,7 +52,7 @@ interface Wire {
 export function encodePrefs(prefs: Prefs): string {
   const wire: Wire = {
     p: prefs.people,
-    e: [prefs.rules.slices, prefs.rules.appetite, prefs.rules.baseDiameter],
+    e: [prefs.rules.slices, prefs.rules.appetite, prefs.rules.baseDiameter, prefs.rules.method],
     s: prefs.size,
     c: prefs.cart.map(cartEntry),
     a: prefs.activePromos,
@@ -75,8 +75,9 @@ function parseCart(entries: unknown[]): SavedLine[] {
 }
 
 /** Rules from untrusted input, clamped field by field. */
-function parseRules(slices: unknown, appetite: unknown, baseDiameter: unknown): CalcRules {
+function parseRules(slices: unknown, appetite: unknown, baseDiameter: unknown, method: unknown): CalcRules {
   return {
+    method: CALC_METHODS.includes(method as CalcMethod) ? (method as CalcMethod) : DEFAULT_RULES.method,
     slices: Math.round(num(slices, SLICES_MIN, SLICES_MAX, DEFAULT_RULES.slices)),
     appetite: APPETITES.some((a) => a.id === appetite) ? (appetite as AppetiteId) : DEFAULT_RULES.appetite,
     baseDiameter: num(baseDiameter, 10, 60, DEFAULT_RULES.baseDiameter),
@@ -96,7 +97,7 @@ export function decodePrefs(raw: string | undefined): Prefs {
   }
   if (!wire || typeof wire !== "object") return DEFAULT_PREFS;
 
-  const [slices, appetite, baseDiameter] = Array.isArray(wire.e) ? wire.e : [];
+  const [slices, appetite, baseDiameter, method] = Array.isArray(wire.e) ? wire.e : [];
   const cart = parseCart(Array.isArray(wire.c) ? wire.c : []);
   const custom: CustomDiscount =
     Array.isArray(wire.x) && typeof wire.x[1] === "number" && wire.x[1] > 0
@@ -105,7 +106,7 @@ export function decodePrefs(raw: string | undefined): Prefs {
 
   return {
     people: Math.round(num(wire.p, 1, 60, DEFAULT_PREFS.people)),
-    rules: parseRules(slices, appetite, baseDiameter),
+    rules: parseRules(slices, appetite, baseDiameter, method),
     size: num(wire.s, 10, 60, DEFAULT_PREFS.size),
     cart,
     activePromos: Array.isArray(wire.a) ? wire.a.filter((a): a is string => typeof a === "string") : [],
@@ -142,7 +143,7 @@ export function hasUrlState(sp: SearchParams): boolean {
  * that is missing means "default", never "whatever the cookie says".
  */
 export function prefsFromSearch(sp: SearchParams): Prefs {
-  const [slices, appetite, baseDiameter] = list(sp.eat);
+  const [slices, appetite, baseDiameter, method] = list(sp.eat);
   const pct = numParam(sp.pct);
   const eur = numParam(sp.eur);
   const custom: CustomDiscount =
@@ -153,7 +154,7 @@ export function prefsFromSearch(sp: SearchParams): Prefs {
         : null;
   return {
     people: Math.round(num(numParam(sp.n), 1, 60, DEFAULT_PREFS.people)),
-    rules: parseRules(numParam(slices), appetite, numParam(baseDiameter)),
+    rules: parseRules(numParam(slices), appetite, numParam(baseDiameter), method),
     size: num(numParam(sp.size), 10, 60, DEFAULT_PREFS.size),
     cart: parseCart(list(sp.cart)),
     activePromos: list(sp.promo),
@@ -170,13 +171,14 @@ export function pizzeriaFromSearch(sp: SearchParams): PizzeriaId | "all" {
 export function searchFromPrefs(prefs: Prefs, pizzeria: PizzeriaId | "all"): string {
   const q: string[] = [`n=${prefs.people}`];
   if (prefs.size !== DEFAULT_PREFS.size) q.push(`size=${prefs.size}`);
-  const { slices, appetite, baseDiameter } = prefs.rules;
+  const { method, slices, appetite, baseDiameter } = prefs.rules;
   if (
+    method !== DEFAULT_RULES.method ||
     slices !== DEFAULT_RULES.slices ||
     appetite !== DEFAULT_RULES.appetite ||
     baseDiameter !== DEFAULT_RULES.baseDiameter
   ) {
-    q.push(`eat=${slices},${appetite},${baseDiameter}`);
+    q.push(`eat=${slices},${appetite},${baseDiameter},${method}`);
   }
   if (prefs.cart.length) q.push(`cart=${prefs.cart.map(cartEntry).map(enc).join(",")}`);
   if (prefs.activePromos.length) q.push(`promo=${prefs.activePromos.map(enc).join(",")}`);
