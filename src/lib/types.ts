@@ -25,6 +25,11 @@ export interface Pizza {
   ingredients: string[];
   tags: PizzaTag[];
   variants: Variant[];
+  /**
+   * Price of one half in LuLū's Pus-Pus builder (a 45 cm pizza made of two
+   * halves). Missing when the pizza cannot be a half.
+   */
+  halfPrice?: number;
 }
 
 export interface MenuData {

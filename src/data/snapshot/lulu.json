@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-06T09:58:42.760Z",
+  "fetchedAt": "2026-10-12T11:33:20.464Z",
   "pizzas": [
     {
       "id": "lulu-desu-pica",
@@ -43,7 +43,8 @@
           "shape": "round",
           "price": 19.99
         }
-      ]
+      ],
+      "halfPrice": 11.49
     },
     {
       "id": "lulu-dubultdesu-pica",
@@ -87,7 +88,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-labaka-doma-pasaule",
@@ -139,7 +141,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-piradzin-pica",
@@ -189,7 +192,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-galas-tornado",
@@ -243,7 +247,8 @@
           "shape": "round",
           "price": 29.99
         }
-      ]
+      ],
+      "halfPrice": 20.49
     },
     {
       "id": "lulu-liellopa-pica-ar-harisas-merci",
@@ -299,7 +304,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-dubult-pepperoni-pica",
@@ -343,7 +349,8 @@
           "shape": "round",
           "price": 29.99
         }
-      ]
+      ],
+      "halfPrice": 20.49
     },
     {
       "id": "lulu-plucinata-ll-bbq-pica",
@@ -399,7 +406,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-pepperoni-pica",
@@ -443,7 +451,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-vistas-kukuruzas-pica",
@@ -499,7 +508,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-super-lulu-pica",
@@ -557,7 +567,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-vist-indijas-pica",
@@ -612,7 +623,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-bekona-pica",
@@ -664,7 +676,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-filadelfijas-pica",
@@ -762,7 +775,8 @@
           "shape": "round",
           "price": 29.99
         }
-      ]
+      ],
+      "halfPrice": 20.49
     },
     {
       "id": "lulu-lasa-pica",
@@ -814,7 +828,8 @@
           "shape": "round",
           "price": 29.99
         }
-      ]
+      ],
+      "halfPrice": 20.49
     },
     {
       "id": "lulu-pr-su-t-pica",
@@ -866,7 +881,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-kebaba-pica",
@@ -923,7 +939,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-burgera-pica",
@@ -973,7 +990,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-veg-burgera-pica",
@@ -1026,7 +1044,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-trio-pica",
@@ -1076,7 +1095,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-senu-pica",
@@ -1126,7 +1146,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-bbq-liellopa-pica",
@@ -1186,7 +1207,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-senu-vegetara-pica",
@@ -1238,7 +1260,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-skinka-pica",
@@ -1282,7 +1305,8 @@
           "shape": "round",
           "price": 19.99
         }
-      ]
+      ],
+      "halfPrice": 11.49
     },
     {
       "id": "lulu-vistas-pica-ar-ananasiem",
@@ -1328,7 +1352,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-garnel-tigeris",
@@ -1383,7 +1408,8 @@
           "shape": "round",
           "price": 29.99
         }
-      ]
+      ],
+      "halfPrice": 20.49
     },
     {
       "id": "lulu-grieku-pica",
@@ -1441,7 +1467,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-jalapeno-pica",
@@ -1497,7 +1524,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-ista-cili-pica",
@@ -1557,7 +1585,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-rembo-pica",
@@ -1611,7 +1640,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-vistas-pica",
@@ -1663,7 +1693,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-veg-cili-pica",
@@ -1725,7 +1756,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-veg-rembo-pica",
@@ -1780,7 +1812,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-siera-pica",
@@ -1824,7 +1857,8 @@
           "shape": "round",
           "price": 19.99
         }
-      ]
+      ],
+      "halfPrice": 11.49
     },
     {
       "id": "lulu-veg-romano-pica",
@@ -1873,7 +1907,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-vasaras-pica",
@@ -1923,7 +1958,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-hono-lulu-pica",
@@ -1971,7 +2007,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-calzone-pilniga",
@@ -2137,7 +2174,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-romano-pica",
@@ -2187,7 +2225,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-quattro-s-pesto-pica",
@@ -2242,7 +2281,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-veganu-pica",
@@ -2301,7 +2341,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     },
     {
       "id": "lulu-bekista",
@@ -2359,7 +2400,8 @@
           "shape": "round",
           "price": 25.99
         }
-      ]
+      ],
+      "halfPrice": 16.49
     },
     {
       "id": "lulu-asorti-pica",
@@ -2415,7 +2457,8 @@
           "shape": "round",
           "price": 23.99
         }
-      ]
+      ],
+      "halfPrice": 14.99
     }
   ]
 }

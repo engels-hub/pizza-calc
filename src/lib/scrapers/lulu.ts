@@ -5,6 +5,7 @@ import { fetchHtml, mapLimit, parsePrice } from "./http";
 
 export const LULU_ORIGIN = "https://www.lulu.lv";
 export const LULU_LIST_URL = `${LULU_ORIGIN}/picas`;
+export const LULU_HALVES_URL = `${LULU_ORIGIN}/pus-pus-pica`;
 
 // Not real pizzas: builders and half/half pickers.
 const SKIP_SLUGS = /pus-pus|buve|konstruktor/;
@@ -18,6 +19,32 @@ export function parseLuluList(html: string): string[] {
     if (slug && !SKIP_SLUGS.test(slug)) slugs.add(slug);
   });
   return [...slugs];
+}
+
+/** Same spelling for a name from a product page and from the Pus-Pus picker. */
+const normName = (name: string) =>
+  name.replace(/\s+/g, " ").replace(/\s*[–—-]\s*/g, " - ").trim().toLocaleLowerCase("lv");
+
+/**
+ * Half prices from the Pus-Pus page, keyed by normalised pizza name. Both
+ * pickers list the same pizzas; options read "Desu pica - 11.49 €".
+ */
+export function parseLuluHalves(html: string): Map<string, number> {
+  const $ = cheerio.load(html);
+  const halves = new Map<string, number>();
+  $('select[name="pizza_left"] option').each((_, o) => {
+    const m = /^(.*?)\s+-\s+([\d.,]+)\s*€\s*$/.exec($(o).text().replace(/\s+/g, " ").trim());
+    if (m) halves.set(normName(m[1]), parsePrice(m[2]));
+  });
+  return halves;
+}
+
+/** Attach half prices to the pizzas that can be a Pus-Pus half. */
+export function withHalfPrices(pizzas: Pizza[], halves: Map<string, number>): Pizza[] {
+  return pizzas.map((p) => {
+    const half = halves.get(normName(p.name));
+    return half ? { ...p, halfPrice: half } : p;
+  });
 }
 
 /** One LuLū product page. Sizes live in `input[data-size-master]`. */
@@ -79,5 +106,11 @@ export async function scrapeLulu(): Promise<Pizza[]> {
       return null;
     }
   });
-  return pages.filter((p): p is Pizza => p !== null);
+  const pizzas = pages.filter((p): p is Pizza => p !== null);
+  // Pus-Pus is a bonus: if its page breaks, the menu still loads without halves.
+  try {
+    return withHalfPrices(pizzas, parseLuluHalves(await fetchHtml(LULU_HALVES_URL)));
+  } catch {
+    return pizzas;
+  }
 }

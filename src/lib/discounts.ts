@@ -9,6 +9,8 @@ export interface CartLine {
   shape: Shape;
   unitPrice: number;
   qty: number;
+  /** Pus-Pus pizza: the second half (the first half is `pizzaId`). */
+  half?: { pizzaId: string; name: string };
 }
 
 export type DiscountRule =

@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { lv } from "@/content/lv";
 import { filterPizzas, sortPizzas, type MenuSort } from "@/lib/filter";
+import { halfPartners } from "@/lib/halves";
 import { spring } from "@/lib/motion";
 import { useStore, type PizzeriaFilter } from "@/lib/store";
 import { PIZZERIA_IDS, type Pizza } from "@/lib/types";
@@ -116,7 +117,13 @@ export function MenuBrowser({ pizzas }: { pizzas: Pizza[] }) {
             <ul className="flex flex-col gap-1">
               <AnimatePresence initial={false} mode="popLayout">
                 {visible.map((p) => (
-                  <PizzaRow key={p.id} pizza={p} size={size} showPizzeria={pizzeria === "all"} />
+                  <PizzaRow
+                    key={p.id}
+                    pizza={p}
+                    size={size}
+                    showPizzeria={pizzeria === "all"}
+                    partners={halfPartners(p, pizzas)}
+                  />
                 ))}
               </AnimatePresence>
             </ul>

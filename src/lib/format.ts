@@ -1,4 +1,5 @@
 import { lv } from "@/content/lv";
+import { isHalvesId } from "./halves";
 import type { Variant } from "./types";
 
 const eur = new Intl.NumberFormat("lv-LV", { style: "currency", currency: "EUR" });
@@ -18,12 +19,13 @@ export function shortDate(iso: string): string {
 type Labelled = Pick<Variant, "shape" | "diameterCm"> & ({ id: string } | { key: string });
 
 /**
- * "30 cm", "Sirds 30 cm" or "Viens izmērs". Takes a variant or a cart line
+ * "30 cm", "Sirds 30 cm", "Pus-pus 45 cm" or "Viens izmērs". Takes a variant or a cart line
  * (whose key ends in the variant id). Only truly one-size items (variant id
  * "one", e.g. LuLū calzones) say so; Picu darbnīca's calzone has real sizes.
  */
 export function variantLabel(v: Labelled): string {
   const id = "id" in v ? v.id : v.key.slice(v.key.lastIndexOf(":") + 1);
+  if (isHalvesId(id)) return lv.variants.halves(v.diameterCm);
   if (v.shape === "heart") return lv.variants.heart;
   if (id === "one") return lv.variants.oneSize;
   return lv.variants.cm(v.diameterCm);

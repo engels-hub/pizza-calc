@@ -1,5 +1,6 @@
 import { APPETITES, CALC_METHODS, DEFAULT_RULES, SLICES_MAX, SLICES_MIN, type AppetiteId, type CalcMethod, type CalcRules } from "./calc";
 import type { CartLine, CustomDiscount } from "./discounts";
+import { canBeHalf, halvesLine, otherHalfId } from "./halves";
 import { PIZZERIA_IDS, type Pizza, type PizzeriaId } from "./types";
 
 /**
@@ -192,6 +193,11 @@ export function linesFromSaved(saved: SavedLine[], pizzas: Pizza[]): CartLine[] 
   const byId = new Map(pizzas.map((p) => [p.id, p]));
   return saved.flatMap(({ pizzaId, variantId, qty }) => {
     const pizza = byId.get(pizzaId);
+    const otherId = otherHalfId(variantId);
+    if (otherId !== null) {
+      const other = byId.get(otherId);
+      return canBeHalf(pizza) && canBeHalf(other) ? [halvesLine(pizza, other, qty)] : [];
+    }
     const variant = pizza?.variants.find((v) => v.id === variantId);
     if (!pizza || !variant) return [];
     return [

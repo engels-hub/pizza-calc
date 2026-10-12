@@ -5,6 +5,7 @@ import { useStore as useZustand } from "zustand";
 import { createStore, type StoreApi } from "zustand/vanilla";
 import { DEFAULT_RULES, type CalcRules } from "./calc";
 import type { CartLine, CustomDiscount } from "./discounts";
+import { halvesLine } from "./halves";
 import type { Pizza, PizzeriaId, Variant } from "./types";
 
 export type FilterState = "include" | "exclude";
@@ -33,8 +34,12 @@ export interface State {
   setSize: (d: number) => void;
   addPizza: (pizza: Pizza, variant: Variant) => void;
   setQty: (key: string, qty: number) => void;
+  /** Add a Pus-Pus pizza: half `a`, half `b`. */
+  addHalves: (a: Pizza, b: Pizza) => void;
   /** Switch a cart line to another size of the same pizza, merging if that size is already there. */
   setVariant: (key: string, pizza: Pizza, variant: Variant) => void;
+  /** Turn a cart line into the Pus-Pus pizza `a` + `b`, merging the same way. */
+  setHalves: (key: string, a: Pizza, b: Pizza) => void;
   clearCart: () => void;
   /** Replace the cart with these pizzas (repeats become one line with a higher count). */
   fillCart: (picks: { pizza: Pizza; variant: Variant }[]) => void;
@@ -55,6 +60,36 @@ function cycle(filters: Record<string, FilterState>, key: string): Record<string
   else if (next[key] === "include") next[key] = "exclude";
   else delete next[key];
   return next;
+}
+
+function wholeLine(pizza: Pizza, variant: Variant, qty = 1): CartLine {
+  return {
+    key: `${pizza.id}:${variant.id}`,
+    pizzaId: pizza.id,
+    pizzeriaId: pizza.pizzeriaId,
+    name: pizza.name,
+    diameterCm: variant.diameterCm,
+    shape: variant.shape,
+    unitPrice: variant.price,
+    qty,
+  };
+}
+
+/** Add `line`, or add its count to the line that is already there. */
+function addLine(cart: CartLine[], line: CartLine): CartLine[] {
+  return cart.some((l) => l.key === line.key)
+    ? cart.map((l) => (l.key === line.key ? { ...l, qty: l.qty + line.qty } : l))
+    : [...cart, line];
+}
+
+/** Replace the line at `key` with `next` (same count), merging into a twin if there is one. */
+function replaceLine(cart: CartLine[], key: string, next: (qty: number) => CartLine): CartLine[] {
+  const line = cart.find((l) => l.key === key);
+  if (!line) return cart;
+  const moved = next(line.qty);
+  if (moved.key === key) return cart; // same size, same halves: nothing to do
+  if (cart.some((l) => l.key === moved.key)) return addLine(cart.filter((l) => l.key !== key), moved);
+  return cart.map((l) => (l.key === key ? moved : l));
 }
 
 /** Fields saved to the prefs cookie and restored by the server. */
@@ -80,65 +115,17 @@ export function createAppStore(initial: InitialState): AppStore {
     setRules: (r) => set((s) => ({ rules: { ...s.rules, ...r } })),
     resetRules: () => set({ rules: DEFAULT_RULES }),
     setSize: (size) => set({ size }),
-    addPizza: (pizza, variant) =>
-      set((s) => {
-        const key = `${pizza.id}:${variant.id}`;
-        const existing = s.cart.find((l) => l.key === key);
-        const line: CartLine = {
-          key,
-          pizzaId: pizza.id,
-          pizzeriaId: pizza.pizzeriaId,
-          name: pizza.name,
-          diameterCm: variant.diameterCm,
-          shape: variant.shape,
-          unitPrice: variant.price,
-          qty: 1,
-        };
-        return {
-          cart: existing ? s.cart.map((l) => (l.key === key ? { ...l, qty: l.qty + 1 } : l)) : [...s.cart, line],
-        };
-      }),
+    addPizza: (pizza, variant) => set((s) => ({ cart: addLine(s.cart, wholeLine(pizza, variant)) })),
+    addHalves: (a, b) => set((s) => ({ cart: addLine(s.cart, halvesLine(a, b)) })),
     setQty: (key, qty) =>
       set((s) => ({
         cart: qty <= 0 ? s.cart.filter((l) => l.key !== key) : s.cart.map((l) => (l.key === key ? { ...l, qty } : l)),
       })),
     setVariant: (key, pizza, variant) =>
-      set((s) => {
-        const nextKey = `${pizza.id}:${variant.id}`;
-        const line = s.cart.find((l) => l.key === key);
-        if (!line || nextKey === key) return {};
-        const twin = s.cart.find((l) => l.key === nextKey);
-        if (twin) {
-          return {
-            cart: s.cart
-              .filter((l) => l.key !== key)
-              .map((l) => (l.key === nextKey ? { ...l, qty: l.qty + line.qty } : l)),
-          };
-        }
-        const moved = { ...line, key: nextKey, diameterCm: variant.diameterCm, shape: variant.shape, unitPrice: variant.price };
-        return { cart: s.cart.map((l) => (l.key === key ? moved : l)) };
-      }),
+      set((s) => ({ cart: replaceLine(s.cart, key, (qty) => wholeLine(pizza, variant, qty)) })),
+    setHalves: (key, a, b) => set((s) => ({ cart: replaceLine(s.cart, key, (qty) => halvesLine(a, b, qty)) })),
     clearCart: () => set({ cart: [] }),
-    fillCart: (picks) => {
-      const cart: CartLine[] = [];
-      for (const { pizza, variant } of picks) {
-        const key = `${pizza.id}:${variant.id}`;
-        const existing = cart.find((l) => l.key === key);
-        if (existing) existing.qty++;
-        else
-          cart.push({
-            key,
-            pizzaId: pizza.id,
-            pizzeriaId: pizza.pizzeriaId,
-            name: pizza.name,
-            diameterCm: variant.diameterCm,
-            shape: variant.shape,
-            unitPrice: variant.price,
-            qty: 1,
-          });
-      }
-      set({ cart });
-    },
+    fillCart: (picks) => set({ cart: picks.reduce((cart, p) => addLine(cart, wholeLine(p.pizza, p.variant)), [] as CartLine[]) }),
     setPizzeria: (pizzeria) => set({ pizzeria }),
     setQuery: (query) => set({ query }),
     cycleIngredient: (key) => set((s) => ({ ingredientFilters: cycle(s.ingredientFilters, key) })),

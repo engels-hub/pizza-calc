@@ -8,27 +8,57 @@ import { lv } from "@/content/lv";
 import { pricePer100cm2 } from "@/lib/calc";
 import { preferredVariant, toppingLine } from "@/lib/filter";
 import { euro, twoDecimals, variantLabel } from "@/lib/format";
+import { canBeHalf, halvesVariant, isHalvesId } from "@/lib/halves";
 import { spring } from "@/lib/motion";
 import { useStore } from "@/lib/store";
-import type { Pizza, Variant } from "@/lib/types";
+import type { Pizza } from "@/lib/types";
 import { flyToTicket } from "../cart/FlyLayer";
 import { Collapse } from "../ui/Collapse";
+import { HalfSelect } from "../ui/HalfSelect";
 import { SizeSelect } from "../ui/SizeSelect";
 
-export function PizzaRow({ pizza, size, showPizzeria }: { pizza: Pizza; size: number; showPizzeria: boolean }) {
+export function PizzaRow({
+  pizza,
+  size,
+  showPizzeria,
+  partners,
+}: {
+  pizza: Pizza;
+  size: number;
+  showPizzeria: boolean;
+  /** Pizzas that can be this one's other half in a Pus-Pus pizza. */
+  partners: Pizza[];
+}) {
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
   const addPizza = useStore((s) => s.addPizza);
-  const inCart = useStore((s) => s.cart.reduce((n, l) => (l.pizzaId === pizza.id ? n + l.qty : n), 0));
+  const addHalves = useStore((s) => s.addHalves);
+  const inCart = useStore((s) =>
+    s.cart.reduce((n, l) => (l.pizzaId === pizza.id || l.half?.pizzaId === pizza.id ? n + l.qty : n), 0),
+  );
   // Follows the calculator's size until this row's own size is picked.
   const [picked, setPicked] = useState<string | null>(null);
-  const selected = pizza.variants.find((v) => v.id === picked) ?? preferredVariant(pizza, size);
+  const [halves, setHalves] = useState(false);
+  const [otherId, setOtherId] = useState<string | null>(null);
+  const other = partners.find((p) => p.id === otherId);
+  const halvable = canBeHalf(pizza) && partners.length > 0;
+  const variants = halvable ? [...pizza.variants, halvesVariant(pizza, other)] : pizza.variants;
+  const whole = pizza.variants.find((v) => v.id === picked) ?? preferredVariant(pizza, size);
+  const selected = halves ? halvesVariant(pizza, other) : whole;
+  // A Pus-Pus without its second half has no price yet, only this half's.
+  const waiting = halves && !other;
   const pizzeria = lv.pizzerias[pizza.pizzeriaId];
 
-  const add = (variant: Variant, e: React.MouseEvent<HTMLElement>) => {
-    addPizza(pizza, variant);
+  const add = (e: React.MouseEvent<HTMLElement>) => {
+    if (halves) {
+      if (!other) return;
+      addHalves(pizza, other);
+    } else {
+      addPizza(pizza, whole);
+    }
     flyToTicket(e.currentTarget.getBoundingClientRect(), pizza.imageUrl);
   };
+  const addLabel = other && halves ? lv.halves.add(pizza.name, other.name) : lv.menu.add(pizza.name, variantLabel(selected));
 
   return (
     <motion.li
@@ -71,29 +101,46 @@ export function PizzaRow({ pizza, size, showPizzeria }: { pizza: Pizza; size: nu
 
         <div className="flex shrink-0 items-center gap-2">
           <span className="text-right">
-            <span className="tabular block text-[0.95rem] font-medium">{euro(selected.price)}</span>
+            <span className="tabular block text-[0.95rem] font-medium">
+              {euro(waiting ? (pizza.halfPrice ?? 0) : selected.price)}
+            </span>
             <span className="tabular block text-xs text-muted">
-              {lv.menu.perArea(twoDecimals(pricePer100cm2(selected.price, selected.diameterCm)))}
+              {waiting
+                ? lv.halves.perHalf
+                : lv.menu.perArea(twoDecimals(pricePer100cm2(selected.price, selected.diameterCm)))}
             </span>
           </span>
           <button
             type="button"
-            onClick={(e) => add(selected, e)}
-            aria-label={lv.menu.add(pizza.name, variantLabel(selected))}
-            className="grid size-11 place-items-center rounded-full bg-accent text-accent-ink transition-transform duration-150 active:scale-[0.92]"
+            onClick={add}
+            disabled={waiting}
+            aria-label={addLabel}
+            title={waiting ? lv.halves.choose : undefined}
+            className="grid size-11 place-items-center rounded-full bg-accent text-accent-ink transition-[transform,opacity] duration-150 active:scale-[0.92] disabled:opacity-40 disabled:active:scale-100"
           >
             <PlusIcon size={18} weight="bold" />
           </button>
         </div>
       </div>
 
-      <div className="-mt-1 pb-2 pl-[4.75rem] pr-2 md:pl-[5.5rem]">
+      <div className="-mt-1 flex flex-wrap gap-2 pb-2 pl-[4.75rem] pr-2 md:pl-[5.5rem]">
         <SizeSelect
-          variants={pizza.variants}
+          variants={variants}
           value={selected.id}
-          onChange={(v) => setPicked(v.id)}
+          onChange={(v) => {
+            setHalves(isHalvesId(v.id));
+            if (!isHalvesId(v.id)) setPicked(v.id);
+          }}
           label={lv.cart.sizeOf(pizza.name)}
         />
+        {halves && (
+          <HalfSelect
+            partners={partners}
+            value={otherId}
+            onChange={(p) => setOtherId(p.id)}
+            label={lv.halves.otherOf(pizza.name)}
+          />
+        )}
       </div>
 
       <Collapse open={open}>

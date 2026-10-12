@@ -212,9 +212,26 @@ export const lv = {
   variants: {
     heart: "Sirds 30 cm",
     oneSize: "Viens izmērs",
+    halves: (d: number) => `Pus-pus ${d} cm`,
     cm: (d: number) => `${d} cm`,
     /** One entry in a size dropdown: "Sirds 30 cm, 16,99 €". */
     option: (label: string, price: string) => `${label}, ${price}`,
+  },
+
+  /** LuLū's Pus-Pus pizza: two halves of different pizzas. */
+  halves: {
+    /** Cart line name: "½ Desu pica + ½ Siera pica". */
+    name: (a: string, b: string) => `½ ${a} + ½ ${b}`,
+    other: "Otra puse",
+    otherOf: (name: string) => `${name} otrā puse`,
+    choose: "Izvēlies otru pusi",
+    /** Option in the second-half dropdown: "Siera pica, puse 11,49 €". */
+    option: (name: string, price: string) => `${name}, puse ${price}`,
+    /** Under the price in the list until a second half is picked. */
+    perHalf: "par pusi",
+    add: (a: string, b: string) => `Pievienot pus-pus picu ${a} un ${b}`,
+    /** Shown on Pus-Pus lines while a LuLū deal is on. */
+    dealNote: "LuLū nenorāda, vai akcijas der pus-pus picai",
   },
 
   ingredientGroups: {

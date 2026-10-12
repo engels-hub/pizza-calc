@@ -12,7 +12,8 @@ import {
   TorusGeometry,
   Vector3,
   type BufferGeometry,
-  type Mesh,
+  type Group,
+  type Material,
 } from "three";
 import { ingredientDef } from "@/lib/ingredients";
 import type { Pizza, Shape } from "@/lib/types";
@@ -58,11 +59,20 @@ function cheeseColor(keys: string[]): string | null {
   return dairy ? "#f3cf68" : null;
 }
 
+/** Which part of the pizza toppings go on: all of it, or one half of a Pus-Pus pizza. */
+type Side = 0 | -1 | 1;
+
 /** Builds the topping layout for a pizza: deterministic, seeded by its id. */
-function buildParts(pizza: Pizza, shape: Shape): Part[] {
+function buildParts(pizza: Pizza, shape: Shape, side: Side = 0): Part[] {
   const rand = rng(pizza.id);
   // A spot for one topping: uniform in the disc, or rejection-sampled inside the heart.
   const spot = (): [number, number] => {
+    if (side !== 0) {
+      // Half disc, kept off the cut so the two halves read apart.
+      const r = Math.sqrt(rand()) * 0.7;
+      const a = (rand() - 0.5) * Math.PI;
+      return [side * (0.05 + Math.abs(Math.cos(a) * r)), Math.sin(a) * r];
+    }
     if (shape === "heart") {
       for (let tries = 0; tries < 40; tries++) {
         const x = (rand() * 2 - 1) * 0.85;
@@ -76,6 +86,7 @@ function buildParts(pizza: Pizza, shape: Shape): Part[] {
     return [Math.cos(a) * r, Math.sin(a) * r];
   };
   const parts: Part[] = [];
+  const maxItems = side === 0 ? MAX_ITEMS : MAX_ITEMS / 2;
   let delay = 0.38;
   let layer = 0;
   let total = 0;
@@ -89,7 +100,7 @@ function buildParts(pizza: Pizza, shape: Shape): Part[] {
     lift: number,
   ) => {
     const items: Item[] = [];
-    for (let j = 0; j < count && total < MAX_ITEMS; j++, total++) {
+    for (let j = 0; j < Math.ceil(count / (side === 0 ? 1 : 2)) && total < maxItems; j++, total++) {
       const [x, z] = spot();
       items.push({
         x,
@@ -100,7 +111,7 @@ function buildParts(pizza: Pizza, shape: Shape): Part[] {
         color: colors[j % colors.length],
       });
     }
-    parts.push({ key, geometry, items });
+    parts.push({ key: side === 0 ? key : `${key}@${side}`, geometry, items });
     delay += 0.16;
     layer++;
   };
@@ -122,36 +133,70 @@ function buildParts(pizza: Pizza, shape: Shape): Part[] {
   return parts;
 }
 
-/** No photo, or the photo mode is off: build the pizza from its ingredient list. */
-export function FauxPizza({ pizza, shape = "round", reduce }: { pizza: Pizza; shape?: Shape; reduce: boolean }) {
-  const keys = pizza.ingredients;
+interface Layer {
+  geo: BufferGeometry;
+  mat: Material;
+}
+
+/** A flat disc, or one half of it (side −1 is x < 0, side 1 is x > 0). */
+function disc(r: number, h: number, segments: number, side: Side): BufferGeometry {
+  if (side === 0) return new CylinderGeometry(r, r, h, segments);
+  return new CylinderGeometry(r, r, h, Math.ceil(segments / 2), 1, false, side < 0 ? Math.PI : 0, Math.PI);
+}
+
+/**
+ * No photo, or the photo mode is off: build the pizza from its ingredient list.
+ * With `half`, it is a Pus-Pus pizza: `pizza` on the left, `half` on the right.
+ */
+export function FauxPizza({
+  pizza,
+  half,
+  shape = "round",
+  reduce,
+}: {
+  pizza: Pizza;
+  half?: Pizza;
+  shape?: Shape;
+  reduce: boolean;
+}) {
   const heart = shape === "heart";
-  const parts = useMemo(() => buildParts(pizza, shape), [pizza, shape]);
+  const parts = useMemo(
+    () => (half ? [...buildParts(pizza, shape, -1), ...buildParts(half, shape, 1)] : buildParts(pizza, shape)),
+    [pizza, half, shape],
+  );
   const material = useMemo(() => ps1Material({ color: "#ffffff" }), []);
   const base = useMemo(() => {
-    const cheese = cheeseColor(keys);
-    if (heart) {
-      // Heart: the dough slab doubles as the crust; sauce and cheese are smaller hearts on top.
-      return {
-        dough: { geo: heartSlab(1, 0.14), mat: ps1Material({ color: "#c98a4b" }) },
-        crust: null,
-        sauce: { geo: heartSlab(0.88, 0.02), mat: ps1Material({ color: sauceColor(keys) }) },
-        cheese: cheese ? { geo: heartSlab(0.8, 0.02), mat: ps1Material({ color: cheese }) } : null,
-      };
+    // Sauce and cheese per half: one layer for a whole pizza, two for Pus-Pus.
+    const halves: [Pizza, Side][] = half ? [[pizza, -1], [half, 1]] : [[pizza, 0]];
+    const sauce: Layer[] = [];
+    const cheese: Layer[] = [];
+    for (const [p, side] of halves) {
+      const keys = p.ingredients;
+      const cheeseTint = cheeseColor(keys);
+      if (heart) {
+        // Heart: the dough slab doubles as the crust; sauce and cheese are smaller hearts on top.
+        sauce.push({ geo: heartSlab(0.88, 0.02), mat: ps1Material({ color: sauceColor(keys) }) });
+        if (cheeseTint) cheese.push({ geo: heartSlab(0.8, 0.02), mat: ps1Material({ color: cheeseTint }) });
+      } else {
+        sauce.push({ geo: disc(0.87, 0.02, 14, side), mat: ps1Material({ color: sauceColor(keys) }) });
+        if (cheeseTint) cheese.push({ geo: disc(0.8, 0.02, 12, side), mat: ps1Material({ color: cheeseTint }) });
+      }
     }
     return {
-      dough: { geo: new CylinderGeometry(1, 0.97, 0.12, 16), mat: ps1Material({ color: "#d9a066" }) },
-      crust: { geo: new TorusGeometry(0.93, 0.075, 4, 18), mat: ps1Material({ color: "#c4823f" }) },
-      sauce: { geo: new CylinderGeometry(0.87, 0.87, 0.02, 14), mat: ps1Material({ color: sauceColor(keys) }) },
-      cheese: cheese ? { geo: new CylinderGeometry(0.8, 0.8, 0.02, 11), mat: ps1Material({ color: cheese }) } : null,
+      dough: heart
+        ? { geo: heartSlab(1, 0.14), mat: ps1Material({ color: "#c98a4b" }) }
+        : { geo: new CylinderGeometry(1, 0.97, 0.12, 16), mat: ps1Material({ color: "#d9a066" }) },
+      crust: heart ? null : { geo: new TorusGeometry(0.93, 0.075, 4, 18), mat: ps1Material({ color: "#c4823f" }) },
+      sauce,
+      cheese,
     };
-  }, [keys, heart]);
+  }, [pizza, half, heart]);
 
   useLayoutEffect(
     () => () => {
       material.dispose();
       parts.forEach((part) => part.geometry.dispose());
-      Object.values(base).forEach((b) => {
+      [base.dough, base.crust, ...base.sauce, ...base.cheese].forEach((b) => {
         b?.geo.dispose();
         b?.mat.dispose();
       });
@@ -159,8 +204,8 @@ export function FauxPizza({ pizza, shape = "round", reduce }: { pizza: Pizza; sh
     [material, parts, base],
   );
 
-  const sauceRef = useRef<Mesh>(null);
-  const cheeseRef = useRef<Mesh>(null);
+  const sauceRef = useRef<Group>(null);
+  const cheeseRef = useRef<Group>(null);
   const meshes = useRef<(InstancedMesh | null)[]>([]);
   const start = useRef<number | null>(null);
   const settled = useRef(false);
@@ -221,8 +266,16 @@ export function FauxPizza({ pizza, shape = "round", reduce }: { pizza: Pizza; sh
       {base.crust && (
         <mesh geometry={base.crust.geo} material={base.crust.mat} rotation-x={Math.PI / 2} position-y={0.06} />
       )}
-      <mesh ref={sauceRef} geometry={base.sauce.geo} material={base.sauce.mat} visible={false} />
-      {base.cheese && <mesh ref={cheeseRef} geometry={base.cheese.geo} material={base.cheese.mat} visible={false} />}
+      <group ref={sauceRef} visible={false}>
+        {base.sauce.map((l, i) => (
+          <mesh key={i} geometry={l.geo} material={l.mat} />
+        ))}
+      </group>
+      <group ref={cheeseRef} visible={false}>
+        {base.cheese.map((l, i) => (
+          <mesh key={i} geometry={l.geo} material={l.mat} />
+        ))}
+      </group>
       {parts.map((part, i) => (
         <instancedMesh
           key={part.key}

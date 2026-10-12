@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { parseLuluList, parseLuluProduct } from "@/lib/scrapers/lulu";
+import { parseLuluHalves, parseLuluList, parseLuluProduct, withHalfPrices } from "@/lib/scrapers/lulu";
 import { parseDarbnica } from "@/lib/scrapers/darbnica";
 import { variantLabel } from "@/lib/format";
 
@@ -49,6 +49,19 @@ describe("LuLū", () => {
     expect(p.variants).toHaveLength(1);
     expect(p.variants[0]).toMatchObject({ shape: "calzone", price: 11.99 });
     expect(p.tags).not.toContain("vegetarian");
+  });
+});
+
+describe("LuLū Pus-Pus", () => {
+  it("reads half prices and matches them to menu names", () => {
+    const halves = parseLuluHalves(fx("lulu-pus-pus.html"));
+    expect(halves.size).toBe(43);
+    expect(halves.get("desu pica")).toBe(11.49);
+    const trio = parseLuluProduct(fx("lulu-trio.html"), "trio-pica")!;
+    const calzone = parseLuluProduct(fx("lulu-calzone.html"), "calzone-vistas")!;
+    const [t, c] = withHalfPrices([trio, calzone], halves);
+    expect(t.halfPrice).toBe(14.99);
+    expect(c.halfPrice).toBeUndefined();
   });
 });
 

@@ -21,6 +21,8 @@ export interface StackUnit {
   key: string;
   lineKey: string;
   pizza: Pizza;
+  /** Second half of a Pus-Pus pizza. */
+  half?: Pizza;
   diameter: number;
   shape: Shape;
 }
@@ -268,7 +270,7 @@ function Unit({
         {unit.shape === "calzone" ? (
           <Calzone pizza={unit.pizza} reduce={reduce} />
         ) : (
-          <FauxPizza pizza={unit.pizza} shape={unit.shape} reduce={reduce} />
+          <FauxPizza pizza={unit.pizza} half={unit.half} shape={unit.shape} reduce={reduce} />
         )}
       </group>
     </group>

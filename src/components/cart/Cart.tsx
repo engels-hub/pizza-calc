@@ -36,7 +36,14 @@ export function Cart({ pizzas }: { pizzas: Pizza[] }) {
   for (const l of cart) {
     const pizza = byId.get(l.pizzaId);
     for (let i = 0; pizza && i < l.qty && units.length < MAX_STACK; i++) {
-      units.push({ key: `${l.key}#${i}`, lineKey: l.key, pizza, diameter: l.diameterCm, shape: l.shape });
+      units.push({
+        key: `${l.key}#${i}`,
+        lineKey: l.key,
+        pizza,
+        half: l.half ? byId.get(l.half.pizzaId) : undefined,
+        diameter: l.diameterCm,
+        shape: l.shape,
+      });
     }
   }
 
@@ -98,7 +105,7 @@ export function Cart({ pizzas }: { pizzas: Pizza[] }) {
                 <CartLineItem
                   key={`${l.pizzaId}#${cart.slice(0, i).filter((x) => x.pizzaId === l.pizzaId).length}`}
                   line={l}
-                  pizza={byId.get(l.pizzaId)}
+                  pizzas={pizzas}
                 />
               ))}
             </AnimatePresence>

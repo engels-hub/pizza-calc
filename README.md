@@ -6,6 +6,7 @@ How much pizza to order for a group, and what it costs at **Picu darbnīca** and
 - **Menus:** scraped live from picudarbnica.lv and lulu.lv, cached for 6 hours. If a scrape fails, a bundled snapshot is used instead.
 - **Filters:** by pizzeria, by vegetarian / vegan / spicy, and by ingredient, with include and exclude.
 - **Prices:** the total before and after the real promos (LuLū takeaway −15%, every 3rd pizza free, flash codes; Picu darbnīca drauga card −10%, birthday −15%) and an optional custom % or € discount.
+- **Pus-pus:** LuLū's half-and-half 45 cm pizza. Pick "Pus-pus 45 cm" as a size, then the second half. Each half costs that pizza's price on lulu.lv/pus-pus-pica (today its 30 cm price + €0.50); the pizza costs both halves added up.
 - **Cart:** a spinning PS1-style 3D stack of every chosen pizza, built from its ingredients and drawn to scale by size.
 
 The UI is in Latvian.
